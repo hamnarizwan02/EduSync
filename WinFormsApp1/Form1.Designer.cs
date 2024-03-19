@@ -34,7 +34,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 200);
             panel1.Name = "panel1";
-            panel1.Size = new Size(686, 40);
+            panel1.Size = new Size(794, 40);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -63,7 +63,7 @@
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(686, 200);
+            groupBox1.Size = new Size(794, 200);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "COURSES REGISTERED";
@@ -77,15 +77,15 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 19);
+            tableLayoutPanel1.Location = new Point(3, 23);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.Size = new Size(680, 178);
+            tableLayoutPanel1.Size = new Size(788, 174);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // Form1
             // 
-            ClientSize = new Size(686, 295);
+            ClientSize = new Size(794, 358);
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             Name = "Form1";
