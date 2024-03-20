@@ -10,24 +10,11 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Announcement : Form
+    public partial class enrollStudent : Form
     {
-        public Announcement()
+        public enrollStudent()
         {
             InitializeComponent();
-            panelLeft.Height = button4.Height;
-            panelLeft.Top = button4.Top;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            panelLeft.Height = button1.Height;
-            panelLeft.Top = button1.Top;
-
-            this.Hide();
-            var form3 = new Assignmnet();
-            form3.Closed += (s, args) => this.Close();
-            form3.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -36,9 +23,9 @@ namespace WinFormsApp1
             panelLeft.Top = button2.Top;
 
             this.Hide();
-            var form4 = new Quiz();
-            form4.Closed += (s, args) => this.Close();
-            form4.Show();
+            var form3 = new Profile();
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -47,7 +34,7 @@ namespace WinFormsApp1
             panelLeft.Top = button3.Top;
 
             this.Hide();
-            var form3 = new Notes();
+            var form3 = new enrollTeacher();
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }
@@ -56,15 +43,19 @@ namespace WinFormsApp1
         {
             panelLeft.Height = button4.Height;
             panelLeft.Top = button4.Top;
-            panelLeft.BringToFront();
 
-            //this.Hide();
-            //var form9 = new Announcement();
-            //form9.Closed += (s, args) => this.Close();
-            //form9.Show();
+            this.Hide();
+            var form3 = new enrollStudent();
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
         }
 
-        private void panelLeft_Paint(object sender, PaintEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
 
         }
