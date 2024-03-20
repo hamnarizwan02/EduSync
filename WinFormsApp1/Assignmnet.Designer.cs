@@ -44,6 +44,7 @@
             label5 = new Label();
             button5 = new Button();
             dateTimePicker1 = new DateTimePicker();
+            button6 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -222,11 +223,26 @@
             dateTimePicker1.Size = new Size(280, 27);
             dateTimePicker1.TabIndex = 10;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(192, 0, 0);
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(717, 25);
+            button6.Name = "button6";
+            button6.Size = new Size(133, 33);
+            button6.TabIndex = 18;
+            button6.Text = "LOG OUT";
+            button6.UseVisualStyleBackColor = false;
+            // 
             // Assignmnet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 495);
+            Controls.Add(button6);
             Controls.Add(dateTimePicker1);
             Controls.Add(button5);
             Controls.Add(label5);
@@ -261,5 +277,6 @@
         private Label label5;
         private Button button5;
         private DateTimePicker dateTimePicker1;
+        private Button button6;
     }
 }

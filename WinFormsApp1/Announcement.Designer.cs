@@ -36,6 +36,14 @@
             button3 = new Button();
             button2 = new Button();
             label1 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            comboBox2 = new ComboBox();
+            comboBox1 = new ComboBox();
+            label4 = new Label();
+            richTextBox1 = new RichTextBox();
+            button6 = new Button();
+            button5 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,7 +59,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(175, 504);
             panel1.TabIndex = 3;
-           // panel1.Paint += this.panel1_Paint;
             // 
             // panelLeft
             // 
@@ -60,7 +67,6 @@
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(10, 106);
             panelLeft.TabIndex = 3;
-            //panelLeft.Paint += this.panelLeft_Paint;
             // 
             // button4
             // 
@@ -133,16 +139,107 @@
             label1.Font = new Font("Century Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(181, 19);
             label1.Name = "label1";
-            label1.Size = new Size(326, 47);
+            label1.Size = new Size(356, 47);
             label1.TabIndex = 2;
-            label1.Text = "ANNOUCEMENT";
-           // label1.Click += label1_Click;
+            label1.Text = "ANNOUNCEMENT";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(352, 184);
+            label3.Name = "label3";
+            label3.Size = new Size(132, 37);
+            label3.TabIndex = 9;
+            label3.Text = "Section:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(352, 117);
+            label2.Name = "label2";
+            label2.Size = new Size(127, 37);
+            label2.TabIndex = 8;
+            label2.Text = "Course:";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z", "All Sections" });
+            comboBox2.Location = new Point(522, 193);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(350, 28);
+            comboBox2.TabIndex = 7;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
+            comboBox1.Location = new Point(522, 126);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(350, 28);
+            comboBox1.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(229, 248);
+            label4.Name = "label4";
+            label4.Size = new Size(250, 37);
+            label4.TabIndex = 10;
+            label4.Text = "Announcement:";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(527, 257);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(345, 182);
+            richTextBox1.TabIndex = 11;
+            richTextBox1.Text = "";
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.Black;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(739, 452);
+            button6.Name = "button6";
+            button6.Size = new Size(133, 33);
+            button6.TabIndex = 26;
+            button6.Text = "UPLOAD";
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.FromArgb(192, 0, 0);
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(916, 19);
+            button5.Name = "button5";
+            button5.Size = new Size(133, 33);
+            button5.TabIndex = 27;
+            button5.Text = "LOG OUT";
+            button5.UseVisualStyleBackColor = false;
             // 
             // Announcement
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 495);
+            ClientSize = new Size(1061, 504);
+            Controls.Add(button5);
+            Controls.Add(button6);
+            Controls.Add(richTextBox1);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Announcement";
@@ -161,5 +258,13 @@
         private Button button2;
         private Label label1;
         private FlowLayoutPanel panelLeft;
+        private Label label3;
+        private Label label2;
+        private ComboBox comboBox2;
+        private ComboBox comboBox1;
+        private Label label4;
+        private RichTextBox richTextBox1;
+        private Button button6;
+        private Button button5;
     }
 }
