@@ -36,6 +36,14 @@
             button1 = new Button();
             button3 = new Button();
             button2 = new Button();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            button5 = new Button();
+            dateTimePicker1 = new DateTimePicker();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,7 +51,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(181, 19);
+            label1.Location = new Point(196, 25);
             label1.Name = "label1";
             label1.Size = new Size(271, 47);
             label1.TabIndex = 0;
@@ -135,11 +143,98 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
+            comboBox1.Location = new Point(424, 164);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(280, 28);
+            comboBox1.TabIndex = 2;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
+            comboBox2.Location = new Point(424, 231);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(280, 28);
+            comboBox2.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(254, 155);
+            label2.Name = "label2";
+            label2.Size = new Size(127, 37);
+            label2.TabIndex = 4;
+            label2.Text = "Course:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(254, 222);
+            label3.Name = "label3";
+            label3.Size = new Size(132, 37);
+            label3.TabIndex = 5;
+            label3.Text = "Section:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(221, 290);
+            label4.Name = "label4";
+            label4.Size = new Size(160, 37);
+            label4.TabIndex = 6;
+            label4.Text = "Due Date:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(197, 331);
+            label5.Name = "label5";
+            label5.Size = new Size(0, 37);
+            label5.TabIndex = 8;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.Black;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(493, 369);
+            button5.Name = "button5";
+            button5.Size = new Size(133, 33);
+            button5.TabIndex = 9;
+            button5.Text = "UPLOAD";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(424, 300);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(280, 27);
+            dateTimePicker1.TabIndex = 10;
+            // 
             // Assignmnet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 495);
+            ClientSize = new Size(862, 495);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(button5);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Assignmnet";
@@ -158,5 +253,13 @@
         private Button button1;
         private Button button4;
         private FlowLayoutPanel panelLeft;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Button button5;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -66,5 +66,10 @@ namespace WinFormsApp1
             form9.Closed += (s, args) => this.Close();
             form9.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Successfully uploaded!");
+        }
     }
 }
