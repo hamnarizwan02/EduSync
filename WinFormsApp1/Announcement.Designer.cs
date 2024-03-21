@@ -38,8 +38,8 @@
             label1 = new Label();
             label3 = new Label();
             label2 = new Label();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
+            Section_comboBox2 = new ComboBox();
+            Course_comboBox1 = new ComboBox();
             label4 = new Label();
             richTextBox1 = new RichTextBox();
             button6 = new Button();
@@ -67,7 +67,6 @@
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(10, 106);
             panelLeft.TabIndex = 3;
-            panelLeft.Paint += panelLeft_Paint;
             // 
             // button4
             // 
@@ -164,23 +163,22 @@
             label2.TabIndex = 8;
             label2.Text = "Course:";
             // 
-            // comboBox2
+            // Section_comboBox2
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z", "All Sections" });
-            comboBox2.Location = new Point(522, 193);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(350, 28);
-            comboBox2.TabIndex = 7;
+            Section_comboBox2.FormattingEnabled = true;
+            Section_comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z", "All Sections" });
+            Section_comboBox2.Location = new Point(522, 193);
+            Section_comboBox2.Name = "Section_comboBox2";
+            Section_comboBox2.Size = new Size(350, 28);
+            Section_comboBox2.TabIndex = 7;
             // 
-            // comboBox1
+            // Course_comboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
-            comboBox1.Location = new Point(522, 126);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(350, 28);
-            comboBox1.TabIndex = 6;
+            Course_comboBox1.FormattingEnabled = true;
+            Course_comboBox1.Location = new Point(522, 126);
+            Course_comboBox1.Name = "Course_comboBox1";
+            Course_comboBox1.Size = new Size(350, 28);
+            Course_comboBox1.TabIndex = 6;
             // 
             // label4
             // 
@@ -213,6 +211,7 @@
             button6.TabIndex = 26;
             button6.Text = "UPLOAD";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button5
             // 
@@ -227,6 +226,7 @@
             button5.TabIndex = 27;
             button5.Text = "LOG OUT";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // Announcement
             // 
@@ -239,12 +239,14 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(Section_comboBox2);
+            Controls.Add(Course_comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Announcement";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Announcement";
+            Load += Announcement_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -261,8 +263,8 @@
         private FlowLayoutPanel panelLeft;
         private Label label3;
         private Label label2;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox Section_comboBox2;
+        private ComboBox Course_comboBox1;
         private Label label4;
         private RichTextBox richTextBox1;
         private Button button6;

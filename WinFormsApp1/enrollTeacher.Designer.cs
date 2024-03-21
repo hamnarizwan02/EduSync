@@ -77,7 +77,7 @@
             button4.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(1, 329);
+            button4.Location = new Point(2, 329);
             button4.Name = "button4";
             button4.Size = new Size(175, 106);
             button4.TabIndex = 5;
@@ -93,7 +93,7 @@
             button3.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 207);
+            button3.Location = new Point(1, 207);
             button3.Name = "button3";
             button3.Size = new Size(175, 106);
             button3.TabIndex = 4;
@@ -110,7 +110,7 @@
             button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 86);
+            button2.Location = new Point(1, 86);
             button2.Name = "button2";
             button2.Size = new Size(175, 106);
             button2.TabIndex = 3;
@@ -121,16 +121,16 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(445, 284);
+            textBox5.Location = new Point(416, 291);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(168, 27);
+            textBox5.Size = new Size(208, 27);
             textBox5.TabIndex = 56;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(251, 274);
+            label6.Location = new Point(247, 281);
             label6.Name = "label6";
             label6.Size = new Size(132, 37);
             label6.TabIndex = 55;
@@ -138,23 +138,23 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(445, 332);
+            textBox3.Location = new Point(416, 341);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(168, 27);
+            textBox3.Size = new Size(208, 27);
             textBox3.TabIndex = 54;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(445, 224);
+            textBox4.Location = new Point(416, 236);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(168, 27);
+            textBox4.Size = new Size(208, 27);
             textBox4.TabIndex = 53;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(217, 224);
+            label4.Location = new Point(222, 228);
             label4.Name = "label4";
             label4.Size = new Size(161, 37);
             label4.TabIndex = 52;
@@ -164,7 +164,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(279, 166);
+            label5.Location = new Point(280, 173);
             label5.Name = "label5";
             label5.Size = new Size(103, 37);
             label5.TabIndex = 51;
@@ -174,7 +174,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(251, 322);
+            label3.Location = new Point(252, 329);
             label3.Name = "label3";
             label3.Size = new Size(127, 37);
             label3.TabIndex = 50;
@@ -184,7 +184,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(268, 111);
+            label2.Location = new Point(269, 118);
             label2.Name = "label2";
             label2.Size = new Size(114, 37);
             label2.TabIndex = 49;
@@ -192,16 +192,16 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(445, 176);
+            textBox2.Location = new Point(416, 183);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(168, 27);
+            textBox2.Size = new Size(208, 27);
             textBox2.TabIndex = 48;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(445, 121);
+            textBox1.Location = new Point(416, 128);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(168, 27);
+            textBox1.Size = new Size(208, 27);
             textBox1.TabIndex = 47;
             // 
             // showFiles
@@ -211,12 +211,13 @@
             showFiles.FlatStyle = FlatStyle.Flat;
             showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(445, 399);
+            showFiles.Location = new Point(460, 400);
             showFiles.Name = "showFiles";
-            showFiles.Size = new Size(133, 33);
+            showFiles.Size = new Size(120, 33);
             showFiles.TabIndex = 46;
             showFiles.Text = "SUBMIT ";
             showFiles.UseVisualStyleBackColor = false;
+            showFiles.Click += showFiles_Click;
             // 
             // button5
             // 
@@ -246,7 +247,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 468);
+            ClientSize = new Size(800, 477);
             Controls.Add(button5);
             Controls.Add(label1);
             Controls.Add(textBox5);
@@ -262,6 +263,7 @@
             Controls.Add(showFiles);
             Controls.Add(panel1);
             Name = "enrollTeacher";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "enrollTeacher";
             panel1.ResumeLayout(false);
             ResumeLayout(false);

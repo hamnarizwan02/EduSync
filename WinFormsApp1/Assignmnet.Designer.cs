@@ -294,6 +294,7 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Assignmnet";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ContentUpload";
             Load += Assignmnet_Load;
             panel1.ResumeLayout(false);

@@ -33,7 +33,7 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
@@ -63,7 +63,7 @@ namespace WinFormsApp1
 
 
                             this.Hide();
-                            var form3 = new Profile();        // admins profile 
+                            var form3 = new Admin_Profile();        // admins profile 
                             form3.Closed += (s, args) => this.Close();
                             form3.Show();
                         }

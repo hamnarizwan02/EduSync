@@ -121,16 +121,16 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(456, 178);
+            textBox2.Location = new Point(418, 178);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(168, 27);
+            textBox2.Size = new Size(206, 27);
             textBox2.TabIndex = 34;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(456, 123);
+            textBox1.Location = new Point(418, 123);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(168, 27);
+            textBox1.Size = new Size(206, 27);
             textBox1.TabIndex = 33;
             // 
             // showFiles
@@ -140,7 +140,7 @@
             showFiles.FlatStyle = FlatStyle.Flat;
             showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(456, 401);
+            showFiles.Location = new Point(450, 381);
             showFiles.Name = "showFiles";
             showFiles.Size = new Size(133, 33);
             showFiles.TabIndex = 32;
@@ -197,7 +197,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(228, 226);
+            label4.Location = new Point(228, 222);
             label4.Name = "label4";
             label4.Size = new Size(161, 37);
             label4.TabIndex = 41;
@@ -215,23 +215,23 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(456, 334);
+            textBox3.Location = new Point(418, 334);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(168, 27);
+            textBox3.Size = new Size(206, 27);
             textBox3.TabIndex = 43;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(456, 226);
+            textBox4.Location = new Point(418, 226);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(168, 27);
+            textBox4.Size = new Size(206, 27);
             textBox4.TabIndex = 42;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(456, 286);
+            textBox5.Location = new Point(418, 282);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(168, 27);
+            textBox5.Size = new Size(206, 27);
             textBox5.TabIndex = 45;
             // 
             // label6
@@ -264,6 +264,7 @@
             Controls.Add(showFiles);
             Controls.Add(panel1);
             Name = "enrollStudent";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "enrollStudent";
             panel1.ResumeLayout(false);
             ResumeLayout(false);

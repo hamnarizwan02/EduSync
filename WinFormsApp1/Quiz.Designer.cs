@@ -289,6 +289,7 @@
             Controls.Add(label1);
             ForeColor = Color.WhiteSmoke;
             Name = "Quiz";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quiz";
             Load += Quiz_Load;
             panel1.ResumeLayout(false);

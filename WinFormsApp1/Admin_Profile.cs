@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Profile : Form
+    public partial class Admin_Profile : Form
     {
-        public Profile()
+        public Admin_Profile()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace WinFormsApp1
             panelLeft.Top = button2.Top;
 
             this.Hide();
-            var form3 = new Profile();
+            var form3 = new Admin_Profile();
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }

@@ -287,6 +287,7 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Notes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Notes";
             Load += Notes_Load;
             panel1.ResumeLayout(false);

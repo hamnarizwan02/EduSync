@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using Microsoft.VisualBasic;
 
 namespace WinFormsApp1
 {
@@ -64,9 +66,94 @@ namespace WinFormsApp1
             //form9.Show();
         }
 
-        private void panelLeft_Paint(object sender, PaintEventArgs e)
+        private void Announcement_Load(object sender, EventArgs e)
         {
+            List<string> courseNames = GetCourseNamesFromDatabase();
 
+            // Populate the ComboBox with the list of course names
+            Course_comboBox1.DataSource = courseNames;
+        }
+
+        private List<string> GetCourseNamesFromDatabase()
+        {
+            List<string> courseNames = new List<string>();
+
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT CourseName FROM Courses";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string courseName = reader["CourseName"].ToString();
+                courseNames.Add(courseName);
+            }
+
+            return courseNames;
+        }
+
+        //upload button
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            //get user input
+            var section = Section_comboBox2.Text;  //if all sections chosen then when viewing it should be shown for students of all sections 
+            var announcement = richTextBox1.Text;
+
+            //get courseID of user entered coursename from courses table
+            var coursename = Course_comboBox1.Text;
+            string query = "Select TOP 1 CourseID from Courses where CourseName = '" + coursename + "'";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                string CourseIDstr = reader["CourseID"].ToString();
+                reader.Close();
+
+                //convert CourseIDstr to integer so it can be inserted into assignment table
+                int courseID;
+                if (int.TryParse(CourseIDstr, out courseID))
+                {
+                    //insert courseid, sectiom, deadline
+                    SqlCommand sqlcomm11 = new SqlCommand("insert into Announcement " +
+                                "values('" + courseID + "' , '" + section + "', '" + announcement + "')", sqlconn);
+
+                    var ifError11 = sqlcomm11.ExecuteNonQuery();
+                    if (ifError11 == 0)
+                    {
+                        MessageBox.Show("Error");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Successfully uploaded!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Unable to convert courseID string to integer");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Course does not exist.");
+            }
+        }
+
+        //logout button
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form9 = new login();
+            form9.Closed += (s, args) => this.Close();
+            form9.Show();
         }
     }
-}
+} 
