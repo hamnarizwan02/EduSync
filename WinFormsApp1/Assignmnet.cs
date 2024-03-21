@@ -26,6 +26,35 @@ namespace WinFormsApp1
             panelLeft.Top = button1.Top;
         }
 
+        private void Assignmnet_Load(object sender, EventArgs e)
+        {
+            List<string> courseNames = GetCourseNamesFromDatabase();
+
+            // Populate the ComboBox with the list of course names
+            Course_comboBox1.DataSource = courseNames;
+        }
+
+        private List<string> GetCourseNamesFromDatabase()
+        {
+            List<string> courseNames = new List<string>();
+
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT CourseName FROM Courses";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string courseName = reader["CourseName"].ToString();
+                courseNames.Add(courseName);
+            }
+
+            return courseNames;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             panelLeft.Height = button1.Height;
@@ -73,7 +102,7 @@ namespace WinFormsApp1
         }
 
         private void showFiles_Click(object sender, EventArgs e)
-        {  
+        {
             // Clear the ListBox before adding new items
             listBox1.Items.Clear();
 
@@ -112,7 +141,7 @@ namespace WinFormsApp1
                 string selectedFilePath = Path.Combine(folderPath, selectedFileName);
 
                 //MessageBox.Show("Selected file: " + selectedFilePath);
-            
+
 
                 //get courseID of user entered coursename from courses table
                 var coursename = Course_comboBox1.Text;

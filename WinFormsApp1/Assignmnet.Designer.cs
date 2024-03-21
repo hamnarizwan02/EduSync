@@ -150,7 +150,6 @@
             // Course_comboBox1
             // 
             Course_comboBox1.FormattingEnabled = true;
-            Course_comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
             Course_comboBox1.Location = new Point(502, 112);
             Course_comboBox1.Name = "Course_comboBox1";
             Course_comboBox1.Size = new Size(344, 28);
@@ -296,6 +295,7 @@
             Controls.Add(label1);
             Name = "Assignmnet";
             Text = "ContentUpload";
+            Load += Assignmnet_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
