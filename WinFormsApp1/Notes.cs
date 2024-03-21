@@ -7,16 +7,75 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
     public partial class Notes : Form
     {
+        //set file path for notes 
+        string folderPath = @"C:\Users\hamna\Desktop\SE PROJ";
+
         public Notes()
         {
             InitializeComponent();
             panelLeft.Height = button3.Height;
             panelLeft.Top = button3.Top;
+        }
+
+        private void Notes_Load(object sender, EventArgs e)
+        {
+            List<string> courseNames = GetCourseNamesFromDatabase();
+
+            // Populate the ComboBox with the list of course names
+            Course_comboBox2.DataSource = courseNames;
+
+            List<string> studentIDs = GetStudentIDsFromDatabase();
+
+            // Populate the ComboBox with the list of course names
+            Student_comboBox3.DataSource = studentIDs;
+        }
+
+        private List<string> GetCourseNamesFromDatabase()
+        {
+            List<string> courseNames = new List<string>();
+
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT CourseName FROM Courses";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string courseName = reader["CourseName"].ToString();
+                courseNames.Add(courseName);
+            }
+
+            return courseNames;
+        }
+
+        private List<string> GetStudentIDsFromDatabase()
+        {
+            List<string> studentIDs = new List<string>();
+
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT UserID FROM Users WHERE UserType = 'Student' ";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string studentID = reader["UserID"].ToString();
+                studentIDs.Add(studentID);
+            }
+
+            return studentIDs;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,8 +127,6 @@ namespace WinFormsApp1
 
         private void showFiles_Click(object sender, EventArgs e)
         {
-            string folderPath = @"path";
-
             // Clear the ListBox before adding new items
             listBox1.Items.Clear();
 
@@ -79,14 +136,24 @@ namespace WinFormsApp1
             // Add each file to the ListBox
             foreach (string file in files)
             {
-                // Add only file names to the ListBox
-                listBox1.Items.Add(Path.GetFileName(file));
+                // only show pdf files
+                if (Path.GetExtension(file).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Add only PDF file names to the ListBox
+                    listBox1.Items.Add(Path.GetFileName(file));
+                }
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string folderPath = @"path";
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            //get user input
+            var studentIDstr = Student_comboBox3.Text;
+            var section = Section_comboBox1.Text;
 
             if (listBox1.SelectedItem != null)
             {
@@ -94,15 +161,67 @@ namespace WinFormsApp1
                 string selectedFileName = listBox1.SelectedItem.ToString();
 
                 // Construct the full path to the selected file
-                //string selectedFilePath = Path.Combine(folderPath, selectedFileName);
+                string selectedFilePath = Path.Combine(folderPath, selectedFileName);
 
-                MessageBox.Show("Selected file: " + selectedFileName);
+                //MessageBox.Show("Selected file: " + selectedFilePath);
+
+                //get courseID of user entered coursename from courses table
+                var coursename = Course_comboBox2.Text;
+                string query = "Select TOP 1 CourseID from Courses where CourseName = '" + coursename + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlconn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string CourseIDstr = reader["CourseID"].ToString();
+                    reader.Close();
+
+                    //convert CourseIDstr to integer so it can be inserted into assignment table
+                    int courseID;
+                    if (int.TryParse(CourseIDstr, out courseID))
+                    {
+                        int studentID;
+                        if (int.TryParse(studentIDstr, out studentID))
+                        {
+                            //insert courseid, sectiom, deadline
+                            SqlCommand sqlcomm11 = new SqlCommand("insert into LectureNote " +
+                                   "values('" + studentID + "' , '" + section + "', '" + courseID + "' , '" + selectedFilePath + "' )", sqlconn);
+
+                            var ifError11 = sqlcomm11.ExecuteNonQuery();
+                            if (ifError11 == 0)
+                            {
+                                MessageBox.Show("Error");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Successfully uploaded!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to convert studentID string to integer");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to convert courseID string to integer");
+                    }
+                }
+                else
+                {
+                    // If no item is selected in the ListBox, display a message to the user
+                    MessageBox.Show("Please select a file from the list.");
+                }
             }
-            else
-            {
-                // If no item is selected in the ListBox, display a message to the user
-                MessageBox.Show("Please select a file from the list.");
-            }
+        }
+
+        //logout button
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form9 = new login();
+            form9.Closed += (s, args) => this.Close();
+            form9.Show();
         }
     }
 }

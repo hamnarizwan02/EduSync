@@ -61,6 +61,7 @@
             showFiles.TabIndex = 25;
             showFiles.Text = "LOGIN";
             showFiles.UseVisualStyleBackColor = false;
+            showFiles.Click += showFiles_Click;
             // 
             // label1
             // 
@@ -79,7 +80,7 @@
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(331, 198);
             label2.Name = "label2";
-            label2.Size = new Size(122, 22);
+            label2.Size = new Size(119, 22);
             label2.TabIndex = 27;
             label2.Text = "password 🔒";
             // 

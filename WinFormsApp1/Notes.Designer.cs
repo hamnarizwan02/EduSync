@@ -41,11 +41,11 @@
             listBox1 = new ListBox();
             label5 = new Label();
             label4 = new Label();
-            comboBox3 = new ComboBox();
+            Student_comboBox3 = new ComboBox();
             label3 = new Label();
             label2 = new Label();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
+            Course_comboBox2 = new ComboBox();
+            Section_comboBox1 = new ComboBox();
             button5 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -179,9 +179,9 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(490, 325);
+            listBox1.Location = new Point(482, 320);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(344, 84);
+            listBox1.Size = new Size(352, 84);
             listBox1.TabIndex = 23;
             // 
             // label5
@@ -189,7 +189,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(320, 314);
+            label5.Location = new Point(296, 311);
             label5.Name = "label5";
             label5.Size = new Size(156, 37);
             label5.TabIndex = 22;
@@ -200,19 +200,19 @@
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(221, 97);
+            label4.Location = new Point(276, 97);
             label4.Name = "label4";
-            label4.Size = new Size(231, 37);
+            label4.Size = new Size(171, 37);
             label4.TabIndex = 21;
-            label4.Text = "Student Name:";
+            label4.Text = "Student ID:";
             // 
-            // comboBox3
+            // Student_comboBox3
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(482, 106);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(352, 28);
-            comboBox3.TabIndex = 20;
+            Student_comboBox3.FormattingEnabled = true;
+            Student_comboBox3.Location = new Point(482, 106);
+            Student_comboBox3.Name = "Student_comboBox3";
+            Student_comboBox3.Size = new Size(352, 28);
+            Student_comboBox3.TabIndex = 20;
             // 
             // label3
             // 
@@ -236,23 +236,22 @@
             label2.TabIndex = 18;
             label2.Text = "Course:";
             // 
-            // comboBox2
+            // Course_comboBox2
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
-            comboBox2.Location = new Point(482, 251);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(352, 28);
-            comboBox2.TabIndex = 17;
+            Course_comboBox2.FormattingEnabled = true;
+            Course_comboBox2.Location = new Point(482, 251);
+            Course_comboBox2.Name = "Course_comboBox2";
+            Course_comboBox2.Size = new Size(352, 28);
+            Course_comboBox2.TabIndex = 17;
             // 
-            // comboBox1
+            // Section_comboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
-            comboBox1.Location = new Point(482, 177);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(352, 28);
-            comboBox1.TabIndex = 16;
+            Section_comboBox1.FormattingEnabled = true;
+            Section_comboBox1.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
+            Section_comboBox1.Location = new Point(482, 177);
+            Section_comboBox1.Name = "Section_comboBox1";
+            Section_comboBox1.Size = new Size(352, 28);
+            Section_comboBox1.TabIndex = 16;
             // 
             // button5
             // 
@@ -267,6 +266,7 @@
             button5.TabIndex = 26;
             button5.Text = "LOG OUT";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // Notes
             // 
@@ -279,15 +279,16 @@
             Controls.Add(listBox1);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(comboBox3);
+            Controls.Add(Student_comboBox3);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(Course_comboBox2);
+            Controls.Add(Section_comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Notes";
             Text = "Notes";
+            Load += Notes_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -307,11 +308,11 @@
         private ListBox listBox1;
         private Label label5;
         private Label label4;
-        private ComboBox comboBox3;
+        private ComboBox Student_comboBox3;
         private Label label3;
         private Label label2;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox Course_comboBox2;
+        private ComboBox Section_comboBox1;
         private Button button5;
     }
 }
