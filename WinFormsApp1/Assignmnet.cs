@@ -9,11 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.SqlClient;
+using Microsoft.Identity.Client;
 
 namespace WinFormsApp1
 {
     public partial class Assignmnet : Form
     {
+        //set file path for assignment 
+        string folderPath = @"C:\Users\hamna\Desktop\SE PROJ";
+
         public Assignmnet()
         {
             InitializeComponent();
@@ -67,9 +72,101 @@ namespace WinFormsApp1
             form9.Show();
         }
 
+        private void showFiles_Click(object sender, EventArgs e)
+        {  
+            // Clear the ListBox before adding new items
+            listBox1.Items.Clear();
+
+            // Get all files in the specified folder
+            string[] files = Directory.GetFiles(folderPath);
+
+            // Add each file to the ListBox
+            foreach (string file in files)
+            {
+                // only show pdf files
+                if (Path.GetExtension(file).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Add only PDF file names to the ListBox
+                    listBox1.Items.Add(Path.GetFileName(file));
+                }
+            }
+        }
+
+        //upload button
         private void button5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Successfully uploaded!");
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            //get user input
+            var section = Section_comboBox2.Text;
+            var duedate = DueDate_dateTimePicker1.Text;
+
+            if (listBox1.SelectedItem != null)
+            {
+                // Get the selected file name from the ListBox
+                string selectedFileName = listBox1.SelectedItem.ToString();
+
+                // Construct the full path to the selected file
+                string selectedFilePath = Path.Combine(folderPath, selectedFileName);
+
+                //MessageBox.Show("Selected file: " + selectedFilePath);
+            
+
+                //get courseID of user entered coursename from courses table
+                var coursename = Course_comboBox1.Text;
+                string query = "Select TOP 1 CourseID from Courses where CourseName = '" + coursename + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlconn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string CourseIDstr = reader["CourseID"].ToString();
+                    reader.Close();
+
+                    //convert CourseIDstr to integer so it can be inserted into assignment table
+                    int courseID;
+                    if (int.TryParse(CourseIDstr, out courseID))
+                    {
+                        //insert courseid, sectiom, deadline
+                        SqlCommand sqlcomm11 = new SqlCommand("insert into Assignment " +
+                                   "values('" + courseID + "' , '" + section + "', '" + duedate + "' , '" + selectedFilePath + "' )", sqlconn);
+
+                        var ifError11 = sqlcomm11.ExecuteNonQuery();
+                        if (ifError11 == 0)
+                        {
+                            MessageBox.Show("Error");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Successfully uploaded!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to convert courseID string to integer");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Course does not exist.");
+                }
+            }
+            else
+            {
+                // If no item is selected in the ListBox, display a message to the user
+                MessageBox.Show("Please select a file from the list.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form9 = new login();
+            form9.Closed += (s, args) => this.Close();
+            form9.Show();
         }
     }
 }

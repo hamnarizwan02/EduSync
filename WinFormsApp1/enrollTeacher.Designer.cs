@@ -65,7 +65,7 @@
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(1, 229);
+            panelLeft.Location = new Point(1, 208);
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(10, 106);
             panelLeft.TabIndex = 3;
@@ -77,7 +77,7 @@
             button4.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(1, 350);
+            button4.Location = new Point(1, 329);
             button4.Name = "button4";
             button4.Size = new Size(175, 106);
             button4.TabIndex = 5;
@@ -93,7 +93,7 @@
             button3.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 228);
+            button3.Location = new Point(0, 207);
             button3.Name = "button3";
             button3.Size = new Size(175, 106);
             button3.TabIndex = 4;
@@ -110,7 +110,7 @@
             button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 107);
+            button2.Location = new Point(0, 86);
             button2.Name = "button2";
             button2.Size = new Size(175, 106);
             button2.TabIndex = 3;
@@ -246,7 +246,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 468);
             Controls.Add(button5);
             Controls.Add(label1);
             Controls.Add(textBox5);

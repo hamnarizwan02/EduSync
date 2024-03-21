@@ -36,15 +36,18 @@
             button1 = new Button();
             button3 = new Button();
             button2 = new Button();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
+            Course_comboBox1 = new ComboBox();
+            Section_comboBox2 = new ComboBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             button5 = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            DueDate_dateTimePicker1 = new DateTimePicker();
             button6 = new Button();
+            showFiles = new Button();
+            listBox1 = new ListBox();
+            label6 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -144,29 +147,29 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // comboBox1
+            // Course_comboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
-            comboBox1.Location = new Point(424, 164);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(280, 28);
-            comboBox1.TabIndex = 2;
+            Course_comboBox1.FormattingEnabled = true;
+            Course_comboBox1.Items.AddRange(new object[] { "PDC", "AI", "SE", "Numerical ", "CNet", "DIP", "Web Programming" });
+            Course_comboBox1.Location = new Point(502, 112);
+            Course_comboBox1.Name = "Course_comboBox1";
+            Course_comboBox1.Size = new Size(344, 28);
+            Course_comboBox1.TabIndex = 2;
             // 
-            // comboBox2
+            // Section_comboBox2
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
-            comboBox2.Location = new Point(424, 231);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(280, 28);
-            comboBox2.TabIndex = 3;
+            Section_comboBox2.FormattingEnabled = true;
+            Section_comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
+            Section_comboBox2.Location = new Point(502, 179);
+            Section_comboBox2.Name = "Section_comboBox2";
+            Section_comboBox2.Size = new Size(344, 28);
+            Section_comboBox2.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(254, 155);
+            label2.Location = new Point(332, 103);
             label2.Name = "label2";
             label2.Size = new Size(127, 37);
             label2.TabIndex = 4;
@@ -176,7 +179,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(254, 222);
+            label3.Location = new Point(332, 170);
             label3.Name = "label3";
             label3.Size = new Size(132, 37);
             label3.TabIndex = 5;
@@ -186,7 +189,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(221, 290);
+            label4.Location = new Point(299, 238);
             label4.Name = "label4";
             label4.Size = new Size(160, 37);
             label4.TabIndex = 6;
@@ -208,7 +211,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(493, 369);
+            button5.Location = new Point(713, 433);
             button5.Name = "button5";
             button5.Size = new Size(133, 33);
             button5.TabIndex = 9;
@@ -216,12 +219,12 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
-            // dateTimePicker1
+            // DueDate_dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(424, 300);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(280, 27);
-            dateTimePicker1.TabIndex = 10;
+            DueDate_dateTimePicker1.Location = new Point(502, 248);
+            DueDate_dateTimePicker1.Name = "DueDate_dateTimePicker1";
+            DueDate_dateTimePicker1.Size = new Size(344, 27);
+            DueDate_dateTimePicker1.TabIndex = 10;
             // 
             // button6
             // 
@@ -230,27 +233,65 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(717, 25);
+            button6.Location = new Point(862, 25);
             button6.Name = "button6";
             button6.Size = new Size(133, 33);
             button6.TabIndex = 18;
             button6.Text = "LOG OUT";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
+            // showFiles
+            // 
+            showFiles.BackColor = Color.Black;
+            showFiles.FlatAppearance.BorderSize = 0;
+            showFiles.FlatStyle = FlatStyle.Flat;
+            showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            showFiles.ForeColor = Color.White;
+            showFiles.Location = new Point(502, 433);
+            showFiles.Name = "showFiles";
+            showFiles.Size = new Size(133, 33);
+            showFiles.TabIndex = 21;
+            showFiles.Text = "SHOW FILES";
+            showFiles.UseVisualStyleBackColor = false;
+            showFiles.Click += showFiles_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(502, 311);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(344, 104);
+            listBox1.TabIndex = 20;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(218, 307);
+            label6.Name = "label6";
+            label6.Size = new Size(241, 37);
+            label6.TabIndex = 19;
+            label6.Text = "Assignment file:";
             // 
             // Assignmnet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(862, 495);
+            ClientSize = new Size(1018, 504);
+            Controls.Add(showFiles);
+            Controls.Add(listBox1);
+            Controls.Add(label6);
             Controls.Add(button6);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(DueDate_dateTimePicker1);
             Controls.Add(button5);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(Section_comboBox2);
+            Controls.Add(Course_comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "Assignmnet";
@@ -269,14 +310,17 @@
         private Button button1;
         private Button button4;
         private FlowLayoutPanel panelLeft;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private ComboBox Course_comboBox1;
+        private ComboBox Section_comboBox2;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Button button5;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker DueDate_dateTimePicker1;
         private Button button6;
+        private Button showFiles;
+        private ListBox listBox1;
+        private Label label6;
     }
 }
