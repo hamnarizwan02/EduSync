@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             panel1 = new Panel();
-            showFiles = new Button();
+            loginButton = new Button();
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            emailtextBox = new TextBox();
+            PasswordtextBox = new TextBox();
             label3 = new Label();
             label4 = new Label();
             SuspendLayout();
@@ -48,20 +48,20 @@
             panel1.Size = new Size(428, 470);
             panel1.TabIndex = 1;
             // 
-            // showFiles
+            // loginButton
             // 
-            showFiles.BackColor = Color.Black;
-            showFiles.FlatAppearance.BorderSize = 0;
-            showFiles.FlatStyle = FlatStyle.Flat;
-            showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(483, 286);
-            showFiles.Name = "showFiles";
-            showFiles.Size = new Size(133, 33);
-            showFiles.TabIndex = 25;
-            showFiles.Text = "LOGIN";
-            showFiles.UseVisualStyleBackColor = false;
-            showFiles.Click += showFiles_Click;
+            loginButton.BackColor = Color.Black;
+            loginButton.FlatAppearance.BorderSize = 0;
+            loginButton.FlatStyle = FlatStyle.Flat;
+            loginButton.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loginButton.ForeColor = Color.White;
+            loginButton.Location = new Point(483, 286);
+            loginButton.Name = "loginButton";
+            loginButton.Size = new Size(133, 33);
+            loginButton.TabIndex = 25;
+            loginButton.Text = "LOGIN";
+            loginButton.UseVisualStyleBackColor = false;
+            loginButton.Click += loginButton_Click;
             // 
             // label1
             // 
@@ -80,23 +80,23 @@
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(331, 198);
             label2.Name = "label2";
-            label2.Size = new Size(119, 22);
+            label2.Size = new Size(122, 22);
             label2.TabIndex = 27;
             label2.Text = "password 🔒";
             // 
-            // textBox1
+            // emailtextBox
             // 
-            textBox1.Location = new Point(483, 162);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(168, 27);
-            textBox1.TabIndex = 28;
+            emailtextBox.Location = new Point(483, 162);
+            emailtextBox.Name = "emailtextBox";
+            emailtextBox.Size = new Size(168, 27);
+            emailtextBox.TabIndex = 28;
             // 
-            // textBox2
+            // PasswordtextBox
             // 
-            textBox2.Location = new Point(483, 198);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(168, 27);
-            textBox2.TabIndex = 29;
+            PasswordtextBox.Location = new Point(483, 198);
+            PasswordtextBox.Name = "PasswordtextBox";
+            PasswordtextBox.Size = new Size(168, 27);
+            PasswordtextBox.TabIndex = 29;
             // 
             // label3
             // 
@@ -128,11 +128,11 @@
             ClientSize = new Size(762, 450);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(PasswordtextBox);
+            Controls.Add(emailtextBox);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(showFiles);
+            Controls.Add(loginButton);
             Controls.Add(panel1);
             Name = "login";
             Text = "login";
@@ -142,11 +142,11 @@
 
         #endregion
         private Panel panel1;
-        private Button showFiles;
+        private Button loginButton;
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox emailtextBox;
+        private TextBox PasswordtextBox;
         private Label label3;
         private Label label4;
     }

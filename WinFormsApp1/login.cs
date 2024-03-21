@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
@@ -27,9 +28,89 @@ namespace WinFormsApp1
 
         }
 
-        private void showFiles_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
+            var email = emailtextBox.Text;
+            var password = PasswordtextBox.Text;
 
+            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            try
+            {
+                string query = "Select email, passwordd from users where email = '" + email + "' and passwordd = '" + password + "'";
+                SqlCommand cmd = new SqlCommand(query, sqlconn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    MessageBox.Show("Welcome to EduSync!");
+                    reader.Close();
+
+                    string query1 = "Select usertype from users where email = '" + email + "' ";
+                    SqlCommand cmd1 = new SqlCommand(query1, sqlconn);
+                    SqlDataReader reader1 = cmd1.ExecuteReader();
+
+                    if (reader1.Read())
+                    {
+                        string usertype = reader1["UserType"].ToString();
+                        reader1.Close();
+
+                        if (usertype == "Administrator")
+                        {
+
+
+                            this.Hide();
+                            var form3 = new Profile();        // admins profile 
+                            form3.Closed += (s, args) => this.Close();
+                            form3.Show();
+                        }
+                        else if (usertype == "Instructor")
+                        {
+
+                            this.Hide();
+                            var form3 = new Assignmnet();
+                            form3.Closed += (s, args) => this.Close();
+                            form3.Show();
+                        }
+                        else
+                        {
+
+                            // arham add your student page here 
+
+                            //this.Hide();
+                            //var form3 = new enrollTeacher();
+                            //form3.Closed += (s, args) => this.Close();
+                            //form3.Show();
+                        }
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("error while selecting usertypr ");
+
+                    }
+                    reader1.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("Incorrect email or password ");
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error!" + ex.Message);
+            }
+            finally
+            {
+                sqlconn.Close();
+            }
         }
     }
 }
