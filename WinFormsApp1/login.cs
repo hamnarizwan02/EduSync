@@ -33,10 +33,24 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
-            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
+
+            // checks 
+
+            if (email == "" || password == "")
+            {
+                MessageBox.Show("Please fill all fields");
+                return;
+            }
+
+            if (!email.Contains("@"))
+            {
+                MessageBox.Show("Email addres should contain @.");
+                return;
+            }
 
             try
             {
@@ -111,6 +125,11 @@ namespace WinFormsApp1
             {
                 sqlconn.Close();
             }
+        }
+
+        private void PasswordtextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
