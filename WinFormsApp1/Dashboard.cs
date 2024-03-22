@@ -23,14 +23,9 @@ namespace WinFormsApp1
         {
 
         }
-
-        private void Dashboard_Load(object sender, EventArgs e)
+        public void DataPrint()
         {
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
             string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True"; // replace with your connection string
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -46,6 +41,16 @@ namespace WinFormsApp1
                     }
                 }
             }
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            DataPrint();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -65,21 +70,7 @@ namespace WinFormsApp1
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True"; // replace with your connection string
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Announcements", connection)) // replace with your SQL query
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-                        dataGridView1.DataSource = dataTable;
-                    }
-                }
-            }
         }
     }
 }
+        
