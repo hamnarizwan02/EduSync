@@ -34,27 +34,28 @@ namespace WinFormsApp1
             Course_comboBox1.DataSource = courseNames;
         }
 
-        private List<string> GetCourseNamesFromDatabase()
-        {
-            List<string> courseNames = new List<string>();
+         private List<string> GetCourseNamesFromDatabase()
+         {
+             List<string> courseNames = new List<string>();
 
-            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
-            SqlConnection sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
+             var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+             SqlConnection sqlconn = new SqlConnection(connectionString);
+             sqlconn.Open();
 
-            string query = "SELECT CourseName FROM Courses";
-            SqlCommand cmd = new SqlCommand(query, sqlconn);
-            SqlDataReader reader = cmd.ExecuteReader();
+             string query = "SELECT CourseName FROM Courses";
+             SqlCommand cmd = new SqlCommand(query, sqlconn);
+             SqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
-            {
-                string courseName = reader["CourseName"].ToString();
-                courseNames.Add(courseName);
-            }
+             while (reader.Read())
+             {
+                 string courseName = reader["CourseName"].ToString();
+                 courseNames.Add(courseName);
+             }
 
-            return courseNames;
-        }
-
+             return courseNames;
+         }
+        
+     
         private void button1_Click(object sender, EventArgs e)
         {
             panelLeft.Height = button1.Height;
