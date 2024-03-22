@@ -26,7 +26,7 @@ namespace WinFormsApp1
         public void DataPrint()
         {
 
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True"; // replace with your connection string
+            string connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -55,7 +55,7 @@ namespace WinFormsApp1
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 int id = Convert.ToInt32(row.Cells["CourseID"].Value);
 
-                Form1 detailsForm = new Form1(id);
+                Assignment_View detailsForm = new Assignment_View(id);
                 detailsForm.Show(); // This line will display the Form1
             }
         }
@@ -77,6 +77,7 @@ namespace WinFormsApp1
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+
         }
 
         private void button6_Click(object sender, EventArgs e)

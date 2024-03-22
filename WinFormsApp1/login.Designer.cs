@@ -43,10 +43,9 @@
             // 
             panel1.BackColor = Color.FromArgb(242, 247, 253);
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.Location = new Point(-5, -14);
-            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Location = new Point(-6, -19);
             panel1.Name = "panel1";
-            panel1.Size = new Size(374, 352);
+            panel1.Size = new Size(427, 469);
             panel1.TabIndex = 1;
             // 
             // loginButton
@@ -56,10 +55,9 @@
             loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             loginButton.ForeColor = Color.White;
-            loginButton.Location = new Point(423, 214);
-            loginButton.Margin = new Padding(3, 2, 3, 2);
+            loginButton.Location = new Point(483, 285);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(116, 25);
+            loginButton.Size = new Size(133, 33);
             loginButton.TabIndex = 25;
             loginButton.Text = "LOGIN";
             loginButton.UseVisualStyleBackColor = false;
@@ -68,10 +66,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("League Spartan", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(323, 125);
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(369, 167);
             label1.Name = "label1";
-            label1.Size = new Size(79, 20);
+            label1.Size = new Size(93, 25);
             label1.TabIndex = 26;
             label1.Text = "Email ✉";
             label1.Click += label1_Click;
@@ -79,37 +77,35 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("League Spartan", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(290, 148);
+            label2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(331, 197);
             label2.Name = "label2";
-            label2.Size = new Size(104, 18);
+            label2.Size = new Size(123, 24);
             label2.TabIndex = 27;
             label2.Text = "password 🔒";
             // 
             // emailtextBox
             // 
-            emailtextBox.Location = new Point(423, 122);
-            emailtextBox.Margin = new Padding(3, 2, 3, 2);
+            emailtextBox.Location = new Point(483, 163);
             emailtextBox.Name = "emailtextBox";
-            emailtextBox.Size = new Size(148, 23);
+            emailtextBox.Size = new Size(169, 27);
             emailtextBox.TabIndex = 28;
             // 
             // PasswordtextBox
             // 
-            PasswordtextBox.Location = new Point(423, 148);
-            PasswordtextBox.Margin = new Padding(3, 2, 3, 2);
+            PasswordtextBox.Location = new Point(483, 197);
             PasswordtextBox.Name = "PasswordtextBox";
             PasswordtextBox.PasswordChar = '*';
-            PasswordtextBox.Size = new Size(148, 23);
+            PasswordtextBox.Size = new Size(169, 27);
             PasswordtextBox.TabIndex = 29;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("League Spartan", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(328, 14);
+            label3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(375, 19);
             label3.Name = "label3";
-            label3.Size = new Size(162, 33);
+            label3.Size = new Size(200, 39);
             label3.TabIndex = 30;
             label3.Text = "WELCOME";
             // 
@@ -118,19 +114,19 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.MidnightBlue;
-            label4.Location = new Point(423, 178);
+            label4.Location = new Point(483, 237);
             label4.Name = "label4";
-            label4.Size = new Size(104, 13);
+            label4.Size = new Size(126, 16);
             label4.TabIndex = 31;
             label4.Text = "forgot password?";
             label4.Click += label4_Click;
             // 
             // login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(242, 247, 253);
-            ClientSize = new Size(676, 347);
+            ClientSize = new Size(773, 447);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(PasswordtextBox);
@@ -139,7 +135,6 @@
             Controls.Add(label1);
             Controls.Add(loginButton);
             Controls.Add(panel1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "login";

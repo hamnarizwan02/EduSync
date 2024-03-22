@@ -12,23 +12,28 @@ using Microsoft.Identity.Client;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Assignment_View : Form
     {
         private int courseID;
-        public Form1()
+        public Assignment_View()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+
+            flowLayoutPanel1.Height = button1.Height;
+            flowLayoutPanel1.Top = button1.Top;
+
+
+            //this.WindowState = FormWindowState.Maximized;
         }
 
-        public Form1(int courseID) : this()
+        public Assignment_View(int courseID) : this()
         {
             this.courseID = courseID;
         }
 
         public void DataPrint(int courseID)
         {
-            string connectionString = "data source=DESKTOP-88SEP50\\SQLEXPRESS; database=EduSync; integrated security=True";
+            string connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -48,7 +53,7 @@ namespace WinFormsApp1
                 }
             }
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void Assignment_View_Load(object sender, EventArgs e)
         {
             DataPrint(courseID);
         }
@@ -66,16 +71,43 @@ namespace WinFormsApp1
 
         }
 
+        //assignment view button
         private void button1_Click(object sender, EventArgs e)
         {
-
+            flowLayoutPanel1.Height = button1.Height;
+            flowLayoutPanel1.Top = button1.Top;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            QuizStudent quizview = new QuizStudent(courseID);
-            quizview.Show();
+            //flowLayoutPanel1.Height = button2.Height;
+            //flowLayoutPanel1.Top = button2.Top;
+
+            //QuizStudent quizview = new QuizStudent(courseID);
+            //quizview.Show();
+            //this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Height = button3.Height;
+            flowLayoutPanel1.Top = button3.Top;
+
             this.Hide();
+            var form3 = new LectureNotes(courseID);
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Height = button4.Height;
+            flowLayoutPanel1.Top = button4.Top;
+
+            this.Hide();
+            var form3 = new AnnouncementView(courseID);
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
         }
     }
 }

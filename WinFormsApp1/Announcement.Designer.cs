@@ -56,18 +56,16 @@
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(153, 378);
+            panel1.Size = new Size(175, 504);
             panel1.TabIndex = 3;
             // 
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(1, 266);
-            panelLeft.Margin = new Padding(3, 2, 3, 2);
+            panelLeft.Location = new Point(1, 355);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(9, 80);
+            panelLeft.Size = new Size(10, 107);
             panelLeft.TabIndex = 3;
             // 
             // button4
@@ -77,10 +75,9 @@
             button4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(0, 266);
-            button4.Margin = new Padding(3, 2, 3, 2);
+            button4.Location = new Point(0, 355);
             button4.Name = "button4";
-            button4.Size = new Size(153, 80);
+            button4.Size = new Size(175, 107);
             button4.TabIndex = 5;
             button4.Text = "Announcement";
             button4.TextAlign = ContentAlignment.BottomCenter;
@@ -94,10 +91,9 @@
             button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 26);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(0, 35);
             button1.Name = "button1";
-            button1.Size = new Size(153, 80);
+            button1.Size = new Size(175, 107);
             button1.TabIndex = 2;
             button1.Text = "Assignment";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -111,10 +107,9 @@
             button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 182);
-            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Location = new Point(0, 243);
             button3.Name = "button3";
-            button3.Size = new Size(153, 80);
+            button3.Size = new Size(175, 107);
             button3.TabIndex = 4;
             button3.Text = "Lecture Notes";
             button3.TextAlign = ContentAlignment.BottomCenter;
@@ -129,10 +124,9 @@
             button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 104);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(0, 139);
             button2.Name = "button2";
-            button2.Size = new Size(153, 80);
+            button2.Size = new Size(175, 107);
             button2.TabIndex = 3;
             button2.Text = "Quiz";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -143,9 +137,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(158, 14);
+            label1.Location = new Point(181, 19);
             label1.Name = "label1";
-            label1.Size = new Size(306, 37);
+            label1.Size = new Size(375, 46);
             label1.TabIndex = 2;
             label1.Text = "ANNOUNCEMENT";
             // 
@@ -153,9 +147,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(308, 138);
+            label3.Location = new Point(352, 184);
             label3.Name = "label3";
-            label3.Size = new Size(108, 29);
+            label3.Size = new Size(131, 36);
             label3.TabIndex = 9;
             label3.Text = "Section:";
             // 
@@ -163,9 +157,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(308, 88);
+            label2.Location = new Point(352, 117);
             label2.Name = "label2";
-            label2.Size = new Size(104, 29);
+            label2.Size = new Size(126, 36);
             label2.TabIndex = 8;
             label2.Text = "Course:";
             // 
@@ -173,37 +167,34 @@
             // 
             Section_comboBox2.FormattingEnabled = true;
             Section_comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z", "All Sections" });
-            Section_comboBox2.Location = new Point(457, 145);
-            Section_comboBox2.Margin = new Padding(3, 2, 3, 2);
+            Section_comboBox2.Location = new Point(522, 193);
             Section_comboBox2.Name = "Section_comboBox2";
-            Section_comboBox2.Size = new Size(307, 23);
+            Section_comboBox2.Size = new Size(350, 28);
             Section_comboBox2.TabIndex = 7;
             // 
             // Course_comboBox1
             // 
             Course_comboBox1.FormattingEnabled = true;
-            Course_comboBox1.Location = new Point(457, 94);
-            Course_comboBox1.Margin = new Padding(3, 2, 3, 2);
+            Course_comboBox1.Location = new Point(522, 125);
             Course_comboBox1.Name = "Course_comboBox1";
-            Course_comboBox1.Size = new Size(307, 23);
+            Course_comboBox1.Size = new Size(350, 28);
             Course_comboBox1.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(200, 186);
+            label4.Location = new Point(229, 248);
             label4.Name = "label4";
-            label4.Size = new Size(192, 29);
+            label4.Size = new Size(237, 36);
             label4.TabIndex = 10;
             label4.Text = "Announcement:";
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(461, 193);
-            richTextBox1.Margin = new Padding(3, 2, 3, 2);
+            richTextBox1.Location = new Point(527, 257);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(302, 138);
+            richTextBox1.Size = new Size(345, 183);
             richTextBox1.TabIndex = 11;
             richTextBox1.Text = "";
             // 
@@ -214,10 +205,9 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(647, 339);
-            button6.Margin = new Padding(3, 2, 3, 2);
+            button6.Location = new Point(739, 452);
             button6.Name = "button6";
-            button6.Size = new Size(116, 25);
+            button6.Size = new Size(133, 33);
             button6.TabIndex = 26;
             button6.Text = "UPLOAD";
             button6.UseVisualStyleBackColor = false;
@@ -230,10 +220,9 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(802, 14);
-            button5.Margin = new Padding(3, 2, 3, 2);
+            button5.Location = new Point(917, 19);
             button5.Name = "button5";
-            button5.Size = new Size(116, 25);
+            button5.Size = new Size(133, 33);
             button5.TabIndex = 27;
             button5.Text = "LOG OUT";
             button5.UseVisualStyleBackColor = false;
@@ -241,9 +230,9 @@
             // 
             // Announcement
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 378);
+            ClientSize = new Size(1071, 504);
             Controls.Add(button5);
             Controls.Add(button6);
             Controls.Add(richTextBox1);
@@ -254,7 +243,6 @@
             Controls.Add(Course_comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Announcement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Announcement";

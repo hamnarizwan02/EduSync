@@ -19,6 +19,8 @@ namespace WinFormsApp1
         public QuizStudent()
         {
             InitializeComponent();
+            flowLayoutPanel1.Height = button2.Height;
+            flowLayoutPanel1.Top = button2.Top;
         }
         public QuizStudent(int courseID) : this()
         {
@@ -59,13 +61,19 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 Assign = new Form1(courseID);
+            flowLayoutPanel1.Height = button1.Height;
+            flowLayoutPanel1.Top = button1.Top;
+
+            Assignment_View Assign = new Assignment_View(courseID);
             Assign.Show();
             this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Height = button3.Height;
+            flowLayoutPanel1.Top = button3.Top;
+
             LectureNotes lec = new LectureNotes(courseID);
             lec.Show();
             this.Hide();
@@ -73,6 +81,9 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Height = button4.Height;
+            flowLayoutPanel1.Top = button4.Top;
+
             AnnouncementView ann = new AnnouncementView(courseID);
             ann.Show(); this.Hide();
         }
@@ -83,6 +94,12 @@ namespace WinFormsApp1
             lg.Show();
             this.Hide();
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Height = button2.Height;
+            flowLayoutPanel1.Top = button2.Top;
         }
     }
 }
