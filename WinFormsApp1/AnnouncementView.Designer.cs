@@ -60,6 +60,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(613, 193);
             dataGridView1.TabIndex = 48;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // panelLeft
             // 
@@ -85,6 +86,7 @@
             button1.Text = "Assignment";
             button1.TextAlign = ContentAlignment.BottomCenter;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button3
             // 
@@ -101,6 +103,7 @@
             button3.Text = "Lecture Notes";
             button3.TextAlign = ContentAlignment.BottomCenter;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -118,6 +121,7 @@
             button2.Text = "Quiz";
             button2.TextAlign = ContentAlignment.BottomCenter;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // panel1
             // 
@@ -184,12 +188,13 @@
             button6.TabIndex = 51;
             button6.Text = "LOG OUT";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // AnnouncementView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 378);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);

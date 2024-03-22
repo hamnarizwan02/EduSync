@@ -39,5 +39,20 @@ namespace WinFormsApp1
             Assign.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AnnouncementView announce = new AnnouncementView(courseID);
+            announce.Show();
+            this.Hide();
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            login lg = new login();
+            lg.Show();
+            this.Hide();
+        }
     }
 }

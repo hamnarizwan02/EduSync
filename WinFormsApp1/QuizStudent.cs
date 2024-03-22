@@ -70,5 +70,19 @@ namespace WinFormsApp1
             lec.Show();
             this.Hide();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AnnouncementView ann = new AnnouncementView(courseID);
+            ann.Show(); this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            login lg = new login();
+            lg.Show();
+            this.Hide();
+
+        }
     }
 }

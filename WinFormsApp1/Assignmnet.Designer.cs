@@ -54,10 +54,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(196, 25);
+            label1.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(172, 19);
             label1.Name = "label1";
-            label1.Size = new Size(271, 47);
+            label1.Size = new Size(239, 37);
             label1.TabIndex = 0;
             label1.Text = "ASSIGNMENT";
             // 
@@ -70,20 +70,22 @@
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(175, 504);
+            panel1.Size = new Size(153, 378);
             panel1.TabIndex = 1;
             // 
             // button4
             // 
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(0, 347);
+            button4.Location = new Point(0, 260);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(175, 106);
+            button4.Size = new Size(153, 80);
             button4.TabIndex = 5;
             button4.Text = "Announcement";
             button4.TextAlign = ContentAlignment.BottomCenter;
@@ -93,21 +95,23 @@
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(1, 34);
+            panelLeft.Location = new Point(1, 26);
+            panelLeft.Margin = new Padding(3, 2, 3, 2);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(10, 106);
+            panelLeft.Size = new Size(9, 80);
             panelLeft.TabIndex = 2;
             // 
             // button1
             // 
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 34);
+            button1.Location = new Point(0, 26);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(175, 106);
+            button1.Size = new Size(153, 80);
             button1.TabIndex = 2;
             button1.Text = "Assignment";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -118,12 +122,13 @@
             // 
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 243);
+            button3.Location = new Point(0, 182);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(175, 106);
+            button3.Size = new Size(153, 80);
             button3.TabIndex = 4;
             button3.Text = "Lecture Notes";
             button3.TextAlign = ContentAlignment.BottomCenter;
@@ -135,12 +140,13 @@
             button2.BackColor = Color.FromArgb(0, 0, 64);
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 139);
+            button2.Location = new Point(0, 104);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(175, 106);
+            button2.Size = new Size(153, 80);
             button2.TabIndex = 3;
             button2.Text = "Quiz";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -150,57 +156,59 @@
             // Course_comboBox1
             // 
             Course_comboBox1.FormattingEnabled = true;
-            Course_comboBox1.Location = new Point(502, 112);
+            Course_comboBox1.Location = new Point(439, 84);
+            Course_comboBox1.Margin = new Padding(3, 2, 3, 2);
             Course_comboBox1.Name = "Course_comboBox1";
-            Course_comboBox1.Size = new Size(344, 28);
+            Course_comboBox1.Size = new Size(302, 23);
             Course_comboBox1.TabIndex = 2;
             // 
             // Section_comboBox2
             // 
             Section_comboBox2.FormattingEnabled = true;
             Section_comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
-            Section_comboBox2.Location = new Point(502, 179);
+            Section_comboBox2.Location = new Point(439, 134);
+            Section_comboBox2.Margin = new Padding(3, 2, 3, 2);
             Section_comboBox2.Name = "Section_comboBox2";
-            Section_comboBox2.Size = new Size(344, 28);
+            Section_comboBox2.Size = new Size(302, 23);
             Section_comboBox2.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(332, 103);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(290, 77);
             label2.Name = "label2";
-            label2.Size = new Size(127, 37);
+            label2.Size = new Size(104, 29);
             label2.TabIndex = 4;
             label2.Text = "Course:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(332, 170);
+            label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(290, 128);
             label3.Name = "label3";
-            label3.Size = new Size(132, 37);
+            label3.Size = new Size(108, 29);
             label3.TabIndex = 5;
             label3.Text = "Section:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(299, 238);
+            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(262, 178);
             label4.Name = "label4";
-            label4.Size = new Size(160, 37);
+            label4.Size = new Size(128, 29);
             label4.TabIndex = 6;
             label4.Text = "Due Date:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(197, 331);
+            label5.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(172, 248);
             label5.Name = "label5";
-            label5.Size = new Size(0, 37);
+            label5.Size = new Size(0, 29);
             label5.TabIndex = 8;
             // 
             // button5
@@ -208,11 +216,12 @@
             button5.BackColor = Color.Black;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(713, 433);
+            button5.Location = new Point(624, 325);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(133, 33);
+            button5.Size = new Size(116, 25);
             button5.TabIndex = 9;
             button5.Text = "UPLOAD";
             button5.UseVisualStyleBackColor = false;
@@ -220,9 +229,10 @@
             // 
             // DueDate_dateTimePicker1
             // 
-            DueDate_dateTimePicker1.Location = new Point(502, 248);
+            DueDate_dateTimePicker1.Location = new Point(439, 186);
+            DueDate_dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             DueDate_dateTimePicker1.Name = "DueDate_dateTimePicker1";
-            DueDate_dateTimePicker1.Size = new Size(344, 27);
+            DueDate_dateTimePicker1.Size = new Size(302, 23);
             DueDate_dateTimePicker1.TabIndex = 10;
             // 
             // button6
@@ -230,11 +240,12 @@
             button6.BackColor = Color.FromArgb(192, 0, 0);
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(862, 25);
+            button6.Location = new Point(754, 19);
+            button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
-            button6.Size = new Size(133, 33);
+            button6.Size = new Size(116, 25);
             button6.TabIndex = 18;
             button6.Text = "LOG OUT";
             button6.UseVisualStyleBackColor = false;
@@ -245,11 +256,12 @@
             showFiles.BackColor = Color.Black;
             showFiles.FlatAppearance.BorderSize = 0;
             showFiles.FlatStyle = FlatStyle.Flat;
-            showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            showFiles.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(502, 433);
+            showFiles.Location = new Point(439, 325);
+            showFiles.Margin = new Padding(3, 2, 3, 2);
             showFiles.Name = "showFiles";
-            showFiles.Size = new Size(133, 33);
+            showFiles.Size = new Size(116, 25);
             showFiles.TabIndex = 21;
             showFiles.Text = "SHOW FILES";
             showFiles.UseVisualStyleBackColor = false;
@@ -258,27 +270,29 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(502, 311);
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(439, 233);
+            listBox1.Margin = new Padding(3, 2, 3, 2);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(344, 104);
+            listBox1.Size = new Size(302, 79);
             listBox1.TabIndex = 20;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(218, 307);
+            label6.Location = new Point(191, 230);
             label6.Name = "label6";
-            label6.Size = new Size(241, 37);
+            label6.Size = new Size(198, 29);
             label6.TabIndex = 19;
             label6.Text = "Assignment file:";
             // 
             // Assignmnet
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1018, 504);
+            ClientSize = new Size(884, 378);
             Controls.Add(showFiles);
             Controls.Add(listBox1);
             Controls.Add(label6);
@@ -293,6 +307,7 @@
             Controls.Add(Course_comboBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Assignmnet";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ContentUpload";

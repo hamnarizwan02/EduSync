@@ -161,6 +161,7 @@
             button4.Text = "Announcement";
             button4.TextAlign = ContentAlignment.BottomCenter;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // textBox1
             // 
@@ -187,6 +188,7 @@
             button6.TabIndex = 41;
             button6.Text = "LOG OUT";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // QuizStudent
             // 
@@ -199,6 +201,7 @@
             Controls.Add(textBox1);
             Controls.Add(button6);
             Name = "QuizStudent";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "QuizStudent";
             Load += QuizStudent_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

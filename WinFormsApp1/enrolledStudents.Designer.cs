@@ -57,29 +57,32 @@
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
-            panel1.Location = new Point(-1, -43);
+            panel1.Location = new Point(-1, -32);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(175, 504);
+            panel1.Size = new Size(153, 378);
             panel1.TabIndex = 5;
             // 
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(1, 350);
+            panelLeft.Location = new Point(1, 262);
+            panelLeft.Margin = new Padding(3, 2, 3, 2);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(10, 106);
+            panelLeft.Size = new Size(9, 80);
             panelLeft.TabIndex = 3;
             // 
             // button4
             // 
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(1, 350);
+            button4.Location = new Point(1, 262);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(175, 106);
+            button4.Size = new Size(153, 80);
             button4.TabIndex = 5;
             button4.Text = "Enroll Student";
             button4.TextAlign = ContentAlignment.BottomCenter;
@@ -90,12 +93,13 @@
             // 
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 228);
+            button3.Location = new Point(0, 171);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(175, 106);
+            button3.Size = new Size(153, 80);
             button3.TabIndex = 4;
             button3.Text = "Enroll Instructor";
             button3.TextAlign = ContentAlignment.BottomCenter;
@@ -107,12 +111,13 @@
             button2.BackColor = Color.FromArgb(0, 0, 64);
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 107);
+            button2.Location = new Point(0, 80);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(175, 106);
+            button2.Size = new Size(153, 80);
             button2.TabIndex = 3;
             button2.Text = "Profile";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -121,16 +126,18 @@
             // 
             // Email
             // 
-            Email.Location = new Point(418, 178);
+            Email.Location = new Point(366, 134);
+            Email.Margin = new Padding(3, 2, 3, 2);
             Email.Name = "Email";
-            Email.Size = new Size(206, 27);
+            Email.Size = new Size(181, 23);
             Email.TabIndex = 34;
             // 
             // Name
             // 
-            Name.Location = new Point(418, 123);
+            Name.Location = new Point(366, 92);
+            Name.Margin = new Padding(3, 2, 3, 2);
             Name.Name = "Name";
-            Name.Size = new Size(206, 27);
+            Name.Size = new Size(181, 23);
             Name.TabIndex = 33;
             // 
             // showFiles
@@ -138,11 +145,12 @@
             showFiles.BackColor = Color.Black;
             showFiles.FlatAppearance.BorderSize = 0;
             showFiles.FlatStyle = FlatStyle.Flat;
-            showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            showFiles.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(441, 396);
+            showFiles.Location = new Point(386, 297);
+            showFiles.Margin = new Padding(3, 2, 3, 2);
             showFiles.Name = "showFiles";
-            showFiles.Size = new Size(133, 33);
+            showFiles.Size = new Size(116, 25);
             showFiles.TabIndex = 32;
             showFiles.Text = "SUBMIT ";
             showFiles.UseVisualStyleBackColor = false;
@@ -151,10 +159,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(180, 12);
+            label1.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(158, 9);
             label1.Name = "label1";
-            label1.Size = new Size(291, 47);
+            label1.Size = new Size(242, 37);
             label1.TabIndex = 36;
             label1.Text = "Enroll Student ";
             label1.Click += label1_Click;
@@ -164,11 +172,12 @@
             button5.BackColor = Color.FromArgb(192, 0, 0);
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(655, 12);
+            button5.Location = new Point(573, 9);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(133, 33);
+            button5.Size = new Size(116, 25);
             button5.TabIndex = 37;
             button5.Text = "LOG OUT";
             button5.UseVisualStyleBackColor = false;
@@ -177,83 +186,85 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(262, 324);
+            label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(229, 243);
             label3.Name = "label3";
-            label3.Size = new Size(127, 37);
+            label3.Size = new Size(104, 29);
             label3.TabIndex = 39;
             label3.Text = "Course:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(279, 113);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(244, 85);
             label2.Name = "label2";
-            label2.Size = new Size(114, 37);
+            label2.Size = new Size(89, 29);
             label2.TabIndex = 38;
             label2.Text = "Name:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(228, 222);
+            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(200, 166);
             label4.Name = "label4";
-            label4.Size = new Size(161, 37);
+            label4.Size = new Size(135, 29);
             label4.TabIndex = 41;
             label4.Text = "Password:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(290, 168);
+            label5.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(254, 126);
             label5.Name = "label5";
-            label5.Size = new Size(103, 37);
+            label5.Size = new Size(86, 29);
             label5.TabIndex = 40;
             label5.Text = "Email:";
             // 
             // Password
             // 
-            Password.Location = new Point(418, 226);
+            Password.Location = new Point(366, 170);
+            Password.Margin = new Padding(3, 2, 3, 2);
             Password.Name = "Password";
-            Password.Size = new Size(206, 27);
+            Password.Size = new Size(181, 23);
             Password.TabIndex = 42;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(262, 276);
+            label6.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(229, 207);
             label6.Name = "label6";
-            label6.Size = new Size(132, 37);
+            label6.Size = new Size(108, 29);
             label6.TabIndex = 44;
             label6.Text = "Section:";
             // 
             // CoursecomboBox
             // 
             CoursecomboBox.FormattingEnabled = true;
-            CoursecomboBox.Location = new Point(418, 336);
+            CoursecomboBox.Location = new Point(366, 252);
+            CoursecomboBox.Margin = new Padding(3, 2, 3, 2);
             CoursecomboBox.Name = "CoursecomboBox";
-            CoursecomboBox.Size = new Size(206, 28);
+            CoursecomboBox.Size = new Size(181, 23);
             CoursecomboBox.TabIndex = 46;
-         //   CoursecomboBox.SelectedIndexChanged += this.CoursecomboBox_SelectedIndexChanged;
             // 
             // SectioncomboBox
             // 
             SectioncomboBox.FormattingEnabled = true;
             SectioncomboBox.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
-            SectioncomboBox.Location = new Point(418, 285);
+            SectioncomboBox.Location = new Point(366, 214);
+            SectioncomboBox.Margin = new Padding(3, 2, 3, 2);
             SectioncomboBox.Name = "SectioncomboBox";
-            SectioncomboBox.Size = new Size(206, 28);
+            SectioncomboBox.Size = new Size(181, 23);
             SectioncomboBox.TabIndex = 47;
             // 
             // enrolledStudents
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 378);
             Controls.Add(SectioncomboBox);
             Controls.Add(CoursecomboBox);
             Controls.Add(label6);
@@ -268,7 +279,8 @@
             Controls.Add(Name);
             Controls.Add(showFiles);
             Controls.Add(panel1);
-     //       Name = "enrolledStudents";
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "enrolledStudents";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
             ResumeLayout(false);

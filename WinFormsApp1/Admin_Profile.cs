@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.IdentityModel.Protocols.Configuration;
 
 namespace WinFormsApp1
 {
@@ -54,7 +55,7 @@ namespace WinFormsApp1
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "data source=DESKTOP-88SEP50\\SQLEXPRESS; database=EduSync; integrated security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
             try
@@ -103,10 +104,11 @@ namespace WinFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
             var form9 = new login();
             form9.Closed += (s, args) => this.Close();
             form9.Show();
+            this.Hide();
         }
 
         private void showFiles_Click(object sender, EventArgs e)

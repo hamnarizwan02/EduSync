@@ -161,6 +161,7 @@
             button4.Text = "Announcement";
             button4.TextAlign = ContentAlignment.BottomCenter;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // textBox1
             // 
@@ -187,12 +188,13 @@
             button6.TabIndex = 46;
             button6.Text = "LOG OUT";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // LectureNotes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 378);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);

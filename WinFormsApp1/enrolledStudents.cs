@@ -57,7 +57,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "data source=DESKTOP-88SEP50\\SQLEXPRESS; database=EduSync; integrated security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 

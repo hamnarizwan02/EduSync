@@ -56,7 +56,9 @@ namespace WinFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            login lg = new login();
+            lg.Show();
+            this.Hide();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

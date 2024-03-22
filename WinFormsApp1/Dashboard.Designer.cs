@@ -35,6 +35,7 @@ namespace WinFormsApp1
             textBox7 = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             textBox8 = new TextBox();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -98,16 +99,34 @@ namespace WinFormsApp1
             textBox8.TabIndex = 11;
             textBox8.Text = "Announcement";
             // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(192, 0, 0);
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(698, 11);
+            button6.Margin = new Padding(3, 2, 3, 2);
+            button6.Name = "button6";
+            button6.Size = new Size(116, 25);
+            button6.TabIndex = 52;
+            button6.Text = "LOG OUT";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 378);
+            Controls.Add(button6);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(tableLayoutPanel1);
             Name = "Dashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";
             Load += Dashboard_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -124,5 +143,6 @@ namespace WinFormsApp1
         private TextBox textBox7;
         private TableLayoutPanel tableLayoutPanel1;
         private TextBox textBox8;
+        private Button button6;
     }
 }

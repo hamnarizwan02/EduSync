@@ -31,7 +31,7 @@ namespace WinFormsApp1
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Courses", connection)) // replace with your SQL query
+                using (SqlCommand command = new SqlCommand("SELECT CourseID , c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] FROM Courses c JOIN Users u ON c.InstructorID = u.UserID", connection)) // replace with your SQL query
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -77,6 +77,13 @@ namespace WinFormsApp1
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            login lg = new login();
+            lg.Show();
+            this.Hide();
         }
     }
 }

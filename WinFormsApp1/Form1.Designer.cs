@@ -36,10 +36,10 @@
             button3 = new Button();
             button2 = new Button();
             panel1 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             button4 = new Button();
             button6 = new Button();
             textBox1 = new TextBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -137,6 +137,15 @@
             panel1.Size = new Size(172, 461);
             panel1.TabIndex = 34;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.BackColor = Color.Maroon;
+            flowLayoutPanel1.Location = new Point(35, 26);
+            flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(9, 80);
+            flowLayoutPanel1.TabIndex = 38;
+            // 
             // button4
             // 
             button4.FlatAppearance.BorderSize = 0;
@@ -180,26 +189,18 @@
             textBox1.TabIndex = 37;
             textBox1.Text = "Assignment";
             // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.BackColor = Color.Maroon;
-            flowLayoutPanel1.Location = new Point(35, 26);
-            flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(9, 80);
-            flowLayoutPanel1.TabIndex = 38;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 378);
             Controls.Add(textBox1);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(button6);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
