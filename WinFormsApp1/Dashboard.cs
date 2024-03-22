@@ -50,7 +50,14 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                int id = Convert.ToInt32(row.Cells["CourseID"].Value);
 
+                Form1 detailsForm = new Form1(id);
+                detailsForm.Show(); // This line will display the Form1
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
