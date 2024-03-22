@@ -238,6 +238,7 @@
             CoursecomboBox.Name = "CoursecomboBox";
             CoursecomboBox.Size = new Size(206, 28);
             CoursecomboBox.TabIndex = 46;
+         //   CoursecomboBox.SelectedIndexChanged += this.CoursecomboBox_SelectedIndexChanged;
             // 
             // SectioncomboBox
             // 
@@ -248,7 +249,7 @@
             SectioncomboBox.Size = new Size(206, 28);
             SectioncomboBox.TabIndex = 47;
             // 
-            // enrollStudent
+            // enrolledStudents
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -267,7 +268,7 @@
             Controls.Add(Name);
             Controls.Add(showFiles);
             Controls.Add(panel1);
-           // Name = "enrollStudent";
+     //       Name = "enrolledStudents";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
             ResumeLayout(false);

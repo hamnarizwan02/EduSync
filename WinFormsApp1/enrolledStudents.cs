@@ -112,6 +112,13 @@ namespace WinFormsApp1
                 return;
             }
 
+            if (email == "" || name == "" || password == "" || section == "" || courseName == "")
+            {
+                MessageBox.Show("No fields should be empty.");
+                return;
+            }
+            
+
             var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database=lmsp;Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
 
