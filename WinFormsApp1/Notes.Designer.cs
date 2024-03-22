@@ -243,6 +243,7 @@
             Course_comboBox2.Name = "Course_comboBox2";
             Course_comboBox2.Size = new Size(352, 28);
             Course_comboBox2.TabIndex = 17;
+            Course_comboBox2.SelectedIndexChanged += Course_comboBox2_SelectedIndexChanged;
             // 
             // Section_comboBox1
             // 

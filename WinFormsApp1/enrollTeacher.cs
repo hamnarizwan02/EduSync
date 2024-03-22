@@ -23,7 +23,7 @@ namespace WinFormsApp1
             panelLeft.Top = button4.Top;
 
             this.Hide();
-            var form3 = new enrollStudent();
+            var form3 = new enrolledStudents();
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }

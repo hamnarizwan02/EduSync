@@ -223,5 +223,10 @@ namespace WinFormsApp1
             form9.Closed += (s, args) => this.Close();
             form9.Show();
         }
+
+        private void Course_comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
