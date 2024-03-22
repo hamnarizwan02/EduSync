@@ -140,7 +140,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(690, 23);
+            button5.Location = new Point(750, 23);
             button5.Name = "button5";
             button5.Size = new Size(112, 31);
             button5.TabIndex = 39;
@@ -152,7 +152,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(187, 242);
+            label5.Location = new Point(226, 239);
             label5.Name = "label5";
             label5.Size = new Size(234, 37);
             label5.TabIndex = 55;
@@ -160,7 +160,7 @@
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(456, 249);
+            passwordBox.Location = new Point(495, 246);
             passwordBox.Name = "passwordBox";
             passwordBox.Size = new Size(216, 27);
             passwordBox.TabIndex = 54;
@@ -172,7 +172,7 @@
             showFiles.FlatStyle = FlatStyle.Flat;
             showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(411, 340);
+            showFiles.Location = new Point(542, 331);
             showFiles.Name = "showFiles";
             showFiles.Size = new Size(133, 33);
             showFiles.TabIndex = 56;
@@ -195,7 +195,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(235, 184);
+            label2.Location = new Point(274, 181);
             label2.Name = "label2";
             label2.Size = new Size(187, 37);
             label2.TabIndex = 59;
@@ -203,7 +203,7 @@
             // 
             // nameBox
             // 
-            nameBox.Location = new Point(456, 194);
+            nameBox.Location = new Point(495, 191);
             nameBox.Name = "nameBox";
             nameBox.Size = new Size(216, 27);
             nameBox.TabIndex = 58;
@@ -212,7 +212,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(814, 466);
+            ClientSize = new Size(887, 466);
             Controls.Add(label2);
             Controls.Add(nameBox);
             Controls.Add(textBox4);

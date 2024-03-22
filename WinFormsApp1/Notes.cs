@@ -29,11 +29,6 @@ namespace WinFormsApp1
 
             // Populate the ComboBox with the list of course names
             Course_comboBox2.DataSource = courseNames;
-
-            List<string> studentIDs = GetStudentIDsFromDatabase();
-
-            // Populate the ComboBox with the list of course names
-            Student_comboBox3.DataSource = studentIDs;
         }
 
         private List<string> GetCourseNamesFromDatabase()
@@ -55,27 +50,6 @@ namespace WinFormsApp1
             }
 
             return courseNames;
-        }
-
-        private List<string> GetStudentIDsFromDatabase()
-        {
-            List<string> studentIDs = new List<string>();
-
-            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
-            SqlConnection sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
-
-            string query = "SELECT UserID FROM Users WHERE UserType = 'Student' ";
-            SqlCommand cmd = new SqlCommand(query, sqlconn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                string studentID = reader["UserID"].ToString();
-                studentIDs.Add(studentID);
-            }
-
-            return studentIDs;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -152,7 +126,6 @@ namespace WinFormsApp1
             sqlconn.Open();
 
             //get user input
-            var studentIDstr = Student_comboBox3.Text;
             var section = Section_comboBox1.Text;
 
             if (listBox1.SelectedItem != null)
@@ -180,26 +153,19 @@ namespace WinFormsApp1
                     int courseID;
                     if (int.TryParse(CourseIDstr, out courseID))
                     {
-                        int studentID;
-                        if (int.TryParse(studentIDstr, out studentID))
-                        {
-                            //insert courseid, sectiom, deadline
-                            SqlCommand sqlcomm11 = new SqlCommand("insert into LectureNote " +
-                                   "values('" + studentID + "' , '" + section + "', '" + courseID + "' , '" + selectedFilePath + "' )", sqlconn);
 
-                            var ifError11 = sqlcomm11.ExecuteNonQuery();
-                            if (ifError11 == 0)
-                            {
-                                MessageBox.Show("Error");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Successfully uploaded!");
-                            }
+                        //insert courseid, sectiom, deadline
+                        SqlCommand sqlcomm11 = new SqlCommand("insert into LectureNote " +
+                                "values('" + section + "', '" + courseID + "' , '" + selectedFilePath + "' )", sqlconn);
+
+                        var ifError11 = sqlcomm11.ExecuteNonQuery();
+                        if (ifError11 == 0)
+                        {
+                            MessageBox.Show("Error");
                         }
                         else
                         {
-                            MessageBox.Show("Unable to convert studentID string to integer");
+                            MessageBox.Show("Successfully uploaded!");
                         }
                     }
                     else
