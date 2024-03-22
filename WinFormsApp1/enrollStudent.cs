@@ -57,7 +57,10 @@ namespace WinFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var form9 = new login();
+            form9.Closed += (s, args) => this.Close();
+            form9.Show();
         }
     }
 }

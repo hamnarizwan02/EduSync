@@ -80,7 +80,7 @@
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(331, 198);
             label2.Name = "label2";
-            label2.Size = new Size(119, 22);
+            label2.Size = new Size(122, 22);
             label2.TabIndex = 27;
             label2.Text = "password 🔒";
             // 
@@ -97,6 +97,8 @@
             PasswordtextBox.Name = "PasswordtextBox";
             PasswordtextBox.Size = new Size(168, 27);
             PasswordtextBox.TabIndex = 29;
+            PasswordtextBox.TextChanged += PasswordtextBox_TextChanged;
+            PasswordtextBox.PasswordChar = '*';
             // 
             // label3
             // 

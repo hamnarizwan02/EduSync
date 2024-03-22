@@ -38,6 +38,20 @@ namespace WinFormsApp1
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
+            // checks 
+
+            if (email == "" || password == "")
+            {
+                MessageBox.Show("Please fill all fields");
+                return;
+            }
+
+            if (!email.Contains("@"))
+            {
+                MessageBox.Show("Email addres should contain @.");
+                return;
+            }
+
             try
             {
                 string query = "Select email, passwordd from users where email = '" + email + "' and passwordd = '" + password + "'";
@@ -111,6 +125,11 @@ namespace WinFormsApp1
             {
                 sqlconn.Close();
             }
+        }
+
+        private void PasswordtextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
