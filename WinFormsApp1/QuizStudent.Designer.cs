@@ -40,6 +40,8 @@
             button4 = new Button();
             textBox1 = new TextBox();
             button6 = new Button();
+            button5 = new Button();
+            listBox1 = new ListBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -56,8 +58,9 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(199, 99);
+            dataGridView1.Location = new Point(186, 77);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(613, 193);
             dataGridView1.TabIndex = 38;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -121,6 +124,7 @@
             button2.Text = "Quiz";
             button2.TextAlign = ContentAlignment.BottomCenter;
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // panel1
             // 
@@ -167,10 +171,10 @@
             // 
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("League Spartan", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(199, 47);
+            textBox1.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(186, 21);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(112, 20);
+            textBox1.Size = new Size(112, 34);
             textBox1.TabIndex = 42;
             textBox1.Text = "Quiz";
             // 
@@ -181,7 +185,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(696, 47);
+            button6.Location = new Point(673, 21);
             button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
             button6.Size = new Size(116, 25);
@@ -190,11 +194,33 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(320, 295);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 43;
+            button5.Text = "button5";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(484, 241);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(120, 94);
+            listBox1.TabIndex = 44;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
             // QuizStudent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(830, 369);
+            Controls.Add(listBox1);
+            Controls.Add(button5);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
@@ -223,5 +249,7 @@
         private TextBox textBox1;
         private Button button6;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button button5;
+        private ListBox listBox1;
     }
 }

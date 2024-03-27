@@ -35,7 +35,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -121,7 +121,7 @@ namespace WinFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
