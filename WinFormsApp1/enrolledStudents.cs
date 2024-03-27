@@ -119,7 +119,7 @@ namespace WinFormsApp1
             }
             
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database=lmsp;Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
 
             try
