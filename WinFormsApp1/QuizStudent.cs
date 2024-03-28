@@ -116,11 +116,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Top = button2.Top;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Height = button2.Height;
-            flowLayoutPanel1.Top = button2.Top;
-        }
+       
 
         private void button5_Click(object sender, EventArgs e)
         {

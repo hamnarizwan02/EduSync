@@ -82,6 +82,9 @@ namespace WinFormsApp1
         {
             //flowLayoutPanel1.Height = button2.Height;
             //flowLayoutPanel1.Top = button2.Top;
+            QuizStudent quiz =new QuizStudent(courseID);
+            quiz.Show();
+            this.Hide();
 
         }
 

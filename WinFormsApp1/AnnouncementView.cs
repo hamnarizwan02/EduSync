@@ -54,24 +54,7 @@ namespace WinFormsApp1
             }
         }
 
-        public void dataShow(int courseID)
-        {
-            string connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("SELECT a.CourseID, c.CourseName AS [Course Name], u.uname AS [Instructor Name], a.announcements FROM Courses c JOIN Users u ON c.InstructorID = u.UserID JOIN Announcement a ON c.CourseID = a.CourseID", connection)) // replace with your SQL query
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-                        dataGridView1.DataSource = dataTable;
-                    }
-                }
-            }
-        }
+        
 
         private void button3_Click(object sender, EventArgs e)
         {
