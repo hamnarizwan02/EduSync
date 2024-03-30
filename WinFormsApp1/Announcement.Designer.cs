@@ -166,7 +166,6 @@
             // Section_comboBox2
             // 
             Section_comboBox2.FormattingEnabled = true;
-            Section_comboBox2.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z", "All Sections" });
             Section_comboBox2.Location = new Point(522, 193);
             Section_comboBox2.Name = "Section_comboBox2";
             Section_comboBox2.Size = new Size(350, 28);

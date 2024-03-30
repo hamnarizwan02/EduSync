@@ -40,6 +40,7 @@
             button4 = new Button();
             textBox1 = new TextBox();
             button6 = new Button();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -124,6 +125,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(button8);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(panelLeft);
@@ -186,11 +188,27 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
+            // button8
+            // 
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.White;
+            button8.Image = (Image)resources.GetObject("button8.Image");
+            button8.Location = new Point(18, 460);
+            button8.Name = "button8";
+            button8.Size = new Size(175, 107);
+            button8.TabIndex = 53;
+            button8.Text = "Student Notes";
+            button8.TextAlign = ContentAlignment.BottomCenter;
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
             // AnnouncementView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 504);
+            ClientSize = new Size(1010, 600);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
@@ -219,5 +237,6 @@
         private Button button4;
         private TextBox textBox1;
         private Button button6;
+        private Button button8;
     }
 }

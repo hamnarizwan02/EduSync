@@ -55,7 +55,7 @@ namespace WinFormsApp1
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";;
+            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True"; ;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
             try
@@ -113,7 +113,7 @@ namespace WinFormsApp1
 
         private void showFiles_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 

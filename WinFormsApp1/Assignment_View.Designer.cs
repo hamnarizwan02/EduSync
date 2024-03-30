@@ -36,7 +36,8 @@
             button3 = new Button();
             button2 = new Button();
             panel1 = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel = new FlowLayoutPanel();
+            button8 = new Button();
             button4 = new Button();
             button6 = new Button();
             textBox1 = new TextBox();
@@ -79,9 +80,9 @@
             button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(40, 35);
+            button1.Location = new Point(38, 19);
             button1.Name = "button1";
-            button1.Size = new Size(153, 107);
+            button1.Size = new Size(159, 107);
             button1.TabIndex = 2;
             button1.Text = "Assignment";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -95,7 +96,7 @@
             button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(40, 243);
+            button3.Location = new Point(44, 227);
             button3.Name = "button3";
             button3.Size = new Size(163, 107);
             button3.TabIndex = 4;
@@ -112,7 +113,7 @@
             button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(40, 139);
+            button2.Location = new Point(44, 123);
             button2.Name = "button2";
             button2.Size = new Size(158, 107);
             button2.TabIndex = 3;
@@ -124,7 +125,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
-            panel1.Controls.Add(flowLayoutPanel1);
+            panel1.Controls.Add(panel);
+            panel1.Controls.Add(button8);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(panelLeft);
             panel1.Controls.Add(button1);
@@ -135,13 +137,29 @@
             panel1.Size = new Size(203, 615);
             panel1.TabIndex = 34;
             // 
-            // flowLayoutPanel1
+            // panel
             // 
-            flowLayoutPanel1.BackColor = Color.Maroon;
-            flowLayoutPanel1.Location = new Point(40, 35);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(10, 107);
-            flowLayoutPanel1.TabIndex = 38;
+            panel.BackColor = Color.Maroon;
+            panel.Location = new Point(44, 19);
+            panel.Name = "panel";
+            panel.Size = new Size(10, 107);
+            panel.TabIndex = 38;
+            // 
+            // button8
+            // 
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.White;
+            button8.Image = (Image)resources.GetObject("button8.Image");
+            button8.Location = new Point(38, 453);
+            button8.Name = "button8";
+            button8.Size = new Size(165, 107);
+            button8.TabIndex = 39;
+            button8.Text = "Student Notes";
+            button8.TextAlign = ContentAlignment.BottomCenter;
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button4
             // 
@@ -150,7 +168,7 @@
             button4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(44, 356);
+            button4.Location = new Point(48, 340);
             button4.Name = "button4";
             button4.Size = new Size(159, 107);
             button4.TabIndex = 5;
@@ -190,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1012, 512);
+            ClientSize = new Size(1012, 589);
             Controls.Add(textBox1);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
@@ -220,5 +238,9 @@
         private Button button6;
         private TextBox textBox1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel panel;
+        //private FlowLayoutPanel flowLayoutPanel1;
+        private Button button8;
+        //private FlowLayoutPanel flowLayoutPanel1;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace WinFormsApp1
 {
@@ -28,7 +29,19 @@ namespace WinFormsApp1
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                // User clicked on the download column of a row
+                string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["download"].Value.ToString();
+                // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = @quizFilePath,
+                    UseShellExecute = true
+                };
+                Process.Start(startInfo);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -69,6 +82,16 @@ namespace WinFormsApp1
             this.Hide();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Height = button5.Height;
+            flowLayoutPanel1.Top = button5.Top;
+
+            StudentNotes lg = new StudentNotes();
+            lg.Show();
+            this.Hide();
+        }
+
         private void LectureNotes_Load(object sender, EventArgs e)
         {
             dataShow(courseID);
@@ -77,7 +100,7 @@ namespace WinFormsApp1
 
         public void dataShow(int courseID)
         {
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            string connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -93,5 +116,6 @@ namespace WinFormsApp1
                 }
             }
         }
+
     }
 }
