@@ -67,19 +67,19 @@
             panelLeft.BackColor = Color.Maroon;
             panelLeft.Location = new Point(1, 208);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(10, 106);
+            panelLeft.Size = new Size(10, 107);
             panelLeft.TabIndex = 3;
             // 
             // button4
             // 
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.Location = new Point(2, 329);
             button4.Name = "button4";
-            button4.Size = new Size(175, 106);
+            button4.Size = new Size(175, 107);
             button4.TabIndex = 5;
             button4.Text = "Enroll Student";
             button4.TextAlign = ContentAlignment.BottomCenter;
@@ -90,12 +90,12 @@
             // 
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
             button3.Location = new Point(1, 207);
             button3.Name = "button3";
-            button3.Size = new Size(175, 106);
+            button3.Size = new Size(175, 107);
             button3.TabIndex = 4;
             button3.Text = "Enroll Instructor";
             button3.TextAlign = ContentAlignment.BottomCenter;
@@ -107,12 +107,12 @@
             button2.BackColor = Color.FromArgb(0, 0, 64);
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(1, 86);
+            button2.Location = new Point(1, 85);
             button2.Name = "button2";
-            button2.Size = new Size(175, 106);
+            button2.Size = new Size(175, 107);
             button2.TabIndex = 3;
             button2.Text = "Profile";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -124,9 +124,9 @@
             button5.BackColor = Color.FromArgb(192, 0, 0);
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(655, 23);
+            button5.Location = new Point(865, 29);
             button5.Name = "button5";
             button5.Size = new Size(133, 33);
             button5.TabIndex = 58;
@@ -137,10 +137,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(180, 23);
+            label1.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(200, 29);
             label1.Name = "label1";
-            label1.Size = new Size(325, 47);
+            label1.Size = new Size(329, 46);
             label1.TabIndex = 57;
             label1.Text = "Enroll Instructor ";
             // 
@@ -148,7 +148,7 @@
             // 
             SectioncomboBox.FormattingEnabled = true;
             SectioncomboBox.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z", "All Sections" });
-            SectioncomboBox.Location = new Point(419, 282);
+            SectioncomboBox.Location = new Point(515, 287);
             SectioncomboBox.Name = "SectioncomboBox";
             SectioncomboBox.Size = new Size(206, 28);
             SectioncomboBox.TabIndex = 69;
@@ -156,7 +156,7 @@
             // CoursecomboBox
             // 
             CoursecomboBox.FormattingEnabled = true;
-            CoursecomboBox.Location = new Point(419, 333);
+            CoursecomboBox.Location = new Point(515, 337);
             CoursecomboBox.Name = "CoursecomboBox";
             CoursecomboBox.Size = new Size(206, 28);
             CoursecomboBox.TabIndex = 68;
@@ -164,16 +164,16 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(263, 273);
+            label6.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(359, 277);
             label6.Name = "label6";
-            label6.Size = new Size(132, 37);
+            label6.Size = new Size(131, 36);
             label6.TabIndex = 67;
             label6.Text = "Section:";
             // 
             // Password
             // 
-            Password.Location = new Point(419, 223);
+            Password.Location = new Point(515, 227);
             Password.Name = "Password";
             Password.Size = new Size(206, 27);
             Password.TabIndex = 66;
@@ -181,53 +181,53 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(229, 219);
+            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(325, 223);
             label4.Name = "label4";
-            label4.Size = new Size(161, 37);
+            label4.Size = new Size(164, 36);
             label4.TabIndex = 65;
             label4.Text = "Password:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(291, 165);
+            label5.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(387, 169);
             label5.Name = "label5";
-            label5.Size = new Size(103, 37);
+            label5.Size = new Size(102, 36);
             label5.TabIndex = 64;
             label5.Text = "Email:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(263, 321);
+            label3.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(359, 325);
             label3.Name = "label3";
-            label3.Size = new Size(127, 37);
+            label3.Size = new Size(126, 36);
             label3.TabIndex = 63;
             label3.Text = "Course:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(280, 110);
+            label2.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(376, 113);
             label2.Name = "label2";
-            label2.Size = new Size(114, 37);
+            label2.Size = new Size(105, 36);
             label2.TabIndex = 62;
             label2.Text = "Name:";
             // 
             // Email
             // 
-            Email.Location = new Point(419, 175);
+            Email.Location = new Point(515, 179);
             Email.Name = "Email";
             Email.Size = new Size(206, 27);
             Email.TabIndex = 61;
             // 
             // Name
             // 
-            Name.Location = new Point(419, 120);
+            Name.Location = new Point(515, 124);
             Name.Name = "Name";
             Name.Size = new Size(206, 27);
             Name.TabIndex = 60;
@@ -237,9 +237,9 @@
             showFiles.BackColor = Color.Black;
             showFiles.FlatAppearance.BorderSize = 0;
             showFiles.FlatStyle = FlatStyle.Flat;
-            showFiles.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            showFiles.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(442, 393);
+            showFiles.Location = new Point(538, 397);
             showFiles.Name = "showFiles";
             showFiles.Size = new Size(133, 33);
             showFiles.TabIndex = 59;
@@ -251,7 +251,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1010, 477);
             Controls.Add(SectioncomboBox);
             Controls.Add(CoursecomboBox);
             Controls.Add(label6);
@@ -266,7 +266,7 @@
             Controls.Add(button5);
             Controls.Add(label1);
             Controls.Add(panel1);
-//            Name = "enrollTeacher";
+            //Name = "enrollTeacher";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "enrollTeacher";
             panel1.ResumeLayout(false);

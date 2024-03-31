@@ -57,7 +57,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -77,9 +77,32 @@ namespace WinFormsApp1
         void enrollStudent_Load(object sender, EventArgs e)
         {
             List<string> courseNames = GetCourseNamesFromDatabase();
+            List<string> sectionNames = GetSectionFromDatabase();
 
             // Populate the ComboBox with the list of course names
             CoursecomboBox.DataSource = courseNames;
+            SectioncomboBox.DataSource = sectionNames;
+        }
+
+        private List<string> GetSectionFromDatabase()
+        {
+            List<string> sectionNames = new List<string>();
+
+            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT SectionName FROM Section WHERE SectionName != 'All'";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string SectionName = reader["SectionName"].ToString();
+                sectionNames.Add(SectionName);
+            }
+
+            return sectionNames;
         }
 
 
@@ -119,7 +142,7 @@ namespace WinFormsApp1
             }
             
 
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database=lmsp;Integrated Security=True";
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database=LMS;Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
 
             try

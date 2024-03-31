@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.IdentityModel.Protocols.Configuration;
 
 namespace WinFormsApp1
 {
@@ -54,7 +55,7 @@ namespace WinFormsApp1
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True"; ;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
             try
@@ -103,15 +104,16 @@ namespace WinFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
             var form9 = new login();
             form9.Closed += (s, args) => this.Close();
             form9.Show();
+            this.Hide();
         }
 
         private void showFiles_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -187,7 +189,7 @@ namespace WinFormsApp1
             {
                 try
                 {
-                    string query22 = "update Users set uname = '" + name + "', password ='" + password + "' where usertype = 'Administrator';";
+                    string query22 = "update Users set uname = '" + name + "', passwordd ='" + password + "' where usertype = 'Administrator';";
                     SqlCommand cmd32 = new SqlCommand(query22, sqlconn);
 
                     int rowsAffected = cmd32.ExecuteNonQuery();

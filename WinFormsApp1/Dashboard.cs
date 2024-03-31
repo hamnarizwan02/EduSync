@@ -26,12 +26,12 @@ namespace WinFormsApp1
         public void DataPrint()
         {
 
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True"; // replace with your connection string
+            string connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Courses", connection)) // replace with your SQL query
+                using (SqlCommand command = new SqlCommand("SELECT CourseID , c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] FROM Courses c JOIN Users u ON c.InstructorID = u.UserID", connection)) // replace with your SQL query
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -50,7 +50,14 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                int id = Convert.ToInt32(row.Cells["CourseID"].Value);
 
+                Assignment_View detailsForm = new Assignment_View(id);
+                detailsForm.Show(); // This line will display the Form1
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -70,6 +77,14 @@ namespace WinFormsApp1
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            login lg = new login();
+            lg.Show();
+            this.Hide();
         }
     }
 }
