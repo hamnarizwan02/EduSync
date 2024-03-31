@@ -164,6 +164,7 @@
             passwordBox.Name = "passwordBox";
             passwordBox.Size = new Size(217, 27);
             passwordBox.TabIndex = 54;
+            passwordBox.TextChanged += passwordBox_TextChanged;
             // 
             // showFiles
             // 

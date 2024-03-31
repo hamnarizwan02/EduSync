@@ -39,10 +39,10 @@ namespace WinFormsApp1
         }
 
         private List<string> GetCourseNamesFromDatabase()
-        {  
+        {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -63,7 +63,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -150,7 +150,7 @@ namespace WinFormsApp1
         //upload button
         private void button5_Click(object sender, EventArgs e)
         {
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -164,7 +164,7 @@ namespace WinFormsApp1
                 string selectedFileName = listBox1.SelectedItem.ToString();
 
                 // Construct the full path to the selected file
-               // string selectedFilePath = Path.Combine(folderPath, selectedFileName);
+                // string selectedFilePath = Path.Combine(folderPath, selectedFileName);
 
                 //MessageBox.Show("Selected file: " + selectedFilePath);
 
@@ -225,6 +225,11 @@ namespace WinFormsApp1
             var form9 = new login();
             form9.Closed += (s, args) => this.Close();
             form9.Show();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

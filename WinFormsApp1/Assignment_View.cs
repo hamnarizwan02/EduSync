@@ -34,7 +34,7 @@ namespace WinFormsApp1
 
         public void DataPrint(int courseID)
         {
-            string connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            string connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

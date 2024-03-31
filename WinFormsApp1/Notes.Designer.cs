@@ -181,6 +181,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(352, 84);
             listBox1.TabIndex = 23;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label5
             // 

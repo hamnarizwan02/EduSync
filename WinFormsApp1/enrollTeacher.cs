@@ -23,7 +23,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -54,7 +54,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -141,7 +141,7 @@ namespace WinFormsApp1
                 }
 
 
-                var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database=LMS;Integrated Security=True";
+                var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database=edusync;Integrated Security=True";
                 SqlConnection sqlconn = new SqlConnection(connectionString);
 
                 try

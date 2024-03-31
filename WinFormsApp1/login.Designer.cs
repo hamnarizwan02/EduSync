@@ -55,7 +55,7 @@
             loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             loginButton.ForeColor = Color.White;
-            loginButton.Location = new Point(483, 285);
+            loginButton.Location = new Point(500, 283);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(133, 33);
             loginButton.TabIndex = 25;
@@ -80,7 +80,7 @@
             label2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(331, 197);
             label2.Name = "label2";
-            label2.Size = new Size(123, 24);
+            label2.Size = new Size(127, 24);
             label2.TabIndex = 27;
             label2.Text = "password 🔒";
             // 

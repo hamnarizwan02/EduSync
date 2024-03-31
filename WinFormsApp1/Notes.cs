@@ -38,7 +38,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -59,7 +59,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source =KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -145,7 +145,7 @@ namespace WinFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True";
+            var connectionString = "data source =KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -158,7 +158,7 @@ namespace WinFormsApp1
                 string selectedFileName = listBox1.SelectedItem.ToString();
 
                 // Construct the full path to the selected file
-               // string selectedFilePath = Path.Combine(folderPath, selectedFileName);
+                // string selectedFilePath = Path.Combine(folderPath, selectedFileName);
 
                 //MessageBox.Show("Selected file: " + selectedFilePath);
 
@@ -216,6 +216,11 @@ namespace WinFormsApp1
         }
 
         private void Course_comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

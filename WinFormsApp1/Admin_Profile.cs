@@ -55,7 +55,7 @@ namespace WinFormsApp1
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
-            var connectionString = "data source = LAPTOP-S1HUQ0ID\\SQLEXPRESS;database = LMS; integrated security = True"; ;
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True"; ;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
             try
@@ -113,21 +113,21 @@ namespace WinFormsApp1
 
         private void showFiles_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=LAPTOP-S1HUQ0ID\\SQLEXPRESS;Database = LMS; Integrated Security=True";
+            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync; Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
 
-            var password = passwordBox.Text; 
+            var password = passwordBox.Text;
             var name = nameBox.Text;
 
-            if(password == "")
+            if (password == "")
             {
                 try
                 {
                     string query22 = "update Users set uname = '" + name + "' where usertype = 'Administrator';";
                     SqlCommand cmd32 = new SqlCommand(query22, sqlconn);
-                  
+
                     int rowsAffected = cmd32.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
@@ -156,7 +156,7 @@ namespace WinFormsApp1
                 }
 
             }
-            else if(name == "")
+            else if (name == "")
             {
                 try
                 {
@@ -219,6 +219,11 @@ namespace WinFormsApp1
                     sqlconn.Close();
                 }
             }
+        }
+
+        private void passwordBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
