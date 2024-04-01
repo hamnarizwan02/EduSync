@@ -51,7 +51,7 @@ namespace WinFormsApp1
             this.Hide();
             var form3 = new enrollTeacher();
             form3.Closed += (s, args) => this.Close();
-            form3.Show(); ;
+            form3.Show(); 
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
@@ -224,6 +224,17 @@ namespace WinFormsApp1
         private void passwordBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void createcoursebutton_Click(object sender, EventArgs e)
+        {
+            panelLeft.Height = createcoursebutton.Height;
+            panelLeft.Top = createcoursebutton.Top;
+
+            this.Hide();
+            var form3 = new CreateCourse();
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
         }
     }
 

@@ -122,7 +122,7 @@ namespace WinFormsApp1
         private void showFiles_Click(object sender, EventArgs e)
         {
             // Fetching the data
-            var name = Name.Text;
+            var name = NameT.Text;
             var email = Email.Text;
             var password = Password.Text;
             var section = SectioncomboBox.Text;
@@ -140,7 +140,7 @@ namespace WinFormsApp1
                 MessageBox.Show("No fields should be empty.");
                 return;
             }
-            
+
 
             var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync;Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
@@ -247,6 +247,20 @@ namespace WinFormsApp1
             }
         }
 
+        private void createcoursebutton_Click(object sender, EventArgs e)
+        {
+            panelLeft.Height = createcoursebutton.Height;
+            panelLeft.Top = createcoursebutton.Top;
 
+            this.Hide();
+            var form3 = new CreateCourse();
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
+        }
+
+        private void Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
