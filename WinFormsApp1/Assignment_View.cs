@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Identity.Client;
+using System.Diagnostics;
 
 namespace WinFormsApp1
 {
@@ -68,7 +69,19 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                // User clicked on the download column of a row
+                string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["download"].Value.ToString();
+                // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = @quizFilePath,
+                    UseShellExecute = true
+                };
+                Process.Start(startInfo);
+            }
         }
 
         //assignment view button

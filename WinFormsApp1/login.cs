@@ -90,7 +90,7 @@ namespace WinFormsApp1
                             form3.Show();
                         }
                         else
-                        {
+                        {                       //Student
 
 
                             Dashboard dash = new Dashboard();
