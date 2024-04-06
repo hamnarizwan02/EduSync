@@ -30,7 +30,7 @@ namespace WinFormsApp1
         }
         public void DataPrint(int courseID)
         {
-            string connectionString = "data source=DESKTOP-88SEP50\\SQLEXPRESS; database=EduSync; integrated security=True";
+            string connectionString = "data source=KISSASIUM\\SQLEXPRESS;database = edusync; integrated security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -116,7 +116,6 @@ namespace WinFormsApp1
             flowLayoutPanel1.Top = button2.Top;
         }
 
-       
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -133,6 +132,16 @@ namespace WinFormsApp1
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Height = button8.Height;
+            flowLayoutPanel1.Top = button8.Top;
+
+            StudentNotes Assign = new StudentNotes();
+            Assign.Show();
+            this.Hide();
         }
     }
 }

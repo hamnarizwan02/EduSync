@@ -43,12 +43,14 @@
             textBox4 = new TextBox();
             label2 = new Label();
             nameBox = new TextBox();
+            createcoursebutton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(createcoursebutton);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(panelLeft);
             panel1.Controls.Add(button4);
@@ -56,7 +58,7 @@
             panel1.Controls.Add(button2);
             panel1.Location = new Point(0, -29);
             panel1.Name = "panel1";
-            panel1.Size = new Size(175, 508);
+            panel1.Size = new Size(175, 521);
             panel1.TabIndex = 4;
             // 
             // button1
@@ -66,7 +68,7 @@
             button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(-3, 340);
+            button1.Location = new Point(-3, 287);
             button1.Name = "button1";
             button1.Size = new Size(175, 107);
             button1.TabIndex = 6;
@@ -78,7 +80,7 @@
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(1, 107);
+            panelLeft.Location = new Point(1, 49);
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(10, 107);
             panelLeft.TabIndex = 3;
@@ -97,7 +99,7 @@
             button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(1, 211);
+            button3.Location = new Point(1, 171);
             button3.Name = "button3";
             button3.Size = new Size(175, 107);
             button3.TabIndex = 4;
@@ -114,7 +116,7 @@
             button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(1, 91);
+            button2.Location = new Point(1, 47);
             button2.Name = "button2";
             button2.Size = new Size(175, 107);
             button2.TabIndex = 3;
@@ -164,6 +166,7 @@
             passwordBox.Name = "passwordBox";
             passwordBox.Size = new Size(217, 27);
             passwordBox.TabIndex = 54;
+            passwordBox.TextChanged += passwordBox_TextChanged;
             // 
             // showFiles
             // 
@@ -208,11 +211,27 @@
             nameBox.Size = new Size(217, 27);
             nameBox.TabIndex = 58;
             // 
+            // createcoursebutton
+            // 
+            createcoursebutton.FlatAppearance.BorderSize = 0;
+            createcoursebutton.FlatStyle = FlatStyle.Flat;
+            createcoursebutton.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            createcoursebutton.ForeColor = Color.White;
+            createcoursebutton.Image = (Image)resources.GetObject("createcoursebutton.Image");
+            createcoursebutton.Location = new Point(-6, 396);
+            createcoursebutton.Name = "createcoursebutton";
+            createcoursebutton.Size = new Size(175, 108);
+            createcoursebutton.TabIndex = 60;
+            createcoursebutton.Text = "Create Course";
+            createcoursebutton.TextAlign = ContentAlignment.BottomCenter;
+            createcoursebutton.UseVisualStyleBackColor = true;
+            createcoursebutton.Click += createcoursebutton_Click;
+            // 
             // Admin_Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 477);
+            ClientSize = new Size(1010, 491);
             Controls.Add(label2);
             Controls.Add(nameBox);
             Controls.Add(textBox4);
@@ -246,5 +265,6 @@
         private Button button1;
         private Label label2;
         private TextBox nameBox;
+        private Button createcoursebutton;
     }
 }

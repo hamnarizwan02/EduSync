@@ -51,11 +51,11 @@ namespace WinFormsApp1
             this.Hide();
             var form3 = new enrollTeacher();
             form3.Closed += (s, args) => this.Close();
-            form3.Show(); ;
+            form3.Show(); 
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";;
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True"; ;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
             try
@@ -113,21 +113,21 @@ namespace WinFormsApp1
 
         private void showFiles_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = lmsp; Integrated Security=True";
+            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync; Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
 
-            var password = passwordBox.Text; 
+            var password = passwordBox.Text;
             var name = nameBox.Text;
 
-            if(password == "")
+            if (password == "")
             {
                 try
                 {
                     string query22 = "update Users set uname = '" + name + "' where usertype = 'Administrator';";
                     SqlCommand cmd32 = new SqlCommand(query22, sqlconn);
-                  
+
                     int rowsAffected = cmd32.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
@@ -156,7 +156,7 @@ namespace WinFormsApp1
                 }
 
             }
-            else if(name == "")
+            else if (name == "")
             {
                 try
                 {
@@ -219,6 +219,22 @@ namespace WinFormsApp1
                     sqlconn.Close();
                 }
             }
+        }
+
+        private void passwordBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createcoursebutton_Click(object sender, EventArgs e)
+        {
+            panelLeft.Height = createcoursebutton.Height;
+            panelLeft.Top = createcoursebutton.Top;
+
+            this.Hide();
+            var form3 = new CreateCourse();
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
         }
     }
 

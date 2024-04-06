@@ -57,7 +57,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -77,9 +77,32 @@ namespace WinFormsApp1
         void enrollStudent_Load(object sender, EventArgs e)
         {
             List<string> courseNames = GetCourseNamesFromDatabase();
+            List<string> sectionNames = GetSectionFromDatabase();
 
             // Populate the ComboBox with the list of course names
             CoursecomboBox.DataSource = courseNames;
+            SectioncomboBox.DataSource = sectionNames;
+        }
+
+        private List<string> GetSectionFromDatabase()
+        {
+            List<string> sectionNames = new List<string>();
+
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT SectionName FROM Section WHERE SectionName != 'All'";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string SectionName = reader["SectionName"].ToString();
+                sectionNames.Add(SectionName);
+            }
+
+            return sectionNames;
         }
 
 
@@ -99,7 +122,7 @@ namespace WinFormsApp1
         private void showFiles_Click(object sender, EventArgs e)
         {
             // Fetching the data
-            var name = Name.Text;
+            var name = NameT.Text;
             var email = Email.Text;
             var password = Password.Text;
             var section = SectioncomboBox.Text;
@@ -117,9 +140,9 @@ namespace WinFormsApp1
                 MessageBox.Show("No fields should be empty.");
                 return;
             }
-            
 
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database=lmsp;Integrated Security=True";
+
+            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync;Integrated Security=True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
 
             try
@@ -224,6 +247,20 @@ namespace WinFormsApp1
             }
         }
 
+        private void createcoursebutton_Click(object sender, EventArgs e)
+        {
+            panelLeft.Height = createcoursebutton.Height;
+            panelLeft.Top = createcoursebutton.Top;
 
+            this.Hide();
+            var form3 = new CreateCourse();
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
+        }
+
+        private void Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

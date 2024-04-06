@@ -38,7 +38,7 @@ namespace WinFormsApp1
 
         public void dataShow(int courseID)
         {
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            string connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -55,7 +55,7 @@ namespace WinFormsApp1
             }
         }
 
-        
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -104,6 +104,16 @@ namespace WinFormsApp1
         {
             dataShow(courseID);
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Height = button8.Height;
+            flowLayoutPanel1.Top = button8.Top;
+
+            StudentNotes f = new StudentNotes();
+            f.Show();
+            this.Hide();
         }
     }
 }

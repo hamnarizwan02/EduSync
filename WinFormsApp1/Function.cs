@@ -22,7 +22,7 @@ namespace WinFormsApp1
             //con.ConnectionString = "Data Source=LAPTOP-S1HUQ0ID\\\\SQLEXPRESS;Database = LMS; Integrated Security=True";
 
             //arham's
-            con.ConnectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            con.ConnectionString = "data source =KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
 
             return con;
         }

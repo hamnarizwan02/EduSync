@@ -26,14 +26,17 @@ namespace WinFormsApp1
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            
+            ForgotPass forgotPasswordForm = new ForgotPass(emailtextBox.Text);
+            forgotPasswordForm.Show();
+            this.Hide();
         }
         private void loginButton_Click(object sender, EventArgs e)
         {
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = "data source =KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();

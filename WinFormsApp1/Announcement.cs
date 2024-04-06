@@ -69,16 +69,18 @@ namespace WinFormsApp1
         private void Announcement_Load(object sender, EventArgs e)
         {
             List<string> courseNames = GetCourseNamesFromDatabase();
+            List<string> sectionNames = GetSectionFromDatabase();
 
             // Populate the ComboBox with the list of course names
             Course_comboBox1.DataSource = courseNames;
+            Section_comboBox2.DataSource = sectionNames;
         }
 
         private List<string> GetCourseNamesFromDatabase()
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -95,10 +97,31 @@ namespace WinFormsApp1
             return courseNames;
         }
 
+        private List<string> GetSectionFromDatabase()
+        {
+            List<string> sectionNames = new List<string>();
+
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            SqlConnection sqlconn = new SqlConnection(connectionString);
+            sqlconn.Open();
+
+            string query = "SELECT SectionName FROM Section";
+            SqlCommand cmd = new SqlCommand(query, sqlconn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string SectionName = reader["SectionName"].ToString();
+                sectionNames.Add(SectionName);
+            }
+
+            return sectionNames;
+        }
+
         //upload button
         private void button6_Click(object sender, EventArgs e)
         {
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 

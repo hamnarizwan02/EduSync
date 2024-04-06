@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(enrolledStudents));
             panel1 = new Panel();
+            createcoursebutton = new Button();
             panelLeft = new FlowLayoutPanel();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
             Email = new TextBox();
-            Name = new TextBox();
+            NameT = new TextBox();
             showFiles = new Button();
             label1 = new Label();
             button5 = new Button();
@@ -53,19 +54,36 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(createcoursebutton);
             panel1.Controls.Add(panelLeft);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Location = new Point(-1, -43);
             panel1.Name = "panel1";
-            panel1.Size = new Size(175, 517);
+            panel1.Size = new Size(175, 539);
             panel1.TabIndex = 5;
+            // 
+            // createcoursebutton
+            // 
+            createcoursebutton.FlatAppearance.BorderSize = 0;
+            createcoursebutton.FlatStyle = FlatStyle.Flat;
+            createcoursebutton.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            createcoursebutton.ForeColor = Color.White;
+            createcoursebutton.Image = (Image)resources.GetObject("createcoursebutton.Image");
+            createcoursebutton.Location = new Point(-3, 417);
+            createcoursebutton.Name = "createcoursebutton";
+            createcoursebutton.Size = new Size(175, 108);
+            createcoursebutton.TabIndex = 7;
+            createcoursebutton.Text = "Create Course";
+            createcoursebutton.TextAlign = ContentAlignment.BottomCenter;
+            createcoursebutton.UseVisualStyleBackColor = true;
+            createcoursebutton.Click += createcoursebutton_Click;
             // 
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(1, 349);
+            panelLeft.Location = new Point(1, 297);
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(10, 107);
             panelLeft.TabIndex = 3;
@@ -77,7 +95,7 @@
             button4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(1, 349);
+            button4.Location = new Point(1, 300);
             button4.Name = "button4";
             button4.Size = new Size(175, 107);
             button4.TabIndex = 5;
@@ -93,7 +111,7 @@
             button3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 228);
+            button3.Location = new Point(0, 173);
             button3.Name = "button3";
             button3.Size = new Size(175, 107);
             button3.TabIndex = 4;
@@ -110,7 +128,7 @@
             button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(0, 107);
+            button2.Location = new Point(0, 62);
             button2.Name = "button2";
             button2.Size = new Size(175, 107);
             button2.TabIndex = 3;
@@ -126,12 +144,13 @@
             Email.Size = new Size(206, 27);
             Email.TabIndex = 34;
             // 
-            // Name
+            // NameT
             // 
-            Name.Location = new Point(526, 123);
-            Name.Name = "Name";
-            Name.Size = new Size(206, 27);
-            Name.TabIndex = 33;
+            NameT.Location = new Point(526, 123);
+            NameT.Name = "NameT";
+            NameT.Size = new Size(206, 27);
+            NameT.TabIndex = 33;
+            NameT.TextChanged += Name_TextChanged;
             // 
             // showFiles
             // 
@@ -140,7 +159,7 @@
             showFiles.FlatStyle = FlatStyle.Flat;
             showFiles.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(549, 396);
+            showFiles.Location = new Point(563, 394);
             showFiles.Name = "showFiles";
             showFiles.Size = new Size(133, 33);
             showFiles.TabIndex = 32;
@@ -242,7 +261,6 @@
             // SectioncomboBox
             // 
             SectioncomboBox.FormattingEnabled = true;
-            SectioncomboBox.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
             SectioncomboBox.Location = new Point(526, 285);
             SectioncomboBox.Name = "SectioncomboBox";
             SectioncomboBox.Size = new Size(206, 28);
@@ -252,7 +270,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 471);
+            ClientSize = new Size(1010, 491);
             Controls.Add(SectioncomboBox);
             Controls.Add(CoursecomboBox);
             Controls.Add(label6);
@@ -264,11 +282,12 @@
             Controls.Add(button5);
             Controls.Add(label1);
             Controls.Add(Email);
-            Controls.Add(Name);
+            Controls.Add(NameT);
             Controls.Add(showFiles);
             Controls.Add(panel1);
-            //Name = "enrolledStudents";
+            Name = "enrolledStudents";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "enrolledStudents";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -282,7 +301,7 @@
         private Button button3;
         private Button button2;
         private TextBox Email;
-        private TextBox Name;
+        private TextBox NameT;
         private Button showFiles;
         private Label label1;
         private Button button5;
@@ -294,5 +313,6 @@
         private Label label6;
         private ComboBox CoursecomboBox;
         private ComboBox SectioncomboBox;
+        private Button createcoursebutton;
     }
 }

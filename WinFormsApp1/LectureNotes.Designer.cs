@@ -36,6 +36,7 @@
             button3 = new Button();
             button2 = new Button();
             panel1 = new Panel();
+            button5 = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             button4 = new Button();
             textBox1 = new TextBox();
@@ -56,11 +57,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(227, 132);
+            dataGridView1.Location = new Point(214, 176);
             dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(741, 257);
+            dataGridView1.Size = new Size(754, 257);
             dataGridView1.TabIndex = 43;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -123,6 +124,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(button5);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(panelLeft);
@@ -131,8 +133,24 @@
             panel1.Controls.Add(button2);
             panel1.Location = new Point(-13, -7);
             panel1.Name = "panel1";
-            panel1.Size = new Size(197, 615);
+            panel1.Size = new Size(197, 620);
             panel1.TabIndex = 44;
+            // 
+            // button5
+            // 
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(18, 460);
+            button5.Name = "button5";
+            button5.Size = new Size(179, 107);
+            button5.TabIndex = 44;
+            button5.Text = "Student Notes";
+            button5.TextAlign = ContentAlignment.BottomCenter;
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -163,7 +181,7 @@
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(214, 28);
+            textBox1.Location = new Point(214, 45);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(287, 46);
@@ -177,7 +195,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(835, 28);
+            button6.Location = new Point(835, 45);
             button6.Name = "button6";
             button6.Size = new Size(133, 33);
             button6.TabIndex = 46;
@@ -189,7 +207,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1010, 504);
+            ClientSize = new Size(1010, 588);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
@@ -218,5 +236,6 @@
         private Button button4;
         private TextBox textBox1;
         private Button button6;
+        private Button button5;
     }
 }

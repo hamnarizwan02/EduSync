@@ -20,8 +20,8 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
-            flowLayoutPanel1.Height = button1.Height;
-            flowLayoutPanel1.Top = button1.Top;
+            panel.Height = button1.Height;
+            panel.Top = button1.Top;
 
 
             //this.WindowState = FormWindowState.Maximized;
@@ -34,7 +34,7 @@ namespace WinFormsApp1
 
         public void DataPrint(int courseID)
         {
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            string connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -87,15 +87,15 @@ namespace WinFormsApp1
         //assignment view button
         private void button1_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Height = button1.Height;
-            flowLayoutPanel1.Top = button1.Top;
+            panel.Height = button1.Height;
+            panel.Top = button1.Top;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //flowLayoutPanel1.Height = button2.Height;
             //flowLayoutPanel1.Top = button2.Top;
-            QuizStudent quiz =new QuizStudent(courseID);
+            QuizStudent quiz = new QuizStudent(courseID);
             quiz.Show();
             this.Hide();
 
@@ -103,8 +103,8 @@ namespace WinFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Height = button3.Height;
-            flowLayoutPanel1.Top = button3.Top;
+            panel.Height = button3.Height;
+            panel.Top = button3.Top;
 
             this.Hide();
             var form3 = new LectureNotes(courseID);
@@ -114,11 +114,22 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Height = button4.Height;
-            flowLayoutPanel1.Top = button4.Top;
+            panel.Height = button4.Height;
+            panel.Top = button4.Top;
 
             this.Hide();
             var form3 = new AnnouncementView(courseID);
+            form3.Closed += (s, args) => this.Close();
+            form3.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            panel.Height = button8.Height;
+            panel.Top = button8.Top;
+
+            this.Hide();
+            var form3 = new StudentNotes();
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }

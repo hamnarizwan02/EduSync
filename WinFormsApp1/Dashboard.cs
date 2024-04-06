@@ -26,7 +26,7 @@ namespace WinFormsApp1
         public void DataPrint()
         {
 
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            string connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
