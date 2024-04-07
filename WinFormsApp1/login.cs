@@ -36,7 +36,7 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
-            var connectionString = "data source =KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();

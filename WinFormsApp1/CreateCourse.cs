@@ -35,7 +35,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -56,7 +56,7 @@ namespace WinFormsApp1
         {
             List<string> InstructortsNames = new List<string>();
 
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -164,7 +164,7 @@ namespace WinFormsApp1
             var instname = instBox.Text;
 
 
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync;Integrated Security=True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
 
             try

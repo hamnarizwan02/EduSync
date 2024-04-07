@@ -55,7 +55,7 @@ namespace WinFormsApp1
         }
         private void Admin_Profile_Load(object sender, EventArgs e)
         {
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True"; ;
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
             try
@@ -113,7 +113,7 @@ namespace WinFormsApp1
 
         private void showFiles_Click(object sender, EventArgs e)
         {
-            var connectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync; Integrated Security=True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
