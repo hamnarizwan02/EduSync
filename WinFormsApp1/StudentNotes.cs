@@ -12,6 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
 using Microsoft.Identity.Client;
 using System.Diagnostics;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace WinFormsApp1
 {
@@ -143,9 +146,44 @@ namespace WinFormsApp1
             form9.Show();
         }
 
+        //create new doc button 
         private void button7_Click(object sender, EventArgs e)
         {
+            string filename = filename_textBox1.Text;
+            string filePath = @"C:\Users\hamna\Desktop\ " + filename + " .docx";
 
+            try
+            {
+                // Create a new WordprocessingDocument
+                using (WordprocessingDocument wordDocument = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document))
+                {
+                    // Add a new MainDocumentPart
+                    MainDocumentPart mainPart = wordDocument.AddMainDocumentPart();
+
+                    // Create a new Document
+                    DocumentFormat.OpenXml.Wordprocessing.Document document = new DocumentFormat.OpenXml.Wordprocessing.Document();
+                    mainPart.Document = document;
+
+                    // Create a new Body
+                    Body body = new Body();
+
+                    // Add some text to the body
+                    DocumentFormat.OpenXml.Wordprocessing.Paragraph paragraph = new DocumentFormat.OpenXml.Wordprocessing.Paragraph();
+
+                    Run run = new Run(new Text(" "));
+                    paragraph.Append(run);
+                    body.Append(paragraph);
+
+                    // Append the body to the document
+                    document.Append(body);
+                }
+
+                MessageBox.Show("Word document created on Desktop successfully.");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -33,7 +33,7 @@
             listBox1 = new ListBox();
             label6 = new Label();
             button6 = new Button();
-            button5 = new Button();
+            openNotes = new Button();
             label5 = new Label();
             panel1 = new Panel();
             panelLeft = new FlowLayoutPanel();
@@ -43,8 +43,9 @@
             button3 = new Button();
             button2 = new Button();
             label1 = new Label();
-            button7 = new Button();
+            create_new_doc = new Button();
             label3 = new Label();
+            filename_textBox1 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -97,20 +98,20 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
-            // button5
+            // openNotes
             // 
-            button5.BackColor = Color.Black;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Location = new Point(688, 454);
-            button5.Name = "button5";
-            button5.Size = new Size(133, 33);
-            button5.TabIndex = 30;
-            button5.Text = "OPEN ";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
+            openNotes.BackColor = Color.Black;
+            openNotes.FlatAppearance.BorderSize = 0;
+            openNotes.FlatStyle = FlatStyle.Flat;
+            openNotes.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            openNotes.ForeColor = Color.White;
+            openNotes.Location = new Point(688, 454);
+            openNotes.Name = "openNotes";
+            openNotes.Size = new Size(133, 33);
+            openNotes.TabIndex = 30;
+            openNotes.Text = "OPEN ";
+            openNotes.UseVisualStyleBackColor = false;
+            openNotes.Click += button5_Click;
             // 
             // label5
             // 
@@ -234,20 +235,20 @@
             label1.TabIndex = 22;
             label1.Text = "STUDENT NOTES";
             // 
-            // button7
+            // create_new_doc
             // 
-            button7.BackColor = Color.Black;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.White;
-            button7.Location = new Point(476, 164);
-            button7.Name = "button7";
-            button7.Size = new Size(133, 33);
-            button7.TabIndex = 36;
-            button7.Text = "NEW ";
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += button7_Click;
+            create_new_doc.BackColor = Color.Black;
+            create_new_doc.FlatAppearance.BorderSize = 0;
+            create_new_doc.FlatStyle = FlatStyle.Flat;
+            create_new_doc.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            create_new_doc.ForeColor = Color.White;
+            create_new_doc.Location = new Point(688, 167);
+            create_new_doc.Name = "create_new_doc";
+            create_new_doc.Size = new Size(133, 33);
+            create_new_doc.TabIndex = 36;
+            create_new_doc.Text = "NEW ";
+            create_new_doc.UseVisualStyleBackColor = false;
+            create_new_doc.Click += button7_Click;
             // 
             // label3
             // 
@@ -259,18 +260,27 @@
             label3.TabIndex = 37;
             label3.Text = "New Notes:";
             // 
+            // filename_textBox1
+            // 
+            filename_textBox1.Location = new Point(476, 170);
+            filename_textBox1.Name = "filename_textBox1";
+            filename_textBox1.PlaceholderText = "filename";
+            filename_textBox1.Size = new Size(184, 27);
+            filename_textBox1.TabIndex = 38;
+            // 
             // StudentNotes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(963, 591);
+            Controls.Add(filename_textBox1);
             Controls.Add(label3);
-            Controls.Add(button7);
+            Controls.Add(create_new_doc);
             Controls.Add(showFiles);
             Controls.Add(listBox1);
             Controls.Add(label6);
             Controls.Add(button6);
-            Controls.Add(button5);
+            Controls.Add(openNotes);
             Controls.Add(label5);
             Controls.Add(panel1);
             Controls.Add(label1);
@@ -288,7 +298,7 @@
         private ListBox listBox1;
         private Label label6;
         private Button button6;
-        private Button button5;
+        private Button openNotes;
         private Label label5;
         private Panel panel1;
         private Button button4;
@@ -296,9 +306,10 @@
         private Button button3;
         private Button button2;
         private Label label1;
-        private Button button7;
+        private Button create_new_doc;
         private Label label3;
         private FlowLayoutPanel panelLeft;
         private Button button8;
+        private TextBox filename_textBox1;
     }
 }

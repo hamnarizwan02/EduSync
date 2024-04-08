@@ -30,7 +30,7 @@ namespace WinFormsApp1
         }
         public void DataPrint(int courseID)
         {
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            string connectionString = Constant.ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

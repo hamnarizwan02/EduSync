@@ -37,7 +37,7 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();

@@ -11,6 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
 using Microsoft.Identity.Client;
+using Microsoft.VisualBasic;
 
 namespace WinFormsApp1
 {
@@ -42,7 +43,7 @@ namespace WinFormsApp1
         {
             List<string> courseNames = new List<string>();
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -63,7 +64,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -147,16 +148,37 @@ namespace WinFormsApp1
             }
         }
 
+        string chooseSection ()
+        {
+            var section = Section_comboBox2.Text;
+            return section;
+        }
+
+        string chooseDueDate()
+        {
+            var duedate = DueDate_dateTimePicker1.Text;
+            return duedate;
+        }
+
+        string chooseCourse()
+        {
+            var coursename = Course_comboBox1.Text;
+            return coursename;
+        }
+
         //upload button
         private void button5_Click(object sender, EventArgs e)
         {
-            var connectionString = "KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
             //get user input
-            var section = Section_comboBox2.Text;
-            var duedate = DueDate_dateTimePicker1.Text;
+            //var section = Section_comboBox2.Text;
+            var section = chooseSection();
+            var duedate = chooseDueDate();
+
+            //var duedate = DueDate_dateTimePicker1.Text;
 
             if (listBox1.SelectedItem != null)
             {
@@ -170,7 +192,8 @@ namespace WinFormsApp1
 
 
                 //get courseID of user entered coursename from courses table
-                var coursename = Course_comboBox1.Text;
+                // var coursename = Course_comboBox1.Text;
+                var coursename = chooseCourse();
                 string query = "Select TOP 1 CourseID from Courses where CourseName = '" + coursename + "'";
                 SqlCommand cmd = new SqlCommand(query, sqlconn);
                 SqlDataReader reader = cmd.ExecuteReader();
