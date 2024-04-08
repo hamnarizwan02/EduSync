@@ -95,11 +95,26 @@ namespace WinFormsApp1
                         }
                         else
                         {
+                            try
+                            {
+                                string query3 = "SELECT userID FROM users WHERE email = '" + email + "' AND passwordd = '" + password + "'";
+                                SqlCommand cmd3 = new SqlCommand(query3, sqlconn);
+                                object result = cmd3.ExecuteScalar();
 
-
-                            Dashboard dash = new Dashboard();
+                                if (result != null)
+                                {
+                                    userID = Convert.ToInt32(result);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error fetching userID: " + ex.Message);
+                            }
+                            Dashboard dash = new Dashboard(userID);
                             dash.Show();
                             this.Hide();
+
+                            
 
                             //Dashboard dash = new Dashboard();
                             //dash.Show();

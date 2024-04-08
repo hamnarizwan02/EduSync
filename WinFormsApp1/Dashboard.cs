@@ -24,11 +24,6 @@ namespace WinFormsApp1
             this.userID = userID;
         }
 
-        public Dashboard(int userID) : this()
-        {
-            this.userID = userID;
-        }
-
         private void webView21_Click(object sender, EventArgs e)
         {
 
