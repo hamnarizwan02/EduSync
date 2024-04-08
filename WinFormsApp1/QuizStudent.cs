@@ -78,7 +78,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button1.Height;
             flowLayoutPanel1.Top = button1.Top;
 
-            Assignment_View Assign = new Assignment_View(courseID);
+            Assignment_View Assign = new Assignment_View(courseID, 0);
             Assign.Show();
             this.Hide();
         }

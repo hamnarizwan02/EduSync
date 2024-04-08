@@ -19,29 +19,26 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             this.email = email;
-            ConvertAndDisplayEmail();
+            DisplayEmail();
         }
 
-        private void ConvertAndDisplayEmail()
+        private void DisplayEmail()
         {
-            // Check if email is not null and contains '@'
             if (!string.IsNullOrEmpty(email) && email.Contains('@'))
             {
-                // Split the email into username and domain parts
+                // username and domain
                 string[] parts = email.Split('@');
                 string username = parts[0];
-                string domain = parts[1];
+                string domainemail = parts[1];
+                string maskedEmail = username.Substring(0, Math.Min(username.Length, 3)) + "***@" + domainemail;
 
-                // Construct the masked email address
-                string maskedEmail = username.Substring(0, Math.Min(username.Length, 3)) + "***@" + domain;
-
-                // Display the masked email address in a label
+                // Display the masked email address inlabel
                 Name1.Text = "We have sent the new password at you email: " + maskedEmail + "";
             }
             else
             {
-                // Handle invalid email
-                Name1.Text = "Invalid email format";
+               
+                Name2.Text = "Invalid email format";
             }
         }
 
@@ -55,6 +52,11 @@ namespace WinFormsApp1
             login l = new login();
             l.Show();
             this.Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

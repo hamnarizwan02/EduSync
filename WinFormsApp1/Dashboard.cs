@@ -19,6 +19,10 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+        public Dashboard(int userID):this()
+        {
+            this.userID = userID;
+        }
 
         public Dashboard(int userID) : this()
         {

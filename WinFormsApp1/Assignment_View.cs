@@ -16,8 +16,6 @@ namespace WinFormsApp1
     public partial class Assignment_View : Form
     {
         private int courseID;
-        private int userID;
-
         public Assignment_View()
         {
             InitializeComponent();
@@ -29,16 +27,9 @@ namespace WinFormsApp1
             //this.WindowState = FormWindowState.Maximized;
         }
 
-        public Assignment_View(int courseID, int userID) : this()
-        {
-            this.courseID = courseID;
-            this.userID = userID;
-        }
-
         public Assignment_View(int courseID) : this()
         {
             this.courseID = courseID;
-            //this.userID = userID;
         }
 
 
@@ -171,81 +162,6 @@ namespace WinFormsApp1
             var form3 = new StudentNotes();
             form3.Closed += (s, args) => this.Close();
             form3.Show();
-        }
-
-        void SaveBookmarksToDatabase()
-        {
-            string connectionString = Constant.ConnectionString;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                {
-                    DataGridViewRow row = dataGridView1.Rows[i];
-                    bool isBookmarked = row.Cells["Bookmarks"].Value != null && row.Cells["Bookmarks"].Value != DBNull.Value && (bool)row.Cells["Bookmarks"].Value;
-
-
-                    if (isBookmarked)
-                    {
-                        int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
-
-                        // 1. Deletion Step
-                        string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID";
-                        using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
-                        {
-                            deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                            deleteCommand.ExecuteNonQuery();
-                        }
-
-                        // 2. Insertion Step 
-                        string insertQuery = "INSERT INTO Bookmarks (UserID, AssignmentID, ValueBookmark) VALUES (@userID, @assignmentID, @valueBookmark)";
-                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                        {
-                            insertCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                            insertCommand.Parameters.AddWithValue("@userID", this.userID);
-                            insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
-
-                            insertCommand.ExecuteNonQuery();
-                        }
-                    }
-                    else
-                    {
-                        int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
-
-                        //1.Deletion Step
-                        string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID";
-                        using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
-                        {
-                            deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                            deleteCommand.ExecuteNonQuery();
-                        }
-
-                        // 2. Insertion Step 
-                        string insertQuery = "INSERT INTO Bookmarks (AssignmentID, UserID, ValueBookmark) VALUES (@assignmentID, @userID, @valueBookmark)";
-                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                        {
-                            insertCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                            insertCommand.Parameters.AddWithValue("@userID", this.userID);
-                            insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
-
-                            insertCommand.ExecuteNonQuery();
-                        }
-                    }
-                }
-
-                MessageBox.Show("Bookmark saved successfully.");
-            }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            SaveBookmarksToDatabase();
         }
     }
 }

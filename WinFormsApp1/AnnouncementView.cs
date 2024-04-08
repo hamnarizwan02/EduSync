@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 
 namespace WinFormsApp1
@@ -32,7 +33,7 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         public void dataShow(int courseID)
@@ -81,7 +82,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button1.Height;
             flowLayoutPanel1.Top = button1.Top;
 
-            Assignment_View f = new Assignment_View(courseID);
+            Assignment_View f = new Assignment_View(courseID, 0);
             f.Show();
             this.Hide();
 
