@@ -183,13 +183,12 @@ namespace WinFormsApp1
                                         string UserIDstr = reader2["UserID"].ToString();
                                         reader2.Close();
 
-
                                         // convertinf from string to int 
                                         int userID;
                                         if (int.TryParse(UserIDstr, out userID))
                                         {
                                             // Insert valuesin enrollment table 
-                                            string insertEnrollmentQuery = "insert into Enrollment values('" + section + "','" + userID + "', '" + courseID + "')";
+                                            string insertEnrollmentQuery = "insert into Enrollment values('" + userID + "','" + courseID + "', '" + section + "')";
                                             SqlCommand insertEnrollmentCmd = new SqlCommand(insertEnrollmentQuery, sqlconn);
                                             int enrollmentRowsAffected = insertEnrollmentCmd.ExecuteNonQuery();
 

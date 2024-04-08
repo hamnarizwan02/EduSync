@@ -16,6 +16,8 @@ namespace WinFormsApp1
     public partial class Assignment_View : Form
     {
         private int courseID;
+        private int userID;
+
         public Assignment_View()
         {
             InitializeComponent();
@@ -27,10 +29,18 @@ namespace WinFormsApp1
             //this.WindowState = FormWindowState.Maximized;
         }
 
+        public Assignment_View(int courseID, int userID) : this()
+        {
+            this.courseID = courseID;
+            this.userID = userID;
+        }
+
         public Assignment_View(int courseID) : this()
         {
             this.courseID = courseID;
+            //this.userID = userID;
         }
+
 
         public void DataPrint(int courseID)
         {
@@ -39,7 +49,7 @@ namespace WinFormsApp1
             {
                 connection.Open();
 
-                string query = "SELECT AssignmentID AS [Assignment number], Deadline, AssignmentFilePath AS download FROM Assignment WHERE CourseID = @courseID"; // Parameterized
+                string query = "SELECT DISTINCT Assignment.AssignmentID AS [Assignment number], Assignment.Deadline, Assignment.AssignmentFilePath AS download, Bookmarks.ValueBookmark AS Bookmarks FROM Assignment LEFT JOIN Bookmarks ON Assignment.AssignmentID = Bookmarks.AssignmentID WHERE Assignment.CourseID = @courseID"; // Parameterized
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     // Add the parameter value
@@ -47,9 +57,18 @@ namespace WinFormsApp1
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+
+                        //DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+                        //checkBoxColumn.HeaderText = "testingg";
+
+                        //dataGridView1.Columns.Add(checkBoxColumn);
+                        //dataGridView1.Rows.Add(false);
+                        //dataGridView1.Rows.Add(false);
                         DataTable dataTable = new DataTable();
                         dataTable.Load(reader);
                         dataGridView1.DataSource = dataTable;
+
+
                     }
                 }
             }
@@ -57,7 +76,22 @@ namespace WinFormsApp1
         private void Assignment_View_Load(object sender, EventArgs e)
         {
             DataPrint(courseID);
+            //bookMarkPrint();
+
+
+
+
         }
+
+        private void bookMarkPrint()
+        {
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.HeaderText = "testingg";
+
+
+            dataGridView1.Rows.Add(false);
+        }
+
 
 
         private void button6_Click(object sender, EventArgs e)
@@ -69,7 +103,11 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+
+
+            //for opening pdf
+
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["download"].Index)
             {
                 // User clicked on the download column of a row
                 string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["download"].Value.ToString();
@@ -82,6 +120,7 @@ namespace WinFormsApp1
                 };
                 Process.Start(startInfo);
             }
+
         }
 
         //assignment view button
@@ -132,6 +171,81 @@ namespace WinFormsApp1
             var form3 = new StudentNotes();
             form3.Closed += (s, args) => this.Close();
             form3.Show();
+        }
+
+        void SaveBookmarksToDatabase()
+        {
+            string connectionString = Constant.ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    DataGridViewRow row = dataGridView1.Rows[i];
+                    bool isBookmarked = row.Cells["Bookmarks"].Value != null && row.Cells["Bookmarks"].Value != DBNull.Value && (bool)row.Cells["Bookmarks"].Value;
+
+
+                    if (isBookmarked)
+                    {
+                        int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
+
+                        // 1. Deletion Step
+                        string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID";
+                        using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                        {
+                            deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
+                            deleteCommand.ExecuteNonQuery();
+                        }
+
+                        // 2. Insertion Step 
+                        string insertQuery = "INSERT INTO Bookmarks (UserID, AssignmentID, ValueBookmark) VALUES (@userID, @assignmentID, @valueBookmark)";
+                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                        {
+                            insertCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
+                            insertCommand.Parameters.AddWithValue("@userID", this.userID);
+                            insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
+
+                        //1.Deletion Step
+                        string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID";
+                        using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                        {
+                            deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
+                            deleteCommand.ExecuteNonQuery();
+                        }
+
+                        // 2. Insertion Step 
+                        string insertQuery = "INSERT INTO Bookmarks (AssignmentID, UserID, ValueBookmark) VALUES (@assignmentID, @userID, @valueBookmark)";
+                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                        {
+                            insertCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
+                            insertCommand.Parameters.AddWithValue("@userID", this.userID);
+                            insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                MessageBox.Show("Bookmark saved successfully.");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            SaveBookmarksToDatabase();
         }
     }
 }

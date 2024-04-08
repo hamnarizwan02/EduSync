@@ -15,6 +15,6 @@ namespace WinFormsApp1
         //public const string ConnectionString = "Data Source=KISSASIUM\\SQLEXPRESS;database = edusync; Integrated Security=True";
 
         //arham's
-        //public const string ConnectionString = "data source = 
+        //public const string ConnectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
     }
 }

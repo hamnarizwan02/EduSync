@@ -41,6 +41,7 @@
             button4 = new Button();
             button6 = new Button();
             textBox1 = new TextBox();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -204,11 +205,26 @@
             textBox1.TabIndex = 37;
             textBox1.Text = "Assignment";
             // 
+            // button5
+            // 
+            button5.BackColor = Color.Black;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(765, 411);
+            button5.Name = "button5";
+            button5.Size = new Size(189, 29);
+            button5.TabIndex = 38;
+            button5.Text = "Save Bookmark";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click_1;
+            // 
             // Assignment_View
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1012, 589);
+            Controls.Add(button5);
             Controls.Add(textBox1);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
@@ -241,6 +257,7 @@
         private FlowLayoutPanel panel;
         //private FlowLayoutPanel flowLayoutPanel1;
         private Button button8;
+        private Button button5;
         //private FlowLayoutPanel flowLayoutPanel1;
     }
 }
