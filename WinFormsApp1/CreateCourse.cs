@@ -35,7 +35,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -56,7 +56,7 @@ namespace WinFormsApp1
         {
             List<string> InstructortsNames = new List<string>();
 
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 

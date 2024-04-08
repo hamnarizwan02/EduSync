@@ -14,6 +14,7 @@ namespace WinFormsApp1
 {
     public partial class login : Form
     {
+        private int userID;
         public login()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
-            var connectionString = "data source =KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
@@ -96,7 +97,27 @@ namespace WinFormsApp1
                         {                       //Student
 
 
-                            Dashboard dash = new Dashboard();
+                            // After the line "var password = PasswordtextBox.Text;"
+                            // Add the following code to fetch the userID from the database and store it in the userID int variable
+
+                            
+
+                            try
+                            {
+                                string query3 = "SELECT userID FROM users WHERE email = '" + email + "' AND passwordd = '" + password + "'";
+                                SqlCommand cmd3 = new SqlCommand(query3, sqlconn);
+                                object result = cmd3.ExecuteScalar();
+
+                                if (result != null)
+                                {
+                                    userID = Convert.ToInt32(result);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error fetching userID: " + ex.Message);
+                            }
+                            Dashboard dash = new Dashboard(userID);
                             dash.Show();
                             this.Hide();
 

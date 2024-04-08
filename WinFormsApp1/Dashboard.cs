@@ -14,9 +14,14 @@ namespace WinFormsApp1
 {
     public partial class Dashboard : Form
     {
+        private int userID;
         public Dashboard()
         {
             InitializeComponent();
+        }
+        public Dashboard(int userID):this()
+        {
+            this.userID = userID;
         }
 
         private void webView21_Click(object sender, EventArgs e)
@@ -26,7 +31,7 @@ namespace WinFormsApp1
         public void DataPrint()
         {
 
-            string connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
+            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -55,7 +60,7 @@ namespace WinFormsApp1
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                 int id = Convert.ToInt32(row.Cells["CourseID"].Value);
 
-                Assignment_View detailsForm = new Assignment_View(id);
+                Assignment_View detailsForm = new Assignment_View(id, userID);
                 detailsForm.Show(); // This line will display the Form1
             }
         }
