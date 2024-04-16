@@ -12,17 +12,17 @@ namespace WinFormsApp1
 {
     internal class Function
     {
-        protected SqlConnection getConnection()
+        public SqlConnection getConnection()
         {
             SqlConnection con = new SqlConnection();
             //kissa's
-            //con.ConnectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database=lmsp;Integrated Security=True";
+            con.ConnectionString = "Data Source=KISSASIUM\\SQLEXPRESS;Database = edusync; Integrated Security=True";
 
             //hamna's
             //con.ConnectionString = "Data Source=LAPTOP-S1HUQ0ID\\\\SQLEXPRESS;Database = LMS; Integrated Security=True";
 
             //arham's
-            con.ConnectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+           // con.ConnectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
 
             return con;
         }

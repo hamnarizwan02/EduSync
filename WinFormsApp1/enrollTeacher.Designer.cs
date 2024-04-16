@@ -48,6 +48,7 @@
             Email = new TextBox();
             NameT = new TextBox();
             showFiles = new Button();
+            label7 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -195,6 +196,7 @@
             Password.Name = "Password";
             Password.Size = new Size(206, 27);
             Password.TabIndex = 66;
+            Password.TextChanged += Password_TextChanged;
             // 
             // label4
             // 
@@ -265,11 +267,24 @@
             showFiles.UseVisualStyleBackColor = false;
             showFiles.Click += showFiles_Click_1;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 4.20000029F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.MidnightBlue;
+            label7.Location = new Point(515, 263);
+            label7.Name = "label7";
+            label7.Size = new Size(304, 9);
+            label7.TabIndex = 70;
+            label7.Text = "least 8 characters, contain at least one uppercase letter and one digit";
+            label7.Click += label7_Click;
+            // 
             // enrollTeacher
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 491);
+            Controls.Add(label7);
             Controls.Add(SectioncomboBox);
             Controls.Add(CoursecomboBox);
             Controls.Add(label6);
@@ -313,5 +328,6 @@
         private TextBox NameT;
         private Button showFiles;
         private Button createcoursebutton;
+        private Label label7;
     }
 }

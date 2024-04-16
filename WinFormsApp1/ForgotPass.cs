@@ -38,7 +38,7 @@ namespace WinFormsApp1
             else
             {
                
-                Name2.Text = "Invalid email format";
+                Name2.Text = "We have sent the new password at you email";
             }
         }
 

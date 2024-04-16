@@ -50,7 +50,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(3, 276);
+            button5.Location = new Point(8, 281);
             button5.Name = "button5";
             button5.Size = new Size(115, 33);
             button5.TabIndex = 32;
@@ -73,7 +73,7 @@
             // 
             Name2.AutoSize = true;
             Name2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Name2.Location = new Point(272, 113);
+            Name2.Location = new Point(143, 113);
             Name2.Name = "Name2";
             Name2.Size = new Size(0, 23);
             Name2.TabIndex = 34;

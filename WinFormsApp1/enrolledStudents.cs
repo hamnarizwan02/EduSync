@@ -131,13 +131,19 @@ namespace WinFormsApp1
 
             if (!email.Contains("@"))
             {
-                MessageBox.Show("Email addres should contain @.");
+                MessageBox.Show("Email addres should contain @");
                 return;
             }
 
             if (email == "" || name == "" || password == "" || section == "" || courseName == "")
             {
                 MessageBox.Show("No fields should be empty.");
+                return;
+            }
+
+            if (password.Length < 8 || !password.Any(char.IsUpper) || !password.Any(char.IsDigit))
+            {
+                MessageBox.Show("Password should be of least 8 characters, contain at least one uppercase letter and one digit");
                 return;
             }
 
@@ -258,6 +264,11 @@ namespace WinFormsApp1
         }
 
         private void Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
         {
 
         }
