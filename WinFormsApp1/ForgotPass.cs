@@ -33,12 +33,12 @@ namespace WinFormsApp1
                 string maskedEmail = username.Substring(0, Math.Min(username.Length, 3)) + "***@" + domainemail;
 
                 // Display the masked email address inlabel
-                Name1.Text = "We have sent the new password at you email: " + maskedEmail + "";
+                Name1.Text = "We have sent the new password at your email: " + maskedEmail + "";
             }
             else
             {
                
-                Name2.Text = "We have sent the new password at you email";
+                Name2.Text = "We have sent the new password at your email";
             }
         }
 

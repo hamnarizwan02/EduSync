@@ -48,7 +48,7 @@
             Email = new TextBox();
             NameT = new TextBox();
             showFiles = new Button();
-            label7 = new Label();
+            errortextBox1 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -192,7 +192,7 @@
             // 
             // Password
             // 
-            Password.Location = new Point(515, 227);
+            Password.Location = new Point(515, 230);
             Password.Name = "Password";
             Password.Size = new Size(206, 27);
             Password.TabIndex = 66;
@@ -267,24 +267,23 @@
             showFiles.UseVisualStyleBackColor = false;
             showFiles.Click += showFiles_Click_1;
             // 
-            // label7
+            // errortextBox1
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 4.20000029F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.MidnightBlue;
-            label7.Location = new Point(515, 263);
-            label7.Name = "label7";
-            label7.Size = new Size(304, 9);
-            label7.TabIndex = 70;
-            label7.Text = "least 8 characters, contain at least one uppercase letter and one digit";
-            label7.Click += label7_Click;
+            errortextBox1.BackColor = SystemColors.Control;
+            errortextBox1.BorderStyle = BorderStyle.None;
+            errortextBox1.Font = new Font("Century Gothic", 6F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            errortextBox1.ForeColor = Color.Red;
+            errortextBox1.Location = new Point(515, 263);
+            errortextBox1.Name = "errortextBox1";
+            errortextBox1.Size = new Size(377, 13);
+            errortextBox1.TabIndex = 71;
             // 
             // enrollTeacher
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 491);
-            Controls.Add(label7);
+            Controls.Add(errortextBox1);
             Controls.Add(SectioncomboBox);
             Controls.Add(CoursecomboBox);
             Controls.Add(label6);
@@ -302,6 +301,7 @@
             Name = "enrollTeacher";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "enrollTeacher";
+            Load += enrollTeacher_Load_1;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -328,6 +328,6 @@
         private TextBox NameT;
         private Button showFiles;
         private Button createcoursebutton;
-        private Label label7;
+        private TextBox errortextBox1;
     }
 }

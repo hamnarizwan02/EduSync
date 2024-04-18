@@ -19,6 +19,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             this.Load += enrollStudent_Load;
+            Password.TextChanged += Password_TextChanged;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -270,7 +271,19 @@ namespace WinFormsApp1
 
         private void Password_TextChanged(object sender, EventArgs e)
         {
-
+            var password = Password.Text;
+            if (password == "")
+            {
+                errortextBox1.Text = "";
+            }
+            else if (password.Length < 8 || !password.Any(char.IsUpper) || !password.Any(char.IsDigit))
+            {
+                errortextBox1.Text = "Password must be at least 8 characters, with an uppercase letter and a digit.\r\n";
+            }
+            else
+            {
+                errortextBox1.Text = ""; // Clear the error message if password meets criteria
+            }
         }
     }
 }
