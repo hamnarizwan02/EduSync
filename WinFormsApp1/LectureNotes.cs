@@ -14,7 +14,7 @@ namespace WinFormsApp1
 {
     public partial class LectureNotes : Form
     {
-        private int courseID;
+        private int courseID, userID;
         public LectureNotes()
         {
             InitializeComponent();
@@ -26,6 +26,11 @@ namespace WinFormsApp1
         public LectureNotes(int courseID) : this()
         {
             this.courseID = courseID;
+        }
+        public LectureNotes(int courseID, int userID) : this()
+        {
+            this.courseID = courseID;
+            this.userID = userID;
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -49,7 +54,7 @@ namespace WinFormsApp1
             //flowLayoutPanel1.Height = button2.Height;
             //flowLayoutPanel1.Top = button2.Top;
 
-            QuizStudent quiz = new QuizStudent(courseID);
+            QuizStudent quiz = new QuizStudent(courseID, userID);
             quiz.Show();
             this.Hide();
         }
@@ -59,7 +64,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button1.Height;
             flowLayoutPanel1.Top = button1.Top;
 
-            Assignment_View Assign = new Assignment_View(courseID,0);
+            Assignment_View Assign = new Assignment_View(courseID, userID);
             Assign.Show();
             this.Hide();
         }
@@ -69,7 +74,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button4.Height;
             flowLayoutPanel1.Top = button4.Top;
 
-            AnnouncementView announce = new AnnouncementView(courseID);
+            AnnouncementView announce = new AnnouncementView(courseID, userID);
             announce.Show();
             this.Hide();
 
@@ -105,8 +110,12 @@ namespace WinFormsApp1
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT a.CourseID, c.CourseName AS [Course Name], u.uname AS [Instructor Name], a.NotesFilePath FROM Courses c JOIN Users u ON c.InstructorID = u.UserID JOIN LectureNote a ON c.CourseID = a.CourseID", connection)) // replace with your SQL query
+                //using (SqlCommand command = new SqlCommand("SELECT a.CourseID, c.CourseName AS [Course Name], u.uname AS [Instructor Name], a.NotesFilePath FROM Courses c JOIN Users u ON c.InstructorID = u.UserID JOIN LectureNote a ON c.CourseID = a.CourseID", connection)) // replace with your SQL query
+                using (SqlCommand command = new SqlCommand("SELECT a.CourseID, \r\n       c.CourseName AS [Course Name], \r\n       u.uname AS [Instructor Name], \r\n       a.NotesFilePath \r\nFROM Enrollment \r\nJOIN Courses c ON Enrollment.CourseID = c.CourseID\r\nJOIN Users u ON c.InstructorID = u.UserID\r\nJOIN LectureNote a ON c.CourseID = a.CourseID AND Enrollment.Section = a.Section \r\nWHERE Enrollment.UserID = @userID \r\n      AND Enrollment.CourseID = @courseID;\r\n", connection))
                 {
+                    command.Parameters.AddWithValue("@courseID", courseID);
+
+                    command.Parameters.AddWithValue("@userID", userID);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         DataTable dataTable = new DataTable();
@@ -117,5 +126,11 @@ namespace WinFormsApp1
             }
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Bookmark bookmark   = new Bookmark();
+            bookmark.Show();
+            this.Hide();
+        }
     }
 }

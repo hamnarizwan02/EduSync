@@ -180,10 +180,17 @@ namespace WinFormsApp1
 
                 MessageBox.Show("Word document created on Desktop successfully.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            Bookmark bookmark   = new Bookmark();
+            bookmark.Show();
+            this.Hide();
         }
     }
 }

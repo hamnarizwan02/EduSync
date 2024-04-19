@@ -36,8 +36,11 @@ namespace WinFormsApp1
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT CourseID , c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] FROM Courses c JOIN Users u ON c.InstructorID = u.UserID", connection)) // replace with your SQL query
+                //using (SqlCommand command = new SqlCommand("SELECT CourseID , c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] FROM Courses c JOIN Users u ON c.InstructorID = u.UserID", connection)) // replace with your SQL query
+                using (SqlCommand command = new SqlCommand("SELECT Enrollment.CourseID, \r\n       c.CourseName AS [Course Name], \r\n       u.uname AS [Instructor Name] \r\nFROM Enrollment \r\nJOIN Courses c ON Enrollment.CourseID = c.CourseID\r\nJOIN Users u ON c.InstructorID = u.UserID\r\nWHERE Enrollment.UserID = @userID; ",connection))
                 {
+                    command.Parameters.AddWithValue("@userID", userID);
+
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         DataTable dataTable = new DataTable();

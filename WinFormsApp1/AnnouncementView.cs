@@ -15,7 +15,7 @@ namespace WinFormsApp1
 {
     public partial class AnnouncementView : Form
     {
-        private int courseID;
+        private int courseID, userID;
         public AnnouncementView()
         {
             InitializeComponent();
@@ -30,10 +30,15 @@ namespace WinFormsApp1
         {
             this.courseID = courseID;
         }
+        public AnnouncementView(int courseID, int userID) : this()
+        {
+            this.courseID = courseID;
+            this.userID = userID;
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         public void dataShow(int courseID)
@@ -43,8 +48,11 @@ namespace WinFormsApp1
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT a.CourseID, c.CourseName AS [Course Name], u.uname AS [Instructor Name], a.announcements FROM Courses c JOIN Users u ON c.InstructorID = u.UserID JOIN Announcement a ON c.CourseID = a.CourseID", connection)) // replace with your SQL query
+                // using (SqlCommand command = new SqlCommand("SELECT a.CourseID, c.CourseName AS [Course Name], u.uname AS [Instructor Name], a.announcements FROM Courses c JOIN Users u ON c.InstructorID = u.UserID JOIN Announcement a ON c.CourseID = a.CourseID", connection)) 
+                using (SqlCommand command = new SqlCommand("SELECT a.CourseID, \r\n       c.CourseName AS [Course Name], \r\n       u.uname AS [Instructor Name], \r\n       a.announcements \r\nFROM Enrollment \r\nJOIN Courses c ON Enrollment.CourseID = c.CourseID\r\nJOIN Users u ON c.InstructorID = u.UserID\r\nJOIN Announcement a ON c.CourseID = a.CourseID\r\nWHERE Enrollment.UserID = @userID \r\n      AND Enrollment.CourseID = @courseID\r\n      AND Enrollment.Section = a.Section;  \r\n", connection))
                 {
+                    command.Parameters.AddWithValue("@userID", this.userID);
+                    command.Parameters.AddWithValue("@courseID", courseID);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         DataTable dataTable = new DataTable();
@@ -113,6 +121,13 @@ namespace WinFormsApp1
 
             StudentNotes f = new StudentNotes();
             f.Show();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Bookmark bookmark = new Bookmark(courseID,userID);
+            bookmark.Show();
             this.Hide();
         }
     }

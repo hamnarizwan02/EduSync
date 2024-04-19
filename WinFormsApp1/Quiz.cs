@@ -206,8 +206,13 @@ namespace WinFormsApp1
                         {
                             string selectedFilePathsConcatenated = string.Join(";", selectedFilePaths);
                             //insert courseid, sectiom, deadline
-                            SqlCommand sqlcomm11 = new SqlCommand("insert into Quiz " +
-                                   "values('" + studentID + "' , '" + section + "', '" + courseID + "' , '" + selectedFilePathsConcatenated + "' )", sqlconn);
+                            /* SqlCommand sqlcomm11 = new SqlCommand("insert into Quiz " +
+                                    "values('" + studentID + "' , '" + section + "', '" + courseID + "' , '" + selectedFilePathsConcatenated + "' )", sqlconn);  */
+                            SqlCommand sqlcomm11 = new SqlCommand("insert into Quiz values(@studentID, @section, @courseID, @selectedFilePathsConcatenated)", sqlconn);
+                            sqlcomm11.Parameters.AddWithValue("@studentID", studentID);
+                            sqlcomm11.Parameters.AddWithValue("@section", section);
+                            sqlcomm11.Parameters.AddWithValue("@courseID", courseID);
+                            sqlcomm11.Parameters.AddWithValue("@selectedFilePathsConcatenated", selectedFilePathsConcatenated);
 
                             var ifError11 = sqlcomm11.ExecuteNonQuery();
                             if (ifError11 == 0)
