@@ -64,7 +64,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync;; integrated security = True";
+            var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -210,10 +210,13 @@ namespace WinFormsApp1
                         string selectedFilePathsConcatenated = string.Join(";", selectedFilePaths);
 
                         //insert courseid, sectiom, deadline
-                        SqlCommand sqlcomm11 = new SqlCommand("insert into Assignment " +
-                                   "values('" + courseID + "' , '" + section + "', '" + duedate + "' , '" + selectedFilePathsConcatenated + "' )", sqlconn);
-
+                        SqlCommand sqlcomm11 = new SqlCommand("insert into Assignment values(@courseID, @section, @duedate, @selectedFilePathsConcatenated)", sqlconn);
+                        sqlcomm11.Parameters.AddWithValue("@courseID", courseID);
+                        sqlcomm11.Parameters.AddWithValue("@section", section);
+                        sqlcomm11.Parameters.AddWithValue("@duedate", duedate);
+                        sqlcomm11.Parameters.AddWithValue("@selectedFilePathsConcatenated", selectedFilePathsConcatenated);
                         var ifError11 = sqlcomm11.ExecuteNonQuery();
+
                         if (ifError11 == 0)
                         {
                             MessageBox.Show("Error");

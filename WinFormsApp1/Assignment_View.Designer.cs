@@ -215,11 +215,11 @@
             // 
             // button5
             // 
-            button5.Location = new Point(757, 335);
+            button5.Location = new Point(726, 335);
             button5.Name = "button5";
-            button5.Size = new Size(75, 23);
+            button5.Size = new Size(106, 23);
             button5.TabIndex = 38;
-            button5.Text = "button5";
+            button5.Text = "save Bookmark";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
