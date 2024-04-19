@@ -37,7 +37,7 @@ namespace WinFormsApp1
         public Assignment_View(int courseID) : this()
         {
             this.courseID = courseID;
-           // this.userID = userID;
+           
         }
 
         public void DataPrint(int courseID)
@@ -46,13 +46,14 @@ namespace WinFormsApp1
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
-                string query = "SELECT DISTINCT Assignment.AssignmentID AS [Assignment number], Assignment.Deadline, Assignment.AssignmentFilePath AS download, Bookmarks.ValueBookmark AS Bookmarks FROM Assignment LEFT JOIN Bookmarks ON Assignment.AssignmentID = Bookmarks.AssignmentID WHERE Assignment.CourseID = @courseID"; // Parameterized
+                string query = "SELECT Assignment.AssignmentID, \r\n       Assignment.Deadline, \r\n       Assignment.AssignmentFilePath AS download,\r\n       ISNULL(Bookmarks.ValueBookmark, 0) AS Bookmark  -- Handles null values\r\nFROM Enrollment \r\nJOIN Assignment ON Enrollment.CourseID = Assignment.CourseID \r\n                   AND Enrollment.Section = Assignment.Section\r\nLEFT JOIN Bookmarks ON Enrollment.UserID = Bookmarks.UserID\r\n                  AND Enrollment.CourseID = Bookmarks.CourseID\r\n                  AND Assignment.AssignmentID = Bookmarks.AssignmentID \r\nWHERE Enrollment.UserID = @userID \r\n      AND Enrollment.CourseID = @courseID; \r\n";
+               // jango kam kr raha hai  string query = "SELECT Assignment.AssignmentID, Assignment.Deadline, Assignment.AssignmentFilePath FROM Enrollment JOIN Assignment ON Enrollment.CourseID = Assignment.CourseID AND Enrollment.Section = Assignment.Section WHERE Enrollment.UserID = @userID AND Enrollment.CourseID = @courseID; ";
+               // string query = "SELECT DISTINCT Assignment.AssignmentID AS [Assignment number], Assignment.Deadline, Assignment.AssignmentFilePath AS download, Bookmarks.ValueBookmark AS Bookmarks FROM Assignment LEFT JOIN Bookmarks ON Assignment.AssignmentID = Bookmarks.AssignmentID WHERE Assignment.CourseID = @courseID  AND Bookmarks.UserID = @userID"; // Parameterized
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     // Add the parameter value
                     command.Parameters.AddWithValue("@courseID", courseID); // Replace courseId with the actual ID 
-
+                    command.Parameters.AddWithValue("@userID", this.userID);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
 
@@ -189,10 +190,11 @@ namespace WinFormsApp1
                         int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
 
                         // 1. Deletion Step
-                        string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID";
+                        string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID ";
                         using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
                         {
                             deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
+                            
                             deleteCommand.ExecuteNonQuery();
                         }
 
