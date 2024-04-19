@@ -94,14 +94,7 @@ namespace WinFormsApp1
                             form3.Show();
                         }
                         else
-                        {                       //Student
-
-
-                            // After the line "var password = PasswordtextBox.Text;"
-                            // Add the following code to fetch the userID from the database and store it in the userID int variable
-
-                            
-
+                        {
                             try
                             {
                                 string query3 = "SELECT userID FROM users WHERE email = '" + email + "' AND passwordd = '" + password + "'";
@@ -120,6 +113,12 @@ namespace WinFormsApp1
                             Dashboard dash = new Dashboard(userID);
                             dash.Show();
                             this.Hide();
+
+                            
+
+                            //Dashboard dash = new Dashboard();
+                            //dash.Show();
+                            //this.Hide();
 
                         }
 
@@ -148,114 +147,7 @@ namespace WinFormsApp1
             {
                 sqlconn.Close();
             }
-        }
-
-        //private void loginButton_Click(object sender, EventArgs e)
-        //{
-        //    var email = emailtextBox.Text;
-        //    var password = PasswordtextBox.Text;
-
-        //    var connectionString = "data source = DESKTOP - 88SEP50\\SQLEXPRESS; database = EduSync; integrated security = True";
-        //    // string connectionString = "data source=DESKTOP-88SEP50\\SQLEXPRESS; database=EduSync; integrated security=True";
-        //    SqlConnection connection = new SqlConnection(connectionString);
-
-        //        connection.Open();
-        //        SqlConnection sqlconn = new SqlConnection(connectionString);
-        //        sqlconn.Open();
-
-        //        // checks 
-
-        //        if (email == "" || password == "")
-        //        {
-        //            MessageBox.Show("Please fill all fields");
-        //            return;
-        //        }
-
-        //        if (!email.Contains("@"))
-        //        {
-        //            MessageBox.Show("Email addres should contain @.");
-        //            return;
-        //        }
-
-        //        try
-        //        {
-        //            string query = "Select email, passwordd from users where email = '" + email + "' and passwordd = '" + password + "'";
-        //            SqlCommand cmd = new SqlCommand(query, connection);
-        //            SqlDataReader reader = cmd.ExecuteReader();
-
-        //            if (reader.Read())
-        //            {
-        //                MessageBox.Show("Welcome to EduSync!");
-        //                reader.Close();
-
-        //                string query1 = "Select usertype from users where email = '" + email + "' ";
-        //                SqlCommand cmd1 = new SqlCommand(query1, connection);
-        //                SqlDataReader reader1 = cmd1.ExecuteReader();
-
-        //                if (reader1.Read())
-        //                {
-        //                    string usertype = reader1["UserType"].ToString();
-        //                    reader1.Close();
-
-        //                    if (usertype == "Administrator")
-        //                    {
-
-
-        //                        this.Hide();
-        //                        var form3 = new Admin_Profile();        // admins profile 
-        //                        form3.Closed += (s, args) => this.Close();
-        //                        form3.Show();
-        //                    }
-        //                    else if (usertype == "Instructor")
-        //                    {
-
-        //                        this.Hide();
-        //                        var form3 = new Assignmnet();
-        //                        form3.Closed += (s, args) => this.Close();
-        //                        form3.Show();
-        //                    }
-        //                    else
-        //                    {
-
-        //                        // arham add your student page here 
-
-        //                       Form1 form = new Form1();
-        //                        form.Show();
-        //                        this.Hide();
-        //                    }
-
-
-        //                }
-        //                else
-        //                {
-        //                    MessageBox.Show("error while selecting usertypr ");
-
-        //                }
-        //                reader1.Close();
-        //            }
-
-        //            else
-        //            {
-        //                MessageBox.Show("Incorrect email or password ");
-        //            }
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            MessageBox.Show("Error!" + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //             sqlconn.Close();
-
-        //        }
-        //    }
-
-        //private void PasswordtextBox_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
+        }     
     }
 }
 

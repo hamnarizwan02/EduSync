@@ -19,6 +19,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             this.Load += enrollStudent_Load;
+            Password.TextChanged += Password_TextChanged;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -131,13 +132,19 @@ namespace WinFormsApp1
 
             if (!email.Contains("@"))
             {
-                MessageBox.Show("Email addres should contain @.");
+                MessageBox.Show("Email addres should contain @");
                 return;
             }
 
             if (email == "" || name == "" || password == "" || section == "" || courseName == "")
             {
                 MessageBox.Show("No fields should be empty.");
+                return;
+            }
+
+            if (password.Length < 8 || !password.Any(char.IsUpper) || !password.Any(char.IsDigit))
+            {
+                MessageBox.Show("Password should be of least 8 characters, contain at least one uppercase letter and one digit");
                 return;
             }
 
@@ -184,13 +191,12 @@ namespace WinFormsApp1
                                         string UserIDstr = reader2["UserID"].ToString();
                                         reader2.Close();
 
-
                                         // convertinf from string to int 
                                         int userID;
                                         if (int.TryParse(UserIDstr, out userID))
                                         {
                                             // Insert valuesin enrollment table 
-                                            string insertEnrollmentQuery = "insert into Enrollment values('" + section + "','" + userID + "', '" + courseID + "')";
+                                            string insertEnrollmentQuery = "insert into Enrollment values('" + userID + "','" + courseID + "', '" + section + "')";
                                             SqlCommand insertEnrollmentCmd = new SqlCommand(insertEnrollmentQuery, sqlconn);
                                             int enrollmentRowsAffected = insertEnrollmentCmd.ExecuteNonQuery();
 
@@ -261,6 +267,23 @@ namespace WinFormsApp1
         private void Name_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            var password = Password.Text;
+            if (password == "")
+            {
+                errortextBox1.Text = "";
+            }
+            else if (password.Length < 8 || !password.Any(char.IsUpper) || !password.Any(char.IsDigit))
+            {
+                errortextBox1.Text = "Password must be at least 8 characters, with an uppercase letter and a digit.\r\n";
+            }
+            else
+            {
+                errortextBox1.Text = ""; // Clear the error message if password meets criteria
+            }
         }
     }
 }

@@ -65,6 +65,7 @@ namespace WinFormsApp1
             List<string> sectionNames = new List<string>();
 
             var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 

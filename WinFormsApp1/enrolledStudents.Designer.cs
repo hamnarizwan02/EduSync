@@ -48,6 +48,7 @@
             label6 = new Label();
             CoursecomboBox = new ComboBox();
             SectioncomboBox = new ComboBox();
+            errortextBox1 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -239,6 +240,7 @@
             Password.Name = "Password";
             Password.Size = new Size(206, 27);
             Password.TabIndex = 42;
+            Password.TextChanged += Password_TextChanged;
             // 
             // label6
             // 
@@ -266,11 +268,23 @@
             SectioncomboBox.Size = new Size(206, 28);
             SectioncomboBox.TabIndex = 47;
             // 
+            // errortextBox1
+            // 
+            errortextBox1.BackColor = SystemColors.Control;
+            errortextBox1.BorderStyle = BorderStyle.None;
+            errortextBox1.Font = new Font("Century Gothic", 6F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            errortextBox1.ForeColor = Color.Red;
+            errortextBox1.Location = new Point(526, 260);
+            errortextBox1.Name = "errortextBox1";
+            errortextBox1.Size = new Size(377, 13);
+            errortextBox1.TabIndex = 72;
+            // 
             // enrolledStudents
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 491);
+            Controls.Add(errortextBox1);
             Controls.Add(SectioncomboBox);
             Controls.Add(CoursecomboBox);
             Controls.Add(label6);
@@ -314,5 +328,6 @@
         private ComboBox CoursecomboBox;
         private ComboBox SectioncomboBox;
         private Button createcoursebutton;
+        private TextBox errortextBox1;
     }
 }

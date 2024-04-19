@@ -34,6 +34,12 @@ namespace WinFormsApp1
             this.userID = userID;
         }
 
+        public Assignment_View(int courseID) : this()
+        {
+            this.courseID = courseID;
+           // this.userID = userID;
+        }
+
         public void DataPrint(int courseID)
         {
             string connectionString = Constant.ConnectionString;
@@ -165,15 +171,9 @@ namespace WinFormsApp1
             form3.Show();
         }
 
-
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            SaveBookmarksToDatabase();
-        }
         void SaveBookmarksToDatabase()
         {
-            string connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            string connectionString = Constant.ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -231,12 +231,20 @@ namespace WinFormsApp1
                         }
                     }
                 }
+
+                MessageBox.Show("Bookmark saved successfully.");
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            SaveBookmarksToDatabase();
+           
         }
     }
 }

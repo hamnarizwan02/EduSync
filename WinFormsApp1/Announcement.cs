@@ -101,7 +101,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -121,7 +121,7 @@ namespace WinFormsApp1
         //upload button
         private void button6_Click(object sender, EventArgs e)
         {
-            var connectionString = "data source = KISSASIUM\\SQLEXPRESS;database = edusync; integrated security = True";
+            var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
