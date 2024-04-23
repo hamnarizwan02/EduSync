@@ -395,9 +395,61 @@ namespace WinFormsApp1
             var courseName = CoursecomboBox.Text;
 
 
-            if (!email.Contains("@"))
+            // Check maximum lengths
+            if (name.Length > 15)
             {
-                MessageBox.Show("Email addres should contain @");
+                MessageBox.Show("Name should not exceed 15 characters.");
+                return;
+            }
+
+            // Check maximum length of email (excluding '@')
+            var atIndex = email.IndexOf('@');
+            if (atIndex > 15 || atIndex == -1)
+            {
+                MessageBox.Show("Email address should not exceed 15 characters (excluding '@').");
+                return;
+            }
+
+            // Check maximum length of password
+            if (password.Length > 15)
+            {
+                MessageBox.Show("Password should not exceed 15 characters.");
+                return;
+            }
+
+
+            // Check for multiple "@" symbols
+            if (email.Count(c => c == '@') != 1)
+            {
+                MessageBox.Show("Email address should contain exactly one '@' symbol.");
+                return;
+            }
+
+            // Check if there is at least one character before the "@" symbol
+            var atIndex1 = email.IndexOf('@');
+            if (atIndex1 == 0)
+            {
+                MessageBox.Show("Invalid email address. There should be at least one character before the '@' symbol.");
+                return;
+            }
+
+            // Check for allowed domain names and valid top-level domains
+            string[] allowedDomains = { "gmail.com", "outlook.com", "yahoo.com", "gmail.pk", "yahoo.pk" };
+            string[] validTopLevelDomains = { ".com", ".org", ".pk" };
+
+            bool isValidDomain = false;
+            foreach (var domain in allowedDomains)
+            {
+                if (email.EndsWith(domain))
+                {
+                    isValidDomain = true;
+                    break;
+                }
+            }
+
+            if (!isValidDomain)
+            {
+                MessageBox.Show("Invalid domain name. Allowed domains are Gmail, Outlook, and Yahoo with top-level domains .com, .org, or .pk.");
                 return;
             }
 
@@ -406,7 +458,6 @@ namespace WinFormsApp1
                 MessageBox.Show("No fields should be empty.");
                 return;
             }
-
 
             if (password.Length < 8 || !password.Any(char.IsUpper) || !password.Any(char.IsDigit))
             {
@@ -422,88 +473,108 @@ namespace WinFormsApp1
             {
                 sqlconn.Open();
 
-                // Insert into users table 
-                string insertUserQuery = "insert into Users values('" + name + "', '" + email + "', '" + password + "', 'Instructor')";
-                SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, sqlconn);
-                int rowsAffected = insertUserCmd.ExecuteNonQuery();
 
-                if (rowsAffected > 0)
+                string checkEnrollmentQuery = "SELECT COUNT(*) FROM Enrollment e INNER JOIN Users u ON e.UserID = u.UserID " +
+                              "INNER JOIN Courses c ON e.CourseID = c.CourseID " +
+                              "WHERE u.Email = @Email AND c.CourseName = @CourseName AND e.Section = @Section";
+                SqlCommand checkEnrollmentCmd = new SqlCommand(checkEnrollmentQuery, sqlconn);
+                checkEnrollmentCmd.Parameters.AddWithValue("@Email", email);
+                checkEnrollmentCmd.Parameters.AddWithValue("@CourseName", courseName);
+                checkEnrollmentCmd.Parameters.AddWithValue("@Section", section);
+                int existingEnrollments = (int)checkEnrollmentCmd.ExecuteScalar();
+
+                if (existingEnrollments > 0)
                 {
-                    // getting course id value 
-                    string selectCourseQuery = "select top 1 CourseID from Courses where CourseName = '" + courseName + "'";
-                    SqlCommand selectCourseCmd = new SqlCommand(selectCourseQuery, sqlconn);
-                    SqlDataReader reader = selectCourseCmd.ExecuteReader();
+                    MessageBox.Show("Email already enrolled in the same course and section.");
+                    return;
+                }
+                else
+                {
 
-                    try
+
+                    // Insert into users table 
+                    string insertUserQuery = "insert into Users values('" + name + "', '" + email + "', '" + password + "', 'Instructor')";
+                    SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, sqlconn);
+                    int rowsAffected = insertUserCmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
                     {
-                        if (reader.Read())
+                        // getting course id value 
+                        string selectCourseQuery = "select top 1 CourseID from Courses where CourseName = '" + courseName + "'";
+                        SqlCommand selectCourseCmd = new SqlCommand(selectCourseQuery, sqlconn);
+                        SqlDataReader reader = selectCourseCmd.ExecuteReader();
+
+                        try
                         {
-                            string CourseIDstr = reader["CourseID"].ToString();
-                            reader.Close();
-
-                            // convertinf from string to int 
-                            int courseID;
-                            if (int.TryParse(CourseIDstr, out courseID))
+                            if (reader.Read())
                             {
-                                // Fetch UserID
-                                string selectUserQuery = "select top 1 UserID from Users where Email = '" + email + "'";
-                                SqlCommand selectUserCmd = new SqlCommand(selectUserQuery, sqlconn);
-                                SqlDataReader reader2 = selectUserCmd.ExecuteReader();
+                                string CourseIDstr = reader["CourseID"].ToString();
+                                reader.Close();
 
-                                try
+                                // convertinf from string to int 
+                                int courseID;
+                                if (int.TryParse(CourseIDstr, out courseID))
                                 {
-                                    if (reader2.Read())
+                                    // Fetch UserID
+                                    string selectUserQuery = "select top 1 UserID from Users where Email = '" + email + "'";
+                                    SqlCommand selectUserCmd = new SqlCommand(selectUserQuery, sqlconn);
+                                    SqlDataReader reader2 = selectUserCmd.ExecuteReader();
+
+                                    try
                                     {
-                                        string UserIDstr = reader2["UserID"].ToString();
-                                        reader2.Close();
-
-                                        // convertinf from string to int 
-                                        int userID;
-                                        if (int.TryParse(UserIDstr, out userID))
+                                        if (reader2.Read())
                                         {
-                                            // Insert valuesin enrollment table 
-                                            string insertEnrollmentQuery = "insert into Enrollment values('" + userID + "','" + courseID + "', '" + section + "')";
-                                            SqlCommand insertEnrollmentCmd = new SqlCommand(insertEnrollmentQuery, sqlconn);
-                                            int enrollmentRowsAffected = insertEnrollmentCmd.ExecuteNonQuery();
+                                            string UserIDstr = reader2["UserID"].ToString();
+                                            reader2.Close();
 
-                                            if (enrollmentRowsAffected > 0)
+                                            // convertinf from string to int 
+                                            int userID;
+                                            if (int.TryParse(UserIDstr, out userID))
                                             {
-                                                MessageBox.Show("Teacher enrolled successfully");
+                                                // Insert valuesin enrollment table 
+                                                string insertEnrollmentQuery = "insert into Enrollment values('" + section + "','" + userID + "', '" + courseID + "')";
+                                                SqlCommand insertEnrollmentCmd = new SqlCommand(insertEnrollmentQuery, sqlconn);
+                                                int enrollmentRowsAffected = insertEnrollmentCmd.ExecuteNonQuery();
+
+                                                if (enrollmentRowsAffected > 0)
+                                                {
+                                                    MessageBox.Show("Teacher enrolled successfully");
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Error occurred while inserting data into the Enrollment table");
+                                                }
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Error occurred while inserting data into the Enrollment table");
+                                                MessageBox.Show("Error occurred while converting user id  ");
                                             }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Error occurred while converting user id  ");
+                                            MessageBox.Show("Error while fetching userid ");
                                         }
                                     }
-                                    else
+                                    finally
                                     {
-                                        MessageBox.Show("Error while fetching userid ");
+                                        reader2.Close();
                                     }
                                 }
-                                finally
+                                else
                                 {
-                                    reader2.Close();
+                                    MessageBox.Show("Error occurred while while converting course id  ");
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("Error occurred while while converting course id  ");
-                            }
+                        }
+                        finally
+                        {
+                            reader.Close();
                         }
                     }
-                    finally
+                    else
                     {
-                        reader.Close();
+                        MessageBox.Show("Error occurred while inserting data into the users table");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Error occurred while inserting data into the users table");
                 }
             }
             catch (Exception ex)

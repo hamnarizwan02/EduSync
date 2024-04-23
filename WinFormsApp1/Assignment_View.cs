@@ -169,7 +169,7 @@ namespace WinFormsApp1
             panel.Top = button8.Top;
 
             this.Hide();
-            var form3 = new StudentNotes();
+            var form3 = new StudentNotes(courseID, userID);
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }
@@ -305,28 +305,28 @@ namespace WinFormsApp1
 
         }
 
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            string selectedColumnName = comboBox1.SelectedItem.ToString();
-            string filterValue = textBox1.Text;
+        //private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        //{
+        //    string selectedColumnName = comboBox1.SelectedItem.ToString();
+        //    string filterValue = textBox1.Text;
 
-            if (!string.IsNullOrEmpty(selectedColumnName) && !string.IsNullOrEmpty(filterValue))
-            {
-                var columnType = (dataGridView1.DataSource as DataTable).Columns[selectedColumnName].DataType;
-                if (columnType == typeof(string))
-                {
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{selectedColumnName} LIKE '%{filterValue}%'";
-                }
-                else
-                {
-                    // Handle non-string columns
-                }
-            }
-            else
-            {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
-            }
-        }
+        //    if (!string.IsNullOrEmpty(selectedColumnName) && !string.IsNullOrEmpty(filterValue))
+        //    {
+        //        var columnType = (dataGridView1.DataSource as DataTable).Columns[selectedColumnName].DataType;
+        //        if (columnType == typeof(string))
+        //        {
+        //            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{selectedColumnName} LIKE '%{filterValue}%'";
+        //        }
+        //        else
+        //        {
+        //            // Handle non-string columns
+        //        }
+        //    }
+        //    else
+        //    {
+        //        (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
+        //    }
+        //}
 
         private void FilterDataGridViewByBookmark()
         {
@@ -349,7 +349,7 @@ namespace WinFormsApp1
         // For example, you can call it in the button click event handler
         private void button7_Click(object sender, EventArgs e)
         {
-            Bookmark bookmark = new Bookmark(courseID,userID);
+            Bookmark bookmark = new Bookmark(courseID, userID);
             bookmark.Show();
             this.Hide();
         }
@@ -357,6 +357,13 @@ namespace WinFormsApp1
         private void button9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(userID);
+            dashboard.Show();
+            this.Hide();
         }
     }
 }

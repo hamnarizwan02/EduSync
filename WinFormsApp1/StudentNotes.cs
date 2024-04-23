@@ -20,6 +20,7 @@ namespace WinFormsApp1
 {
     public partial class StudentNotes : Form
     {
+        private int courseID, userID;
         List<string> selectedFilePaths = new List<string>();
 
         public StudentNotes()
@@ -27,6 +28,11 @@ namespace WinFormsApp1
             InitializeComponent();
             panelLeft.Height = button8.Height;
             panelLeft.Top = button8.Top;
+        }
+        public StudentNotes(int courseID, int userID) : this()
+        {
+            this.userID = userID;
+            this.courseID = courseID;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,7 +77,7 @@ namespace WinFormsApp1
             panelLeft.BringToFront();
 
             this.Hide();
-            var form9 = new AnnouncementView();
+            var form9 = new AnnouncementView(courseID, userID);
             form9.Closed += (s, args) => this.Close();
             form9.Show();
         }
@@ -86,6 +92,33 @@ namespace WinFormsApp1
 
         private void LectureNotes_STUDENT_Load(object sender, EventArgs e)
         {
+            DataPrint();
+        }
+
+        private void DataPrint()
+        {
+
+            string connectionString = Constant.ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM StudentNotes";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+
+                        DataTable dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        dataGridView1.DataSource = dataTable;
+
+
+                    }
+                }
+            }
+
 
         }
 
@@ -109,12 +142,40 @@ namespace WinFormsApp1
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void openCode_New(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = filePath,
+                    UseShellExecute = true
+                };
+                Process.Start(startInfo);
+            }
+
+            else
+            {
+                MessageBox.Show("File not found.");
+            }
+            var connectionString = Constant.ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string insertQuery = "INSERT INTO StudentNotes (UserID, FilePath) VALUES (@userID, @filePath)";
+                SqlCommand command = new SqlCommand(insertQuery, connection);
+                command.Parameters.AddWithValue("@userID", userID);
+                command.Parameters.AddWithValue("@filePath", filePath);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void openCode(string filePath)
         {
             if (listBox1.SelectedIndex >= 0)
             {
                 // Get the selected file path from the ListBox
-                string filePath = listBox1.SelectedItem.ToString();
+                //string filePath = listBox1.SelectedItem.ToString();
 
                 // Check if the file exists before attempting to open it
                 if (File.Exists(filePath))
@@ -126,16 +187,33 @@ namespace WinFormsApp1
                     };
                     Process.Start(startInfo);
                 }
+
                 else
                 {
                     MessageBox.Show("File not found.");
                 }
+                var connectionString = Constant.ConnectionString;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string insertQuery = "INSERT INTO StudentNotes (UserID, FilePath) VALUES (@userID, @filePath)";
+                    SqlCommand command = new SqlCommand(insertQuery, connection);
+                    command.Parameters.AddWithValue("@userID", userID);
+                    command.Parameters.AddWithValue("@filePath", filePath);
+                    command.ExecuteNonQuery();
+                }
+
             }
             else
             {
                 MessageBox.Show("Please select a file from the list.");
             }
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            openCode(listBox1.SelectedItem.ToString());
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -150,7 +228,7 @@ namespace WinFormsApp1
         private void button7_Click(object sender, EventArgs e)
         {
             string filename = filename_textBox1.Text;
-            string filePath = @"C:\Users\hamna\Desktop\ " + filename + " .docx";
+            string filePath = @"C:\Users\khana\Desktop " + filename + " .docx";
 
             try
             {
@@ -178,18 +256,62 @@ namespace WinFormsApp1
                     document.Append(body);
                 }
 
-                MessageBox.Show("Word document created on Desktop successfully.");
+                // Save the file path in the database
+                var connectionString = Constant.ConnectionString;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string insertQuery = "INSERT INTO StudentNotes (UserID, FilePath) VALUES (@userID, @filePath)";
+                    SqlCommand command = new SqlCommand(insertQuery, connection);
+                    command.Parameters.AddWithValue("@userID", userID);
+                    command.Parameters.AddWithValue("@filePath", filePath);
+                    command.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Word document created on Desktop and file path saved successfully.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            openCode_New(filePath);
+
         }
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            Bookmark bookmark   = new Bookmark();
+            Bookmark bookmark = new Bookmark(courseID, userID);
             bookmark.Show();
+            this.Hide();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["FilePath"].Index)
+            {
+                // User clicked on the download column of a row
+                string notesFilePath = dataGridView1.Rows[e.RowIndex].Cells["FilePath"].Value.ToString();
+                // Now you have the QuizFilePath value in the 'quizFilePath' variable
+
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = @notesFilePath,
+                    UseShellExecute = true
+                };
+                Process.Start(startInfo);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard=new Dashboard(userID);
+            dashboard.Show();
             this.Hide();
         }
     }

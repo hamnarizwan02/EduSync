@@ -36,14 +36,14 @@
             button3 = new Button();
             button2 = new Button();
             panel1 = new Panel();
+            button7 = new Button();
             panel = new FlowLayoutPanel();
             button8 = new Button();
             button4 = new Button();
             button6 = new Button();
             textBox1 = new TextBox();
             button5 = new Button();
-            comboBox1 = new ComboBox();
-            button7 = new Button();
+            button9 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -145,6 +145,23 @@
             panel1.Size = new Size(178, 461);
             panel1.TabIndex = 34;
             // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(0, 0, 64);
+            button7.BackgroundImageLayout = ImageLayout.None;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.White;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.ImageAlign = ContentAlignment.MiddleRight;
+            button7.Location = new Point(33, 428);
+            button7.Name = "button7";
+            button7.Size = new Size(148, 33);
+            button7.TabIndex = 41;
+            button7.Text = "Bookmarks";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
             // panel
             // 
             panel.BackColor = Color.Maroon;
@@ -230,41 +247,27 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click_1;
             // 
-            // comboBox1
+            // button9
             // 
-            comboBox1.DisplayMember = "bookmark";
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Bookmarks" });
-            comboBox1.Location = new Point(672, 66);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(163, 23);
-            comboBox1.TabIndex = 40;
-            comboBox1.ValueMember = "1";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.FromArgb(0, 0, 64);
-            button7.BackgroundImageLayout = ImageLayout.None;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.White;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.ImageAlign = ContentAlignment.MiddleRight;
-            button7.Location = new Point(33, 428);
-            button7.Name = "button7";
-            button7.Size = new Size(148, 33);
-            button7.TabIndex = 41;
-            button7.Text = "Bookmarks";
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += button7_Click;
+            button9.BackColor = Color.Black;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button9.ForeColor = Color.White;
+            button9.Location = new Point(175, 311);
+            button9.Margin = new Padding(3, 2, 3, 2);
+            button9.Name = "button9";
+            button9.Size = new Size(165, 34);
+            button9.TabIndex = 39;
+            button9.Text = "DashBoard";
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click_1;
             // 
             // Assignment_View
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(901, 454);
-            Controls.Add(comboBox1);
+            Controls.Add(button9);
             Controls.Add(button5);
             Controls.Add(textBox1);
             Controls.Add(label5);
@@ -298,8 +301,8 @@
         //private FlowLayoutPanel flowLayoutPanel1;
         private Button button8;
         private Button button5;
-        private ComboBox comboBox1;
         private Button button7;
+        private Button button9;
         //private FlowLayoutPanel flowLayoutPanel1;
     }
 }

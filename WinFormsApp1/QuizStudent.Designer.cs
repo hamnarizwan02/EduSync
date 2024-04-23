@@ -45,6 +45,7 @@
             button5 = new Button();
             listBox1 = new ListBox();
             button9 = new Button();
+            button10 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -270,11 +271,27 @@
             button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
+            // button10
+            // 
+            button10.BackColor = Color.Black;
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button10.ForeColor = Color.White;
+            button10.Location = new Point(189, 324);
+            button10.Margin = new Padding(3, 2, 3, 2);
+            button10.Name = "button10";
+            button10.Size = new Size(165, 34);
+            button10.TabIndex = 44;
+            button10.Text = "DashBoard";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
+            // 
             // QuizStudent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(752, 442);
+            Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
@@ -309,5 +326,6 @@
         private Button button8;
         private Button button7;
         private Button button9;
+        private Button button10;
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bookmark));
             panel1 = new Panel();
+            button3 = new Button();
             panelLeft = new FlowLayoutPanel();
             button1 = new Button();
             button2 = new Button();
@@ -42,6 +43,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(panelLeft);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(button2);
@@ -50,6 +52,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(799, 77);
             panel1.TabIndex = 36;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(0, 0, 64);
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(19, 11);
+            button3.Name = "button3";
+            button3.Size = new Size(70, 50);
+            button3.TabIndex = 54;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panelLeft
             // 
@@ -139,5 +153,6 @@
         private DataGridView dataGridView1;
         private TextBox textBox1;
         private FlowLayoutPanel panelLeft;
+        private Button button3;
     }
 }

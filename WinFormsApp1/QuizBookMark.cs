@@ -60,9 +60,17 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Bookmark bookmark = new Bookmark(courseID,userID);
+            Bookmark bookmark = new Bookmark(courseID, userID);
             bookmark.Show();
             this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(userID);
+            dashboard.Show();
+            this.Hide();
+
         }
     }
 }

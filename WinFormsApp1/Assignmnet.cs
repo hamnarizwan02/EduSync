@@ -17,6 +17,7 @@ namespace WinFormsApp1
 {
     public partial class Assignmnet : Form
     {
+        private int userID; 
         //set file path for assignment 
         //string folderPath = @"C:\Users\hamna\Desktop\SE PROJ";
 
@@ -28,6 +29,10 @@ namespace WinFormsApp1
             panelLeft.Height = button1.Height;
             panelLeft.Top = button1.Top;
         }
+        public Assignmnet(int userID):this()
+        {
+            this.userID = userID;
+        } 
 
         private void Assignmnet_Load(object sender, EventArgs e)
         {
@@ -64,7 +69,7 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-           // var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
+            // var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             var connectionString = Constant.ConnectionString;
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();

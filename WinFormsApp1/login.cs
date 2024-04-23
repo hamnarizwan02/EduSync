@@ -27,7 +27,7 @@ namespace WinFormsApp1
 
         private void label4_Click(object sender, EventArgs e)
         {
-            
+
             ForgotPass forgotPasswordForm = new ForgotPass(emailtextBox.Text);
             forgotPasswordForm.Show();
             this.Hide();
@@ -44,6 +44,27 @@ namespace WinFormsApp1
 
             // checks 
 
+            if (email.Count(c => c == '@') != 1)
+            {
+                MessageBox.Show("Email address should contain exactly one '@' symbol.");
+                return;
+            }
+
+            // Check maximum length of email (excluding '@')
+            var atIndex = email.IndexOf('@');
+            if (atIndex > 15 || atIndex == -1)
+            {
+                MessageBox.Show("Email address should not empty or exceed 15 characters (excluding @).");
+                return;
+            }
+
+            // Check maximum length of password
+            if (password.Length > 15)
+            {
+                MessageBox.Show("Password should not exceed 15 characters.");
+                return;
+            }
+
             if (email == "" || password == "")
             {
                 MessageBox.Show("Please fill all fields");
@@ -55,6 +76,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Email addres should contain @.");
                 return;
             }
+
 
             try
             {
@@ -114,7 +136,7 @@ namespace WinFormsApp1
                             dash.Show();
                             this.Hide();
 
-                            
+
 
                             //Dashboard dash = new Dashboard();
                             //dash.Show();
@@ -147,7 +169,12 @@ namespace WinFormsApp1
             {
                 sqlconn.Close();
             }
-        }     
+        }
+
+        private void emailtextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

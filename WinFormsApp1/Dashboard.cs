@@ -65,7 +65,9 @@ namespace WinFormsApp1
 
                 Assignment_View detailsForm = new Assignment_View(id, userID);
                 detailsForm.Show(); // This line will display the Form1
+                this.Hide();
             }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

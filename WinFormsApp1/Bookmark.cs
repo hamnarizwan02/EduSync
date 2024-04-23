@@ -84,10 +84,17 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            QuizBookMark quizBookMark = new QuizBookMark(courseID,userID);
+            QuizBookMark quizBookMark = new QuizBookMark(courseID, userID);
             quizBookMark.Show();
             this.Hide();
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(userID);
+            dashboard.Show();
+            this.Hide();
         }
     }
 }

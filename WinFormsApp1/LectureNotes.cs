@@ -37,7 +37,7 @@ namespace WinFormsApp1
             if (e.RowIndex >= 0)
             {
                 // User clicked on the download column of a row
-                string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["download"].Value.ToString();
+                string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["NotesFilePath"].Value.ToString();
                 // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
                 var startInfo = new ProcessStartInfo
@@ -92,7 +92,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button5.Height;
             flowLayoutPanel1.Top = button5.Top;
 
-            StudentNotes lg = new StudentNotes();
+            StudentNotes lg = new StudentNotes(courseID, userID);
             lg.Show();
             this.Hide();
         }
@@ -128,8 +128,15 @@ namespace WinFormsApp1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Bookmark bookmark   = new Bookmark();
+            Bookmark bookmark = new Bookmark(courseID, userID);
             bookmark.Show();
+            this.Hide();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(userID);
+            dashboard.Show();
             this.Hide();
         }
     }

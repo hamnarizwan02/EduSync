@@ -36,6 +36,7 @@
             openNotes = new Button();
             label5 = new Label();
             panel1 = new Panel();
+            button7 = new Button();
             panelLeft = new FlowLayoutPanel();
             button8 = new Button();
             button4 = new Button();
@@ -46,8 +47,11 @@
             create_new_doc = new Button();
             label3 = new Label();
             filename_textBox1 = new TextBox();
-            button7 = new Button();
+            dataGridView1 = new DataGridView();
+            textBox1 = new TextBox();
+            button9 = new Button();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // showFiles
@@ -57,7 +61,7 @@
             showFiles.FlatStyle = FlatStyle.Flat;
             showFiles.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             showFiles.ForeColor = Color.White;
-            showFiles.Location = new Point(416, 340);
+            showFiles.Location = new Point(416, 407);
             showFiles.Margin = new Padding(3, 2, 3, 2);
             showFiles.Name = "showFiles";
             showFiles.Size = new Size(116, 25);
@@ -70,10 +74,10 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(416, 171);
+            listBox1.Location = new Point(416, 159);
             listBox1.Margin = new Padding(3, 2, 3, 2);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(302, 154);
+            listBox1.Size = new Size(302, 64);
             listBox1.TabIndex = 34;
             // 
             // label6
@@ -81,7 +85,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(239, 174);
+            label6.Location = new Point(220, 170);
             label6.Name = "label6";
             label6.Size = new Size(132, 29);
             label6.TabIndex = 33;
@@ -110,7 +114,7 @@
             openNotes.FlatStyle = FlatStyle.Flat;
             openNotes.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             openNotes.ForeColor = Color.White;
-            openNotes.Location = new Point(602, 340);
+            openNotes.Location = new Point(602, 407);
             openNotes.Margin = new Padding(3, 2, 3, 2);
             openNotes.Name = "openNotes";
             openNotes.Size = new Size(116, 25);
@@ -143,6 +147,23 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(153, 444);
             panel1.TabIndex = 23;
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(0, 0, 64);
+            button7.BackgroundImageLayout = ImageLayout.None;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = Color.White;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.ImageAlign = ContentAlignment.MiddleRight;
+            button7.Location = new Point(0, 411);
+            button7.Name = "button7";
+            button7.Size = new Size(153, 33);
+            button7.TabIndex = 42;
+            button7.Text = "Bookmarks";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click_1;
             // 
             // panelLeft
             // 
@@ -284,28 +305,50 @@
             filename_textBox1.Size = new Size(162, 23);
             filename_textBox1.TabIndex = 38;
             // 
-            // button7
+            // dataGridView1
             // 
-            button7.BackColor = Color.FromArgb(0, 0, 64);
-            button7.BackgroundImageLayout = ImageLayout.None;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.White;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.ImageAlign = ContentAlignment.MiddleRight;
-            button7.Location = new Point(0, 411);
-            button7.Name = "button7";
-            button7.Size = new Size(153, 33);
-            button7.TabIndex = 42;
-            button7.Text = "Bookmarks";
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += button7_Click_1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(220, 237);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(498, 150);
+            dataGridView1.TabIndex = 39;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.Control;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(220, 212);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(134, 19);
+            textBox1.TabIndex = 40;
+            textBox1.Text = "Notes:";
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // button9
+            // 
+            button9.BackColor = Color.Black;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button9.ForeColor = Color.White;
+            button9.Location = new Point(220, 407);
+            button9.Margin = new Padding(3, 2, 3, 2);
+            button9.Name = "button9";
+            button9.Size = new Size(149, 25);
+            button9.TabIndex = 43;
+            button9.Text = "DashBoard";
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
             // 
             // StudentNotes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(843, 443);
+            Controls.Add(button9);
+            Controls.Add(textBox1);
+            Controls.Add(dataGridView1);
             Controls.Add(filename_textBox1);
             Controls.Add(label3);
             Controls.Add(create_new_doc);
@@ -322,6 +365,7 @@
             Text = "StudentNotes";
             Load += LectureNotes_STUDENT_Load;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -346,5 +390,8 @@
         private Button button8;
         private TextBox filename_textBox1;
         private Button button7;
+        private DataGridView dataGridView1;
+        private TextBox textBox1;
+        private Button button9;
     }
 }

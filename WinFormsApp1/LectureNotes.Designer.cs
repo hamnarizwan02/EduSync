@@ -42,6 +42,7 @@
             button4 = new Button();
             textBox1 = new TextBox();
             button6 = new Button();
+            button9 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -229,11 +230,27 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
+            // button9
+            // 
+            button9.BackColor = Color.Black;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button9.ForeColor = Color.White;
+            button9.Location = new Point(187, 341);
+            button9.Margin = new Padding(3, 2, 3, 2);
+            button9.Name = "button9";
+            button9.Size = new Size(165, 34);
+            button9.TabIndex = 49;
+            button9.Text = "DashBoard";
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
+            // 
             // LectureNotes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(884, 441);
+            Controls.Add(button9);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
@@ -263,5 +280,6 @@
         private Button button6;
         private Button button5;
         private Button button7;
+        private Button button9;
     }
 }

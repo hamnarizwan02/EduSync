@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuizBookMark));
             panel1 = new Panel();
+            button3 = new Button();
             button1 = new Button();
             button2 = new Button();
             panelLeft = new FlowLayoutPanel();
@@ -42,6 +43,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 0, 64);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(button2);
             panel1.Location = new Point(0, 1);
@@ -49,6 +51,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(799, 77);
             panel1.TabIndex = 54;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(0, 0, 64);
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(12, 11);
+            button3.Name = "button3";
+            button3.Size = new Size(70, 50);
+            button3.TabIndex = 4;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button1
             // 
@@ -141,5 +155,6 @@
         private Button button2;
         private TextBox textBox1;
         private DataGridView dataGridView1;
+        private Button button3;
     }
 }

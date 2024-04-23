@@ -70,7 +70,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button3.Height;
             flowLayoutPanel1.Top = button3.Top;
 
-            LectureNotes lec = new LectureNotes(courseID);
+            LectureNotes lec = new LectureNotes(courseID, userID);
             lec.Show();
             this.Hide();
         }
@@ -80,7 +80,7 @@ namespace WinFormsApp1
             //flowLayoutPanel1.Height = button2.Height;
             //flowLayoutPanel1.Top = button2.Top;
 
-            QuizStudent quiz = new QuizStudent(courseID);
+            QuizStudent quiz = new QuizStudent(courseID, userID);
             quiz.Show();
             this.Hide();
         }
@@ -90,7 +90,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button1.Height;
             flowLayoutPanel1.Top = button1.Top;
 
-            Assignment_View f = new Assignment_View(courseID, 0);
+            Assignment_View f = new Assignment_View(courseID, userID);
             f.Show();
             this.Hide();
 
@@ -119,15 +119,22 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button8.Height;
             flowLayoutPanel1.Top = button8.Top;
 
-            StudentNotes f = new StudentNotes();
+            StudentNotes f = new StudentNotes(courseID, userID);
             f.Show();
             this.Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Bookmark bookmark = new Bookmark(courseID,userID);
+            Bookmark bookmark = new Bookmark(courseID, userID);
             bookmark.Show();
+            this.Hide();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(userID);
+            dashboard.Show();
             this.Hide();
         }
     }
