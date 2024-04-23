@@ -36,15 +36,15 @@ namespace WinFormsApp1
 
         private void Assignmnet_Load(object sender, EventArgs e)
         {
-            List<string> courseNames = GetCourseNamesFromDatabase();
-            List<string> sectionNames = GetSectionFromDatabase();
+            List<string> courseNames = GetCourseNamesFromDatabase(userID);
+            List<string> sectionNames = GetSectionFromDatabase(userID);
 
             // Populate the ComboBox with the list of course names
             Course_comboBox1.DataSource = courseNames;
             Section_comboBox2.DataSource = sectionNames;
         }
 
-        private List<string> GetCourseNamesFromDatabase()
+        private List<string> GetCourseNamesFromDatabase(int userID)
         {
             List<string> courseNames = new List<string>();
 
@@ -52,7 +52,7 @@ namespace WinFormsApp1
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
-            string query = "SELECT CourseName FROM Courses";
+            string query = "Select c.CourseName from Enrollment e JOIN Courses c on c.CourseID = e.CourseID where e.UserID = '"+ userID +"' ";
             SqlCommand cmd = new SqlCommand(query, sqlconn);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -62,26 +62,52 @@ namespace WinFormsApp1
                 courseNames.Add(courseName);
             }
 
+            reader.Close();
+
             return courseNames;
         }
 
-        private List<string> GetSectionFromDatabase()
+        private List<string> GetSectionFromDatabase(int userID)
         {
             List<string> sectionNames = new List<string>();
 
-            // var connectionString = "data source = DESKTOP-88SEP50\\SQLEXPRESS;database = EduSync; integrated security = True";
             var connectionString = Constant.ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
-
-            string query = "SELECT SectionName FROM Section WHERE SectionName != 'All'";
-            SqlCommand cmd = new SqlCommand(query, sqlconn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
-                string SectionName = reader["SectionName"].ToString();
-                sectionNames.Add(SectionName);
+                sqlconn.Open();
+
+                string query1 = "SELECT c.CourseID FROM Enrollment e JOIN Courses c ON c.CourseID = e.CourseID WHERE e.UserID = '" + userID + "'";
+                using (SqlCommand cmd1 = new SqlCommand(query1, sqlconn))
+                {
+                    List<int> courseIDs = new List<int>(); // List to store CourseIDs
+                    using (SqlDataReader reader1 = cmd1.ExecuteReader())
+                    {
+                        while (reader1.Read())
+                        {
+                            // Retrieve the CourseID and add it to the list
+                            int courseID = Convert.ToInt32(reader1["CourseID"]);
+                            courseIDs.Add(courseID);
+                        }
+                    } // Close the first reader after collecting CourseIDs
+
+                    // Iterate over the list of CourseIDs to execute the second query
+                    foreach (int courseID in courseIDs)
+                    {
+                        string query2 = "SELECT Section FROM Enrollment WHERE UserID = '" + userID + "' AND CourseID = '" + courseID + "'";
+                        using (SqlCommand cmd2 = new SqlCommand(query2, sqlconn))
+                        {
+                            using (SqlDataReader reader2 = cmd2.ExecuteReader())
+                            {
+                                // Assuming you want to retrieve all sections associated with the user's enrolled courses
+                                while (reader2.Read())
+                                {
+                                    string sectionName = reader2["Section"].ToString();
+                                    sectionNames.Add(sectionName);
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             return sectionNames;
@@ -106,7 +132,7 @@ namespace WinFormsApp1
             panelLeft.Top = button2.Top;
 
             this.Hide();
-            var form4 = new Quiz();
+            var form4 = new Quiz(userID);
             form4.Closed += (s, args) => this.Close();
             form4.Show();
         }
@@ -117,7 +143,7 @@ namespace WinFormsApp1
             panelLeft.Top = button3.Top;
 
             this.Hide();
-            var form3 = new Notes();
+            var form3 = new Notes(userID);
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }
@@ -129,7 +155,7 @@ namespace WinFormsApp1
             panelLeft.BringToFront();
 
             this.Hide();
-            var form9 = new Announcement();
+            var form9 = new Announcement(userID);
             form9.Closed += (s, args) => this.Close();
             form9.Show();
         }
