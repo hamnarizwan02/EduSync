@@ -42,7 +42,7 @@ namespace WinFormsApp1
             panelLeft.BringToFront();
 
             this.Hide();
-            var form3 = new Assignment_View();
+            var form3 = new Assignment_View(courseID,userID);
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }
@@ -53,7 +53,7 @@ namespace WinFormsApp1
             panelLeft.Top = button2.Top;
 
             this.Hide();
-            var form4 = new QuizStudent();
+            var form4 = new QuizStudent(courseID,userID);
             form4.Closed += (s, args) => this.Close();
             form4.Show();
         }
@@ -65,7 +65,7 @@ namespace WinFormsApp1
             panelLeft.BringToFront();
 
             this.Hide();
-            var form4 = new LectureNotes();
+            var form4 = new LectureNotes(courseID,userID);
             form4.Closed += (s, args) => this.Close();
             form4.Show();
         }

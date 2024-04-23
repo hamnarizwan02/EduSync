@@ -147,7 +147,7 @@ namespace WinFormsApp1
             flowLayoutPanel1.Height = button8.Height;
             flowLayoutPanel1.Top = button8.Top;
 
-            StudentNotes Assign = new StudentNotes();
+            StudentNotes Assign = new StudentNotes(courseID,userID);
             Assign.Show();
             this.Hide();
         }

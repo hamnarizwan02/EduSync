@@ -36,6 +36,7 @@
             button2 = new Button();
             dataGridView1 = new DataGridView();
             textBox1 = new TextBox();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -129,11 +130,22 @@
             textBox1.TabIndex = 53;
             textBox1.Text = "Bookmarked";
             // 
+            // button4
+            // 
+            button4.Location = new Point(127, 398);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 54;
+            button4.Text = "back";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // Bookmark
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button4);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
@@ -154,5 +166,6 @@
         private TextBox textBox1;
         private FlowLayoutPanel panelLeft;
         private Button button3;
+        private Button button4;
     }
 }

@@ -72,5 +72,12 @@ namespace WinFormsApp1
             this.Hide();
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Assignment_View assignment_View = new Assignment_View(courseID, userID);
+            assignment_View.Show();
+            this.Hide();
+        }
     }
 }
