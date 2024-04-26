@@ -178,6 +178,7 @@
             Course_comboBox1.Name = "Course_comboBox1";
             Course_comboBox1.Size = new Size(350, 28);
             Course_comboBox1.TabIndex = 6;
+            Course_comboBox1.SelectedIndexChanged += Course_comboBox1_SelectedIndexChanged;
             // 
             // label4
             // 

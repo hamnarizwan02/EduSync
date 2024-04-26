@@ -164,7 +164,6 @@
             Section_comboBox2.Name = "Section_comboBox2";
             Section_comboBox2.Size = new Size(345, 28);
             Section_comboBox2.TabIndex = 3;
-            Section_comboBox2.SelectedIndexChanged += Section_comboBox2_SelectedIndexChanged;
             // 
             // label2
             // 

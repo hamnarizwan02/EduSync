@@ -152,7 +152,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(300, 165);
+            label3.Location = new Point(295, 242);
             label3.Name = "label3";
             label3.Size = new Size(132, 37);
             label3.TabIndex = 9;
@@ -163,7 +163,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(300, 239);
+            label2.Location = new Point(300, 168);
             label2.Name = "label2";
             label2.Size = new Size(127, 37);
             label2.TabIndex = 8;
@@ -172,16 +172,17 @@
             // Course_comboBox2
             // 
             Course_comboBox2.FormattingEnabled = true;
-            Course_comboBox2.Location = new Point(462, 248);
+            Course_comboBox2.Location = new Point(462, 177);
             Course_comboBox2.Name = "Course_comboBox2";
             Course_comboBox2.Size = new Size(352, 28);
             Course_comboBox2.TabIndex = 7;
+            Course_comboBox2.SelectedIndexChanged += Course_comboBox2_SelectedIndexChanged;
             // 
             // Section_comboBox1
             // 
             Section_comboBox1.FormattingEnabled = true;
             Section_comboBox1.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H", "Y", "Z" });
-            Section_comboBox1.Location = new Point(462, 174);
+            Section_comboBox1.Location = new Point(462, 251);
             Section_comboBox1.Name = "Section_comboBox1";
             Section_comboBox1.Size = new Size(352, 28);
             Section_comboBox1.TabIndex = 6;

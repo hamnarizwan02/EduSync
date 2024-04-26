@@ -37,6 +37,10 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
+            //instructor 
+            //var email = "j@gmail.com";
+            //var password = "Jennifer1";
+
             var connectionString = Constant.ConnectionString;
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
