@@ -154,6 +154,7 @@
             Course_comboBox1.Name = "Course_comboBox1";
             Course_comboBox1.Size = new Size(345, 28);
             Course_comboBox1.TabIndex = 2;
+            Course_comboBox1.SelectedIndexChanged += Course_comboBox1_SelectedIndexChanged_1;
             // 
             // Section_comboBox2
             // 
@@ -163,6 +164,7 @@
             Section_comboBox2.Name = "Section_comboBox2";
             Section_comboBox2.Size = new Size(345, 28);
             Section_comboBox2.TabIndex = 3;
+            Section_comboBox2.SelectedIndexChanged += Section_comboBox2_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -262,7 +264,6 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(345, 104);
             listBox1.TabIndex = 20;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label6
             // 

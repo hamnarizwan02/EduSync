@@ -99,9 +99,14 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Assignment_View assignment_View = new Assignment_View(courseID,userID);
+            Assignment_View assignment_View = new Assignment_View(courseID, userID);
             assignment_View.Show();
             this.Hide();
+        }
+
+        private void panelLeft_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace WinFormsApp1
 {
     public partial class Assignmnet : Form
     {
-        private int userID; 
+        private int userID;
         //set file path for assignment 
         //string folderPath = @"C:\Users\hamna\Desktop\SE PROJ";
 
@@ -29,10 +29,10 @@ namespace WinFormsApp1
             panelLeft.Height = button1.Height;
             panelLeft.Top = button1.Top;
         }
-        public Assignmnet(int userID):this()
+        public Assignmnet(int userID) : this()
         {
             this.userID = userID;
-        } 
+        }
 
         private void Assignmnet_Load(object sender, EventArgs e)
         {
@@ -52,7 +52,7 @@ namespace WinFormsApp1
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
-            string query = "Select c.CourseName from Enrollment e JOIN Courses c on c.CourseID = e.CourseID where e.UserID = '"+ userID +"' ";
+            string query = "Select c.CourseName from Enrollment e JOIN Courses c on c.CourseID = e.CourseID where e.UserID = '" + userID + "' ";
             SqlCommand cmd = new SqlCommand(query, sqlconn);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -180,7 +180,7 @@ namespace WinFormsApp1
             }
         }
 
-        string chooseSection ()
+        string chooseSection()
         {
             var section = Section_comboBox2.Text;
             return section;
@@ -286,6 +286,21 @@ namespace WinFormsApp1
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Course_comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Course_comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Section_comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
