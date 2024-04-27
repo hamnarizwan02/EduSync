@@ -267,19 +267,40 @@ namespace WinFormsApp1
                                             int userID;
                                             if (int.TryParse(UserIDstr, out userID))
                                             {
-                                                // Insert valuesin enrollment table 
-                                                string insertEnrollmentQuery = "insert into Enrollment values('" + section + "','" + userID + "', '" + courseID + "')";
-                                                SqlCommand insertEnrollmentCmd = new SqlCommand(insertEnrollmentQuery, sqlconn);
-                                                int enrollmentRowsAffected = insertEnrollmentCmd.ExecuteNonQuery();
 
-                                                if (enrollmentRowsAffected > 0)
+
+
+                                                string check = "select userID from Enrollment where section = '" + section + "' and courseID = '" + courseID + "'";
+
+                                                SqlCommand cmd = new SqlCommand(check, sqlconn);
+                                                cmd.Parameters.AddWithValue("@Section", section);
+                                                cmd.Parameters.AddWithValue("@CourseID", courseID);
+                                                object result = cmd.ExecuteScalar();
+                                                if (result != null && result != DBNull.Value)
                                                 {
-                                                    MessageBox.Show("Teacher enrolled successfully");
+                                                    int count = (int)result;
+                                                    MessageBox.Show("One instructor is already teacher that course. ");
+
+
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Error occurred while inserting data into the Enrollment table");
+
+                                                    string insertEnrollmentQuery = "insert into Enrollment values('" + section + "','" + userID + "', '" + courseID + "')";
+                                                    SqlCommand insertEnrollmentCmd = new SqlCommand(insertEnrollmentQuery, sqlconn);
+                                                    int enrollmentRowsAffected = insertEnrollmentCmd.ExecuteNonQuery();
+
+                                                    if (enrollmentRowsAffected > 0)
+                                                    {
+                                                        MessageBox.Show("Teacher enrolled successfully");
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Error occurred while inserting data into the Enrollment table");
+                                                    }
                                                 }
+
+                                                
                                             }
                                             else
                                             {
