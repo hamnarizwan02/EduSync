@@ -20,6 +20,7 @@ namespace WinFormsApp1
             InitializeComponent();
             this.Load += enrollStudent_Load;
             Password.TextChanged += Password_TextChanged;
+            Email.TextChanged += EmailDisplay_TextChanged;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -357,6 +358,33 @@ namespace WinFormsApp1
             {
                 errortextBox1.Text = ""; // Clear the error message if password meets criteria
             }
+        }
+
+        private void EmailDisplay_TextChanged(object sender, EventArgs e)
+        {
+            var email = Email.Text;
+            if (email == "")
+            {
+                EmailDisplay.Text = "";
+            }
+            else
+            {
+                int atIndex = email.IndexOf('@');
+                if (atIndex == -1 || atIndex > 15)
+                {
+                    EmailDisplay.Text = "Email should contain '@' and should have less than 15 characters.";
+                }
+                else
+                {
+                    EmailDisplay.Text = ""; 
+                }
+            }
+        }
+
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

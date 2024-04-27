@@ -37,6 +37,10 @@ namespace WinFormsApp1
             var email = emailtextBox.Text;
             var password = PasswordtextBox.Text;
 
+            //instructor 
+            //var email = "j@gmail.com";
+            //var password = "Jennifer1";
+
             var connectionString = Constant.ConnectionString;
 
             SqlConnection sqlconn = new SqlConnection(connectionString);
@@ -110,8 +114,24 @@ namespace WinFormsApp1
                         else if (usertype == "Instructor")
                         {
 
+                            try
+                            {
+                                string query3 = "SELECT userID FROM users WHERE email = '" + email + "' AND passwordd = '" + password + "'";
+                                SqlCommand cmd3 = new SqlCommand(query3, sqlconn);
+                                object result = cmd3.ExecuteScalar();
+
+                                if (result != null)
+                                {
+                                    userID = Convert.ToInt32(result);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error fetching userID: " + ex.Message);
+                            }
+
                             this.Hide();
-                            var form3 = new Assignmnet();
+                            var form3 = new Assignmnet(userID);
                             form3.Closed += (s, args) => this.Close();
                             form3.Show();
                         }

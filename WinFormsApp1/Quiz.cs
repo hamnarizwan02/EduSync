@@ -15,6 +15,7 @@ namespace WinFormsApp1
     public partial class Quiz : Form
     {
         List<string> selectedFilePaths = new List<string>();
+        private int userID;
 
         public Quiz()
         {
@@ -23,14 +24,15 @@ namespace WinFormsApp1
             panelLeft.Top = button2.Top;
         }
 
+        public Quiz(int userID) : this()
+        {
+            this.userID = userID;
+        }
+
         private void Quiz_Load(object sender, EventArgs e)
         {
-            List<string> courseNames = GetCourseNamesFromDatabase();
-            List<string> sectionNames = GetSectionFromDatabase();
-
-            // Populate the ComboBox with the list of course names
+            List<string> courseNames = GetCourseNamesFromDatabase(userID);
             Course_comboBox2.DataSource = courseNames;
-            Section_comboBox1.DataSource = sectionNames;
 
             List<string> studentIDs = GetStudentIDsFromDatabase();
 
@@ -38,7 +40,18 @@ namespace WinFormsApp1
             Student_comboBox3.DataSource = studentIDs;
         }
 
-        private List<string> GetCourseNamesFromDatabase()
+        private void Course_comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Fetch sections based on the selected course
+            string selectedCourse = Course_comboBox2.SelectedItem.ToString();
+            List<string> sectionNames = GetSectionsForCourse(userID, selectedCourse);
+
+            // Populate the section ComboBox with the fetched section names
+            Section_comboBox1.DataSource = sectionNames;
+        }
+
+
+        private List<string> GetCourseNamesFromDatabase(int userID)
         {
             List<string> courseNames = new List<string>();
 
@@ -46,7 +59,7 @@ namespace WinFormsApp1
             SqlConnection sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
-            string query = "SELECT CourseName FROM Courses";
+            string query = "Select DISTINCT c.CourseName from Enrollment e JOIN Courses c on c.CourseID = e.CourseID where e.UserID = '" + userID + "' ";
             SqlCommand cmd = new SqlCommand(query, sqlconn);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -56,25 +69,34 @@ namespace WinFormsApp1
                 courseNames.Add(courseName);
             }
 
+            reader.Close();
+
             return courseNames;
         }
 
-        private List<string> GetSectionFromDatabase()
+
+        private List<string> GetSectionsForCourse(int userID, string courseName)
         {
             List<string> sectionNames = new List<string>();
 
+            // Fetch sections from the database based on the selected course
             var connectionString = Constant.ConnectionString;
-            SqlConnection sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
-
-            string query = "SELECT SectionName FROM Section WHERE SectionName != 'All'";
-            SqlCommand cmd = new SqlCommand(query, sqlconn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
-                string SectionName = reader["SectionName"].ToString();
-                sectionNames.Add(SectionName);
+                sqlconn.Open();
+
+                string query = "SELECT Section FROM Enrollment WHERE UserID = '" + userID + "' AND CourseID IN (SELECT CourseID FROM Courses WHERE CourseName = '" + courseName + "')";
+                using (SqlCommand cmd = new SqlCommand(query, sqlconn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string sectionName = reader["Section"].ToString();
+                            sectionNames.Add(sectionName);
+                        }
+                    }
+                }
             }
 
             return sectionNames;
@@ -107,7 +129,7 @@ namespace WinFormsApp1
             panelLeft.Top = button1.Top;
 
             this.Hide();
-            var form3 = new Assignmnet();
+            var form3 = new Assignmnet(userID);
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }
@@ -130,7 +152,7 @@ namespace WinFormsApp1
             panelLeft.Top = button3.Top;
 
             this.Hide();
-            var form3 = new Notes();
+            var form3 = new Notes(userID);
             form3.Closed += (s, args) => this.Close();
             form3.Show();
         }
@@ -142,7 +164,7 @@ namespace WinFormsApp1
             panelLeft.BringToFront();
 
             this.Hide();
-            var form9 = new Announcement();
+            var form9 = new Announcement(userID);
             form9.Closed += (s, args) => this.Close();
             form9.Show();
         }
@@ -255,5 +277,6 @@ namespace WinFormsApp1
         {
 
         }
+
     }
 }
