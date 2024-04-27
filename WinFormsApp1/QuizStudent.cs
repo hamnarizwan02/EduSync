@@ -68,9 +68,7 @@ namespace WinFormsApp1
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["download"].Index)
             {
-                // User clicked on the download column of a row
                 string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["download"].Value.ToString();
-                // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
                 var startInfo = new ProcessStartInfo
                 {
@@ -172,7 +170,6 @@ namespace WinFormsApp1
                     int quizID = Convert.ToInt32(row.Cells["Quiz number"].Value);
                     //int courseID = Convert.ToInt32(row.Cells["Course ID"].Value);
 
-                    // Update the queries to use QuizID and CourseID
                     string checkExistingQuery = "SELECT COUNT(*) FROM Bookmarks WHERE QuizID = @quizID AND UserID = @userID AND CourseID = @courseID";
                     using (SqlCommand checkCommand = new SqlCommand(checkExistingQuery, connection))
                     {
@@ -210,56 +207,6 @@ namespace WinFormsApp1
             }
 
             MessageBox.Show("Bookmark saved successfully.");
-
-            /* string connectionString = Constant.ConnectionString;
-             using (SqlConnection connection = new SqlConnection(connectionString))
-             {
-                 connection.Open();
-
-                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                 {
-                     DataGridViewRow row = dataGridView1.Rows[i];
-                     bool isBookmarked = row.Cells["Bookmark"].Value != null && row.Cells["Bookmark"].Value != DBNull.Value && (bool)row.Cells["Bookmark"].Value;
-
-                     // Get quizID instead of assignmentID 
-                     int quizID = Convert.ToInt32(row.Cells["Quiz number"].Value);
-
-                     // Update the queries to use QuizID 
-                     string checkExistingQuery = "SELECT COUNT(*) FROM Bookmarks WHERE QuizID = @quizID AND UserID = @userID";
-                     using (SqlCommand checkCommand = new SqlCommand(checkExistingQuery, connection))
-                     {
-                         checkCommand.Parameters.AddWithValue("@quizID", quizID); // Parameter name changed
-                         checkCommand.Parameters.AddWithValue("@userID", this.userID);
-                         int count = (int)checkCommand.ExecuteScalar();
-
-                         if (count > 0)
-                         {
-                             string updateQuery = "UPDATE Bookmarks SET ValueBookmark = @valueBookmark WHERE QuizID = @quizID AND UserID = @userID";
-                             using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
-                             {
-                                 updateCommand.Parameters.AddWithValue("@quizID", quizID); // Parameter name changed
-                                 updateCommand.Parameters.AddWithValue("@userID", this.userID);
-                                 updateCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
-                                 updateCommand.ExecuteNonQuery();
-                             }
-                         }
-                         else
-                         {
-                             string insertQuery = "INSERT INTO Bookmarks (QuizID, UserID, ValueBookmark) VALUES (@quizID, @userID, @valueBookmark)"; // Column name changed
-                             using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                             {
-                                 insertCommand.Parameters.AddWithValue("@quizID", quizID); // Parameter name changed
-                                 insertCommand.Parameters.AddWithValue("@userID", this.userID);
-                                 insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
-                                 insertCommand.ExecuteNonQuery();
-                             }
-                         }
-                     }
-                 } 
-             }
-
-             MessageBox.Show("Bookmark saved successfully."); */
-
         }
 
         private void button7_Click(object sender, EventArgs e)

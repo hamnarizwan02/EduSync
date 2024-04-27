@@ -81,11 +81,9 @@ namespace WinFormsApp1
 
         private void Course_comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Fetch sections based on the selected course
             string selectedCourse = Course_comboBox1.SelectedItem.ToString();
             List<string> sectionNames = GetSectionsForCourse(userID, selectedCourse);
 
-            // Populate the section ComboBox with the fetched section names
             Section_comboBox2.DataSource = sectionNames;
         }
 
@@ -117,7 +115,6 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            // Fetch sections from the database based on the selected course
             var connectionString = Constant.ConnectionString;
             using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {

@@ -48,7 +48,6 @@ namespace WinFormsApp1
             List<string> courseNames = GetCourseNamesFromDatabase();
             List<string> sectionNames = GetSectionFromDatabase();
 
-            // Populate the ComboBox with the list of course names
             CoursecomboBox.DataSource = courseNames;
             SectioncomboBox.DataSource = sectionNames;
         }
@@ -122,23 +121,18 @@ namespace WinFormsApp1
 
         private void showFiles_Click_1(object sender, EventArgs e)
         {
-
-            // Fetching the data
             var name = NameT.Text;
             var email = Email.Text;
             var password = Password.Text;
             var section = SectioncomboBox.Text;
             var courseName = CoursecomboBox.Text;
 
-
-            // Check maximum lengths
             if (name.Length > 15)
             {
                 MessageBox.Show("Name should not exceed 15 characters.");
                 return;
             }
 
-            // Check maximum length of email (excluding '@')
             var atIndex = email.IndexOf('@');
             if (atIndex > 15 || atIndex == -1)
             {
@@ -146,7 +140,6 @@ namespace WinFormsApp1
                 return;
             }
 
-            // Check maximum length of password
             if (password.Length > 15)
             {
                 MessageBox.Show("Password should not exceed 15 characters.");
@@ -154,14 +147,12 @@ namespace WinFormsApp1
             }
 
 
-            // Check for multiple "@" symbols
             if (email.Count(c => c == '@') != 1)
             {
                 MessageBox.Show("Email address should contain exactly one '@' symbol.");
                 return;
             }
 
-            // Check if there is at least one character before the "@" symbol
             var atIndex1 = email.IndexOf('@');
             if (atIndex1 == 0)
             {
@@ -169,7 +160,6 @@ namespace WinFormsApp1
                 return;
             }
 
-            // Check for allowed domain names and valid top-level domains
             string[] allowedDomains = { "gmail.com", "outlook.com", "yahoo.com", "gmail.pk", "yahoo.pk" };
             string[] validTopLevelDomains = { ".com", ".org", ".pk" };
 
@@ -251,7 +241,6 @@ namespace WinFormsApp1
                                 int courseID;
                                 if (int.TryParse(CourseIDstr, out courseID))
                                 {
-                                    // Fetch UserID
                                     string selectUserQuery = "select top 1 UserID from Users where Email = '" + email + "'";
                                     SqlCommand selectUserCmd = new SqlCommand(selectUserQuery, sqlconn);
                                     SqlDataReader reader2 = selectUserCmd.ExecuteReader();
@@ -336,7 +325,7 @@ namespace WinFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("hello" + ex.Message);
             }
             finally
             {
@@ -386,7 +375,7 @@ namespace WinFormsApp1
             }
             else
             {
-                errortextBox1.Text = ""; // Clear the error message if password meets criteria
+                errortextBox1.Text = ""; 
             }
         }
 

@@ -29,10 +29,15 @@ namespace WinFormsApp1
             panelLeft.Height = button8.Height;
             panelLeft.Top = button8.Top;
         }
+
+        public StudentNotes(int courseID) : this()
+        {
+            this.courseID = courseID;
+        }
         public StudentNotes(int courseID, int userID) : this()
         {
-            this.userID = userID;
             this.courseID = courseID;
+            this.userID = userID;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -95,34 +100,91 @@ namespace WinFormsApp1
             DataPrint();
         }
 
+        //private void DataPrint()
+        //{
+
+        //    string connectionString = Constant.ConnectionString;
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+
+        //        try
+        //        {
+        //            string query = "SELECT * FROM StudentNotes WHERE UserID = @userID";
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                command.Parameters.AddWithValue("@UserID", userID);
+
+
+        //                using (SqlDataReader reader = command.ExecuteReader())
+        //                {
+
+
+        //                    DataTable dataTable = new DataTable();
+        //                    dataTable.Load(reader);
+        //                    dataGridView1.DataSource = dataTable;
+
+
+        //                }
+        //            }
+        //        }
+        //        catch(Exception ex)
+        //        {
+        //            MessageBox.Show( "hello "+ ex.Message);
+        //        }
+        //    }
+
+        //}
+
+        private string GetFileName(string filePath)
+        {
+            return Path.GetFileName(filePath);
+        }
+
+
         private void DataPrint()
         {
-
             string connectionString = Constant.ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM StudentNotes WHERE UserID=@userID";
-                using (SqlCommand command = new SqlCommand(query, connection))
+
+                try
                 {
-                    command.Parameters.AddWithValue("@UserID", userID);
-
-
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string query = "SELECT * FROM StudentNotes WHERE UserID = @userID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@UserID", userID);
 
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            DataTable dataTable = new DataTable();
+                            dataTable.Load(reader);
 
-                        DataTable dataTable = new DataTable();
-                        dataTable.Load(reader);
-                        dataGridView1.DataSource = dataTable;
+                            // Add a new column for the file name
+                            dataTable.Columns.Add("FileName", typeof(string));
 
+                            // Iterate through each row in the DataTable and extract the file name from the file path
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                string filePath = row["FilePath"].ToString();
+                                string fileName = GetFileName(filePath);
+                                row["FileName"] = fileName;
+                            }
 
+                            // Set the DataGridView's DataSource to the modified DataTable
+                            dataGridView1.DataSource = dataTable;
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
-
-
         }
+
+
 
         private void showFiles_Click(object sender, EventArgs e)
         {
@@ -132,14 +194,12 @@ namespace WinFormsApp1
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Clear the ListBox before adding new items
                 listBox1.Items.Clear();
 
-                // Add each selected file's full path to the ListBox and the list of selected file paths
                 foreach (string file in openFileDialog.FileNames)
                 {
                     listBox1.Items.Add(file);
-                    selectedFilePaths.Add(file); // Store selected file path in the list
+                    selectedFilePaths.Add(file);
                 }
             }
         }
@@ -176,10 +236,6 @@ namespace WinFormsApp1
         {
             if (listBox1.SelectedIndex >= 0)
             {
-                // Get the selected file path from the ListBox
-                //string filePath = listBox1.SelectedItem.ToString();
-
-                // Check if the file exists before attempting to open it
                 if (File.Exists(filePath))
                 {
                     var startInfo = new ProcessStartInfo
@@ -230,44 +286,44 @@ namespace WinFormsApp1
         private void button7_Click(object sender, EventArgs e)
         {
             string filename = filename_textBox1.Text;
-            string filePath = @"C:\Users\khana\Desktop " + filename + " .docx";
+            string filePath = @"C:\Users\hamna\Desktop " + filename + " .docx";
 
             try
             {
-                // Create a new WordprocessingDocument
                 using (WordprocessingDocument wordDocument = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document))
                 {
-                    // Add a new MainDocumentPart
                     MainDocumentPart mainPart = wordDocument.AddMainDocumentPart();
 
-                    // Create a new Document
                     DocumentFormat.OpenXml.Wordprocessing.Document document = new DocumentFormat.OpenXml.Wordprocessing.Document();
                     mainPart.Document = document;
 
-                    // Create a new Body
                     Body body = new Body();
 
-                    // Add some text to the body
                     DocumentFormat.OpenXml.Wordprocessing.Paragraph paragraph = new DocumentFormat.OpenXml.Wordprocessing.Paragraph();
 
                     Run run = new Run(new Text(" "));
                     paragraph.Append(run);
                     body.Append(paragraph);
 
-                    // Append the body to the document
                     document.Append(body);
                 }
 
-                // Save the file path in the database
-                var connectionString = Constant.ConnectionString;
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                try
                 {
-                    connection.Open();
-                    string insertQuery = "INSERT INTO StudentNotes (UserID, FilePath) VALUES (@userID, @filePath)";
-                    SqlCommand command = new SqlCommand(insertQuery, connection);
-                    command.Parameters.AddWithValue("@userID", userID);
-                    command.Parameters.AddWithValue("@filePath", filePath);
-                    command.ExecuteNonQuery();
+                    var connectionString = Constant.ConnectionString;
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        string insertQuery = "INSERT INTO StudentNotes (UserID, FilePath) VALUES (@userID, @filePath)";
+                        SqlCommand command = new SqlCommand(insertQuery, connection);
+                        command.Parameters.AddWithValue("@userID", userID);
+                        command.Parameters.AddWithValue("@filePath", filePath);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
 
                 MessageBox.Show("Word document created on Desktop and file path saved successfully.");
@@ -277,6 +333,7 @@ namespace WinFormsApp1
                 MessageBox.Show(ex.Message);
             }
 
+            DataPrint();
             openCode_New(filePath);
 
         }
@@ -297,9 +354,7 @@ namespace WinFormsApp1
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["FilePath"].Index)
             {
-                // User clicked on the download column of a row
                 string notesFilePath = dataGridView1.Rows[e.RowIndex].Cells["FilePath"].Value.ToString();
-                // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
                 var startInfo = new ProcessStartInfo
                 {

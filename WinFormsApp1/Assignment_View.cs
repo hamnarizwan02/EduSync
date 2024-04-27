@@ -50,7 +50,6 @@ namespace WinFormsApp1
                
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Add the parameter value
                     command.Parameters.AddWithValue("@courseID", courseID);                     command.Parameters.AddWithValue("@userID", this.userID);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -101,9 +100,7 @@ namespace WinFormsApp1
 
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["download"].Index)
             {
-                // User clicked on the download column of a row
                 string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["download"].Value.ToString();
-                // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
                 var startInfo = new ProcessStartInfo
                 {
@@ -165,73 +162,6 @@ namespace WinFormsApp1
             form3.Show();
         }
 
-        /* void SaveBookmarksToDatabase()
-         {
-             string connectionString = Constant.ConnectionString;
-             using (SqlConnection connection = new SqlConnection(connectionString))
-             {
-                 connection.Open();
-
-                 for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                 {
-                     DataGridViewRow row = dataGridView1.Rows[i];
-                     bool isBookmarked = row.Cells["Bookmarks"].Value != null && row.Cells["Bookmarks"].Value != DBNull.Value && (bool)row.Cells["Bookmarks"].Value;
-
-
-                     if (isBookmarked)
-                     {
-                         int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
-
-                         // 1. Deletion Step
-                         string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID ";
-                         using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
-                         {
-                             deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-
-                             deleteCommand.ExecuteNonQuery();
-                         }
-
-                         // 2. Insertion Step 
-                         string insertQuery = "INSERT INTO Bookmarks (AssignmentID, UserID, ValueBookmark) VALUES (@assignmentID, @userID, @valueBookmark)";
-                         using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                         {
-                             insertCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                             insertCommand.Parameters.AddWithValue("@userID", this.userID);
-                             insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
-
-                             insertCommand.ExecuteNonQuery();
-                         }
-                     }
-                     else
-                     {
-                         int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
-
-                         //1.Deletion Step
-                         string deleteQuery = "DELETE FROM Bookmarks WHERE AssignmentID = @assignmentID";
-                         using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
-                         {
-                             deleteCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                             deleteCommand.ExecuteNonQuery();
-                         }
-
-                         // 2. Insertion Step 
-                         string insertQuery = "INSERT INTO Bookmarks (AssignmentID, UserID, ValueBookmark) VALUES (@assignmentID, @userID, @valueBookmark)";
-                         using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                         {
-                             insertCommand.Parameters.AddWithValue("@assignmentID", assignmentID);
-                             insertCommand.Parameters.AddWithValue("@userID", this.userID);
-                             insertCommand.Parameters.AddWithValue("@valueBookmark", isBookmarked);
-
-                             insertCommand.ExecuteNonQuery();
-                         }
-                     }
-                 }
-
-                 MessageBox.Show("Bookmark saved successfully.");
-
-             }
-         }
-        */
         void SaveBookmarksToDatabase()
         {
             string connectionString = Constant.ConnectionString;
@@ -245,7 +175,6 @@ namespace WinFormsApp1
                     bool isBookmarked = row.Cells["Bookmarks"].Value != null && row.Cells["Bookmarks"].Value != DBNull.Value && (bool)row.Cells["Bookmarks"].Value;
                     int assignmentID = Convert.ToInt32(row.Cells["Assignment number"].Value);
 
-                    // Check if a bookmark exists for this assignmentID and userID
                     string checkExistingQuery = "SELECT COUNT(*) FROM Bookmarks WHERE AssignmentID = @assignmentID AND UserID = @userID";
                     using (SqlCommand checkCommand = new SqlCommand(checkExistingQuery, connection))
                     {
@@ -255,7 +184,6 @@ namespace WinFormsApp1
 
                         if (count > 0)
                         {
-                            // Update existing bookmark
                             string updateQuery = "UPDATE Bookmarks SET ValueBookmark = @valueBookmark WHERE AssignmentID = @assignmentID AND UserID = @userID";
                             using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                             {
@@ -267,7 +195,7 @@ namespace WinFormsApp1
                         }
                         else
                         {
-                            // Insert new bookmark
+                            // insert new bookmark
                             string insertQuery = "INSERT INTO Bookmarks (AssignmentID, UserID, ValueBookmark) VALUES (@assignmentID, @userID, @valueBookmark)";
                             using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
                             {
@@ -296,38 +224,12 @@ namespace WinFormsApp1
 
         }
 
-        //private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        //{
-        //    string selectedColumnName = comboBox1.SelectedItem.ToString();
-        //    string filterValue = textBox1.Text;
-
-        //    if (!string.IsNullOrEmpty(selectedColumnName) && !string.IsNullOrEmpty(filterValue))
-        //    {
-        //        var columnType = (dataGridView1.DataSource as DataTable).Columns[selectedColumnName].DataType;
-        //        if (columnType == typeof(string))
-        //        {
-        //            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"{selectedColumnName} LIKE '%{filterValue}%'";
-        //        }
-        //        else
-        //        {
-        //            // Handle non-string columns
-        //        }
-        //    }
-        //    else
-        //    {
-        //        (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
-        //    }
-        //}
-
         private void FilterDataGridViewByBookmark()
         {
-            // Clear any existing filters
             dataGridView1.ClearSelection();
 
-            // Loop through each row in the DataGridView
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                // Check if the ValueBookmark column is equal to 1
                 if (row.Cells["Bookmarks"].Value != null && row.Cells["Bookmarks"].Value.ToString() == "1")
                 {
                     // Select the row
@@ -336,8 +238,6 @@ namespace WinFormsApp1
             }
         }
 
-        // Call the FilterDataGridViewByBookmark method when needed
-        // For example, you can call it in the button click event handler
         private void button7_Click(object sender, EventArgs e)
         {
             Bookmark bookmark = new Bookmark(courseID, userID);
