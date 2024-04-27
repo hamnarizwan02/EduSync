@@ -40,7 +40,6 @@ namespace WinFormsApp1
                 //string query = "SELECT * FROM Bookmarks";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Add the parameter value
                     command.Parameters.AddWithValue("@courseID", courseID);
                     command.Parameters.AddWithValue("@userID", this.userID);
                     using (SqlDataReader reader = command.ExecuteReader())

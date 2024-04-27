@@ -26,7 +26,6 @@ namespace WinFormsApp1
             List<string> sectionNames = GetSectionFromDatabase();
             List<string> InsNames = GetInstrcutorFromDatabase();
 
-            // Populate the ComboBox with the list of course names
 
             SectionBox.DataSource = sectionNames;
             instBox.DataSource = InsNames;
