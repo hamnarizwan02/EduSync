@@ -49,18 +49,18 @@
             panel1.Controls.Add(button1);
             panel1.Controls.Add(button2);
             panel1.Location = new Point(2, 1);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(913, 103);
+            panel1.Size = new Size(799, 77);
             panel1.TabIndex = 36;
             // 
             // button3
             // 
             button3.BackColor = Color.FromArgb(0, 0, 64);
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(22, 15);
-            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Location = new Point(19, 11);
             button3.Name = "button3";
-            button3.Size = new Size(80, 67);
+            button3.Size = new Size(70, 50);
             button3.TabIndex = 54;
             button3.Text = "button3";
             button3.UseVisualStyleBackColor = false;
@@ -69,9 +69,10 @@
             // panelLeft
             // 
             panelLeft.BackColor = Color.Maroon;
-            panelLeft.Location = new Point(165, 0);
+            panelLeft.Location = new Point(144, 0);
+            panelLeft.Margin = new Padding(3, 2, 3, 2);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(79, 13);
+            panelLeft.Size = new Size(69, 10);
             panelLeft.TabIndex = 54;
             panelLeft.Paint += panelLeft_Paint;
             // 
@@ -82,9 +83,10 @@
             button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(143, -20);
+            button1.Location = new Point(125, -15);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(122, 123);
+            button1.Size = new Size(107, 92);
             button1.TabIndex = 2;
             button1.Text = "Assignment";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -99,9 +101,10 @@
             button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(262, -4);
+            button2.Location = new Point(229, -3);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(158, 107);
+            button2.Size = new Size(138, 80);
             button2.TabIndex = 3;
             button2.Text = "Quiz";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -111,11 +114,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(145, 225);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(127, 169);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(695, 285);
+            dataGridView1.Size = new Size(608, 214);
             dataGridView1.TabIndex = 37;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -124,19 +126,17 @@
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(145, 141);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Location = new Point(127, 106);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(312, 41);
+            textBox1.Size = new Size(273, 33);
             textBox1.TabIndex = 53;
             textBox1.Text = "Bookmarked";
             // 
             // button4
             // 
-            button4.Location = new Point(145, 531);
-            button4.Margin = new Padding(3, 4, 3, 4);
+            button4.Location = new Point(127, 398);
             button4.Name = "button4";
-            button4.Size = new Size(86, 31);
+            button4.Size = new Size(75, 23);
             button4.TabIndex = 54;
             button4.Text = "back";
             button4.UseVisualStyleBackColor = true;
@@ -144,14 +144,13 @@
             // 
             // Bookmark
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(889, 457);
             Controls.Add(button4);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Bookmark";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Bookmark";
