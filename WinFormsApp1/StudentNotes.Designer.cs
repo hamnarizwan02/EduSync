@@ -345,7 +345,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(843, 443);
+            ClientSize = new Size(889, 457);
             Controls.Add(button9);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
@@ -362,6 +362,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "StudentNotes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "StudentNotes";
             Load += LectureNotes_STUDENT_Load;
             panel1.ResumeLayout(false);

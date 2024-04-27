@@ -102,9 +102,11 @@ namespace WinFormsApp1
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM StudentNotes";
+                string query = "SELECT * FROM StudentNotes WHERE UserID=@userID";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@UserID", userID);
+
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

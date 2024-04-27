@@ -144,12 +144,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(889, 457);
             Controls.Add(button4);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Name = "Bookmark";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Bookmark";
             Load += Bookmark_Load;
             panel1.ResumeLayout(false);

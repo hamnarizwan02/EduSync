@@ -39,11 +39,10 @@ namespace WinFormsApp1
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(56, 92);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(49, 69);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(923, 343);
+            dataGridView1.Size = new Size(808, 257);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -52,10 +51,9 @@ namespace WinFormsApp1
             textBox1.BackColor = SystemColors.ButtonFace;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(376, 13);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Location = new Point(329, 10);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 46);
+            textBox1.Size = new Size(187, 37);
             textBox1.TabIndex = 1;
             textBox1.Text = "Dashboard";
             textBox1.TextChanged += textBox1_TextChanged;
@@ -67,9 +65,10 @@ namespace WinFormsApp1
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(846, 13);
+            button6.Location = new Point(740, 10);
+            button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
-            button6.Size = new Size(133, 33);
+            button6.Size = new Size(116, 25);
             button6.TabIndex = 52;
             button6.Text = "LOG OUT";
             button6.UseVisualStyleBackColor = false;
@@ -77,14 +76,13 @@ namespace WinFormsApp1
             // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
-            ClientSize = new Size(1010, 504);
+            ClientSize = new Size(889, 457);
             Controls.Add(button6);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dashboard";

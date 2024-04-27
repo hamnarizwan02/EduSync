@@ -250,7 +250,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 450);
+            ClientSize = new Size(889, 457);
             Controls.Add(button9);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
@@ -258,6 +258,7 @@
             Controls.Add(textBox1);
             Controls.Add(button6);
             Name = "AnnouncementView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AnnouncementView";
             Load += AnnouncementView_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

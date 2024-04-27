@@ -249,7 +249,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 441);
+            ClientSize = new Size(889, 457);
             Controls.Add(button9);
             Controls.Add(label5);
             Controls.Add(dataGridView1);
@@ -257,6 +257,7 @@
             Controls.Add(textBox1);
             Controls.Add(button6);
             Name = "LectureNotes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LectureNotes";
             Load += LectureNotes_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
