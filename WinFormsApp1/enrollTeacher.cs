@@ -259,7 +259,9 @@ namespace WinFormsApp1
 
 
 
-                                                string check = "select userID from Enrollment where section = '" + section + "' and courseID = '" + courseID + "'";
+                                                // string check = "select userID from Enrollment  JOIN Users where section = '" + section + "' and courseID = '" + courseID + "' and UserType = 'Instructor'";
+                                                string check = "SELECT u.UserID FROM Enrollment e INNER JOIN Users u ON e.UserID = u.UserID WHERE e.Section = @Section AND e.CourseID = @CourseID AND u.UserType = 'Instructor'";
+
 
                                                 SqlCommand cmd = new SqlCommand(check, sqlconn);
                                                 cmd.Parameters.AddWithValue("@Section", section);
