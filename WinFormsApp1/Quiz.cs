@@ -36,17 +36,14 @@ namespace WinFormsApp1
 
             List<string> studentIDs = GetStudentIDsFromDatabase();
 
-            // Populate the ComboBox with the list of course names
             Student_comboBox3.DataSource = studentIDs;
         }
 
         private void Course_comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Fetch sections based on the selected course
             string selectedCourse = Course_comboBox2.SelectedItem.ToString();
             List<string> sectionNames = GetSectionsForCourse(userID, selectedCourse);
 
-            // Populate the section ComboBox with the fetched section names
             Section_comboBox1.DataSource = sectionNames;
         }
 
@@ -79,7 +76,6 @@ namespace WinFormsApp1
         {
             List<string> sectionNames = new List<string>();
 
-            // Fetch sections from the database based on the selected course
             var connectionString = Constant.ConnectionString;
             using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
@@ -177,14 +173,12 @@ namespace WinFormsApp1
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Clear the ListBox before adding new items
                 listBox1.Items.Clear();
 
-                // Add each selected file's full path to the ListBox and the list of selected file paths
                 foreach (string file in openFileDialog.FileNames)
                 {
                     listBox1.Items.Add(file);
-                    selectedFilePaths.Add(file); // Store selected file path in the list
+                    selectedFilePaths.Add(file); 
                 }
             }
         }
@@ -202,7 +196,6 @@ namespace WinFormsApp1
 
             if (listBox1.SelectedItem != null)
             {
-                // Get the selected file name from the ListBox
                 string selectedFileName = listBox1.SelectedItem.ToString();
 
 
@@ -258,7 +251,6 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    // If no item is selected in the ListBox, display a message to the user
                     MessageBox.Show("Please select a file from the list.");
                 }
             }

@@ -36,9 +36,7 @@ namespace WinFormsApp1
         {
             if (e.RowIndex >= 0)
             {
-                // User clicked on the download column of a row
                 string quizFilePath = dataGridView1.Rows[e.RowIndex].Cells["NotesFilePath"].Value.ToString();
-                // Now you have the QuizFilePath value in the 'quizFilePath' variable
 
                 var startInfo = new ProcessStartInfo
                 {

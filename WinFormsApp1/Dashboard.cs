@@ -51,6 +51,7 @@ namespace WinFormsApp1
             }
         }
 
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
             DataPrint();

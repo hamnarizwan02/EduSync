@@ -54,7 +54,6 @@ namespace WinFormsApp1
                 return;
             }
 
-            // Check maximum length of email (excluding '@')
             var atIndex = email.IndexOf('@');
             if (atIndex > 15 || atIndex == -1)
             {
@@ -62,7 +61,6 @@ namespace WinFormsApp1
                 return;
             }
 
-            // Check maximum length of password
             if (password.Length > 15)
             {
                 MessageBox.Show("Password should not exceed 15 characters.");
