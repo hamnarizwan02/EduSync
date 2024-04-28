@@ -230,7 +230,7 @@ namespace WinFormsApp1
 
 
                     // Insert into users table 
-                    string insertUserQuery = "insert into Users values('" + name + "', '" + email + "', '" + password + "', 'Instructor')";
+                    string insertUserQuery = "insert into Users values('" + name + "', '" + email + "', '" + password + "', 'Student')";
                     SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, sqlconn);
                     int rowsAffected = insertUserCmd.ExecuteNonQuery();
 
