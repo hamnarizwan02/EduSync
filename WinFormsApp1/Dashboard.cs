@@ -28,6 +28,7 @@ namespace WinFormsApp1
         {
 
         }
+
         public void DataPrint()
         {
 
@@ -35,11 +36,18 @@ namespace WinFormsApp1
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
+                using (SqlCommand command = new SqlCommand("" +
+                                    "SELECT DISTINCT E.CourseID, C.CourseName AS [Course Name], U.uname AS [Instructor Name] " +
+                                    "FROM Enrollment AS E " +
+                                    "INNER JOIN Users AS U ON E.UserID = U.UserID AND U.UserType = 'Instructor' " +
+                                    "INNER JOIN Courses AS C ON E.CourseID = C.CourseID " +
+                                    "INNER JOIN Enrollment AS E2 ON E.Section = E2.Section AND E.CourseID = E2.CourseID " +
+                                    "WHERE E2.UserID IN (" +
+                                    "    SELECT UserID " +
+                                    "    FROM Users " +
+                                    "    WHERE UserType = 'Student' " +
+                                    "    AND UserID = @userID);", connection))
 
-                //using (SqlCommand command = new SqlCommand("SELECT CourseID , c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] FROM Courses c JOIN Users u ON c.InstructorID = u.UserID", connection)) // replace with your SQL query
-                // using (SqlCommand command = new SqlCommand("SELECT Enrollment.CourseID, \r\n       c.CourseName AS [Course Name], \r\n       u.uname AS [Instructor Name] \r\nFROM Enrollment \r\nJOIN Courses c ON Enrollment.CourseID = c.CourseID\r\nJOIN Users u ON c.InstructorID = u.UserID\r\nWHERE Enrollment.UserID = @userID; ",connection))
-                //using(SqlCommand command = new SqlCommand("Select distinct e.CourseID,  c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] \r\nFROM Enrollment AS E\r\nINNER JOIN Users AS U ON E.UserID = U.UserID AND U.UserType = 'Instructor'\r\nINNER JOIN Courses AS C ON E.CourseID = C.CourseID\r\nWHERE EXISTS (\r\n    SELECT 1\r\n    FROM Enrollment AS E2\r\n    WHERE E2.Section = E.Section\r\n    AND E2.UserID IN (\r\n        SELECT UserID\r\n        FROM Users\r\n        WHERE UserType = 'Student'\r\n        AND UserID =@userID\r\n    )\r\n);", connection))
-                using(SqlCommand command = new SqlCommand("Select distinct e.CourseID,  c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] \r\nFROM Enrollment AS E\r\nINNER JOIN Users AS U ON E.UserID = U.UserID AND U.UserType = 'Instructor'\r\nINNER JOIN Courses AS C ON E.CourseID = C.CourseID\r\nWHERE EXISTS (\r\n    SELECT 1\r\n    FROM Enrollment AS E2\r\n    WHERE E2.Section = E.Section and\r\n\tE2.CourseID = E.CourseID\r\n    AND E2.UserID IN (\r\n        SELECT UserID\r\n        FROM Users\r\n        WHERE UserType = 'Student'\r\n        AND UserID =@userID\r\n    )\r\n);", connection))
 
                 {
                     command.Parameters.AddWithValue("@userID", userID);
@@ -53,6 +61,31 @@ namespace WinFormsApp1
                 }
             }
         }
+        //public void DataPrint()
+        //{
+
+        //    string connectionString = Constant.ConnectionString;
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+
+        //        //using (SqlCommand command = new SqlCommand("SELECT CourseID , c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] FROM Courses c JOIN Users u ON c.InstructorID = u.UserID", connection)) // replace with your SQL query
+        //        // using (SqlCommand command = new SqlCommand("SELECT Enrollment.CourseID, \r\n       c.CourseName AS [Course Name], \r\n       u.uname AS [Instructor Name] \r\nFROM Enrollment \r\nJOIN Courses c ON Enrollment.CourseID = c.CourseID\r\nJOIN Users u ON c.InstructorID = u.UserID\r\nWHERE Enrollment.UserID = @userID; ",connection))
+        //        //using(SqlCommand command = new SqlCommand("Select distinct e.CourseID,  c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] \r\nFROM Enrollment AS E\r\nINNER JOIN Users AS U ON E.UserID = U.UserID AND U.UserType = 'Instructor'\r\nINNER JOIN Courses AS C ON E.CourseID = C.CourseID\r\nWHERE EXISTS (\r\n    SELECT 1\r\n    FROM Enrollment AS E2\r\n    WHERE E2.Section = E.Section\r\n    AND E2.UserID IN (\r\n        SELECT UserID\r\n        FROM Users\r\n        WHERE UserType = 'Student'\r\n        AND UserID =@userID\r\n    )\r\n);", connection))
+        //        using(SqlCommand command = new SqlCommand("Select distinct e.CourseID,  c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] \r\nFROM Enrollment AS E\r\nINNER JOIN Users AS U ON E.UserID = U.UserID AND U.UserType = 'Instructor'\r\nINNER JOIN Courses AS C ON E.CourseID = C.CourseID\r\nWHERE EXISTS (\r\n    SELECT 1\r\n    FROM Enrollment AS E2\r\n    WHERE E2.Section = E.Section and\r\n\tE2.CourseID = E.CourseID\r\n    AND E2.UserID IN (\r\n        SELECT UserID\r\n        FROM Users\r\n        WHERE UserType = 'Student'\r\n        AND UserID =@userID\r\n    )\r\n);", connection))
+
+        //        {
+        //            command.Parameters.AddWithValue("@userID", userID);
+
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                DataTable dataTable = new DataTable();
+        //                dataTable.Load(reader);
+        //                dataGridView1.DataSource = dataTable;
+        //            }
+        //        }
+        //    }
+        //}
 
 
         private void Dashboard_Load(object sender, EventArgs e)
