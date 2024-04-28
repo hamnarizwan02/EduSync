@@ -255,4 +255,36 @@ WHERE Bookmarks.UserID = 2--@userID
   AND Bookmarks.ValueBookmark = 1; 
 
 
+  --dashboard
+Select distinct e.CourseID,  c.CourseName AS [Course Name], u.uname AS [Instuctor Name ] 
+FROM Enrollment AS E
+INNER JOIN Users AS U ON E.UserID = U.UserID AND U.UserType = 'Instructor'
+INNER JOIN Courses AS C ON E.CourseID = C.CourseID
+WHERE EXISTS (
+    SELECT 1
+    FROM Enrollment AS E2
+    WHERE E2.Section	 = E.Section
+    AND E2.UserID IN (
+        SELECT UserID
+        FROM Users
+        WHERE UserType = 'Student'
+        AND UserID = 2
+    )
+);
+
+--.....
+SELECT Enrollment.CourseID, 
+       c.CourseName AS [Course Name], 
+       u.uname AS [Instructor Name] 
+FROM Enrollment 
+JOIN Courses c ON Enrollment.CourseID = c.CourseID
+JOIN Users u ON c.InstructorID = u.UserID AND Enrollment.Section = u.Section 
+WHERE Enrollment.UserID = 2; 
+
+select * from Users
+select * from Enrollment
+DELETE FROM Enrollment WHERE UserID =31;  -- Replace 25 with the actual UserID
+DELETE FROM Users WHERE UserID = 31;
+
+DELETE FROM Users WHERE UserID BETWEEN 26 AND 30; 
 
